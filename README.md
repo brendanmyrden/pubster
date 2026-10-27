@@ -47,3 +47,8 @@ The local CLI is the operational interface; not every command in the aspirationa
 implementation specification is implemented. See `docs/OPERATIONS.md` and reports.
 
 Generated research is not unrestricted self-modifying code or model training.
+
+## Data quality
+
+See [local data-quality tools and operations](docs/DATA-QUALITY.md).
+Run `./scripts/pubster-quality` for the current corpus audit.

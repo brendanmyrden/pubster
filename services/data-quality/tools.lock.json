@@ -1,0 +1,17 @@
+{
+  "java": {
+    "archive": "java17.tar.gz",
+    "destination": "java",
+    "directory": "jdk-17.0.20.1+1-jre",
+    "sha256": "333cb81123c36568586646c73c8fa2326dab8badc43f5ea388a90fff59c9df27",
+    "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.20.1%2B1/OpenJDK17U-jre_x64_mac_hotspot_17.0.20.1_1.tar.gz"
+  },
+  "openrefine": {
+    "archive": "openrefine-3.10.1.tar.gz",
+    "destination": "tools",
+    "directory": "openrefine-3.10.1",
+    "release": "3.10.1",
+    "sha256": "806e38e415fa98c2dee400de575992514557a4e37e82c670b7cd2e34d667c4ba",
+    "url": "https://github.com/OpenRefine/OpenRefine/releases/download/3.10.1/openrefine-linux-3.10.1.tar.gz"
+  }
+}

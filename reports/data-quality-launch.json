@@ -1,0 +1,31 @@
+{
+  "exact_duplicate_groups": 1,
+  "export_checksums_verified": 271,
+  "great_expectations_passed": true,
+  "near_duplicate_pairs": 1,
+  "openrefine": {
+    "api_reported_version": "3.10-SNAPSHOT [TRUNK]",
+    "artifact_release": "3.10.1",
+    "browser_verified": false,
+    "verified_rows": 262
+  },
+  "records": 262,
+  "schema_valid": 262,
+  "source_mutations": 0,
+  "structural_review_caveat": "Uncalibrated OOD score <0.2 on four structural features; not label errors or false claims. No records removed.",
+  "structural_review_flags": 100,
+  "tests": {
+    "passed": 15,
+    "pipeline": 10,
+    "quality": 5
+  },
+  "versions": {
+    "cleanlab": "2.9.0",
+    "datasketch": "2.0.0",
+    "dedupe": "3.0.3",
+    "duckdb": "2.0.0",
+    "great_expectations": "1.24.1",
+    "pandera": "0.35.0",
+    "polars": "2.1.0"
+  }
+}

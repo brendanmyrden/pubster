@@ -15,3 +15,6 @@ dist/
 *.tsbuildinfo
 .DS_Store
 ._*
+
+# Project-local data-quality tools, downloads, caches, and private reports
+.quality/

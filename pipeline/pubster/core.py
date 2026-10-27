@@ -96,6 +96,7 @@ def ingest(force=False):
             write(STATE/'raw'/digest(raw),raw)
             allchunks+=chunk_markdown(text,source,repo,commit,path,evidence)
         if not allchunks:raise RuntimeError('EMPTY_SOURCE')
+        quality_gate(allchunks)
         source.update(canonical_url='https://github.com/'+repo,status='indexed',authority='official')
         source['verification'].update(default_branch=info['default_branch'],resolved_commit=commit,archived=False,license_evidence=[evidence])
         source['rights'].update(status='redistribute_approved',spdx_expression='Apache-2.0',can_fetch_full_text=True,can_redistribute=True)
@@ -150,10 +151,26 @@ def search(q,limit=20,source=None,domain=None,weight=None):
     if domain:conditions.append('c.tags=?');params.append(domain)
     sql=f'SELECT c.record_json FROM chunks_fts JOIN chunks c ON c.rowid=chunks_fts.rowid WHERE {" AND ".join(conditions)} ORDER BY bm25(chunks_fts,{float(weight)},1,1),c.chunk_id LIMIT ?'
     result=[json.loads(r[0]) for r in db.execute(sql,params+[min(max(int(limit),1),50)])];db.close();return result
+def quality_gate(records):
+    """Separate environment, bounded subprocess, staged immutable input on SYYR."""
+    data=''.join(canonical(r)+'\n' for r in sorted(records,key=lambda x:x['chunk_id']))
+    staged=ROOT/'.quality/staged'/(digest(data)+'.jsonl')
+    write(staged,data)
+    try:
+        result=subprocess.run([str(ROOT/'scripts/pubster-quality'),str(staged)],cwd=ROOT,
+            text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=180)
+    except subprocess.TimeoutExpired:
+        raise RuntimeError('QUALITY_TIMEOUT') from None
+    if result.returncode:
+        write(ROOT/'.quality/reports/last-failure.log',result.stdout[-4000:]+result.stderr[-4000:])
+        raise RuntimeError('QUALITY_GATE_FAILED')
+    return json.loads(result.stdout.splitlines()[-1])
+
 def export():
     db=connect();records=[json.loads(r[0]) for r in db.execute('SELECT record_json FROM chunks ORDER BY chunk_id')]
     if not records:raise RuntimeError('NO_ACCEPTED_RECORDS')
     validate_records(records,db)
+    quality_gate(records)
     sources=[json.loads(r[0]) for r in db.execute('SELECT record_json FROM sources ORDER BY source_id')]
     cid=identity(VERSION,[r['chunk_id'] for r in records],sources).split(':')[1];out=STATE/'exports'/cid
     out.mkdir(exist_ok=True)

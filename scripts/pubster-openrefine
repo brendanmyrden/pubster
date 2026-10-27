@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+[ -d /Volumes/SYYR/Pubster/.quality ] || exit 1
+. "$ROOT/scripts/quality-env.sh"
+export JAVA_HOME="$ROOT/.quality/java/jdk-17.0.20.1+1-jre/Contents/Home"
+export JAVA_TOOL_OPTIONS="-Duser.home=$ROOT/.quality -Djava.io.tmpdir=$ROOT/.quality/tmp -Djava.util.prefs.userRoot=$ROOT/.quality/java-prefs"
+cd "$ROOT/.quality/tools/openrefine-3.10.1"
+exec nice -n 10 "$JAVA_HOME/bin/java" -cp 'server/classes:server/target/lib/*' -Xms128M -Xmx512M \
+  -Drefine.headless=true -Drefine.interface=127.0.0.1 -Drefine.host=127.0.0.1 \
+  -Drefine.port=3334 -Drefine.webapp=webapp \
+  "-Drefine.data_dir=$ROOT/.quality/openrefine-workspace" \
+  "-Dpython.cachedir=$ROOT/.quality/cache/jython" \
+  com.google.refine.Refine "$@"

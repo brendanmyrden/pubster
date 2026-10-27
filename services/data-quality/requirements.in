@@ -1,0 +1,8 @@
+duckdb
+polars[rtcompat]
+pandera[polars]
+datasketch
+dedupe
+cleanlab
+great_expectations
+pyarrow

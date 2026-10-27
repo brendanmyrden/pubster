@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+[ -d /Volumes/SYYR/Pubster/.quality/venv ] || exit 1
+. "$ROOT/scripts/quality-env.sh"
+exec nice -n 10 "$ROOT/.quality/venv/bin/python" "$ROOT/services/data-quality/engine.py" "${1:-$ROOT/corpus/curated/chunks.jsonl}"

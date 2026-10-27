@@ -1,4 +1,5 @@
 import json,os,sqlite3,sys,tempfile,unittest
+from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from pubster import core as c
@@ -19,6 +20,11 @@ class PipelineTests(unittest.TestCase):
   for q in ['" OR *','NEAR((()))','x\"; DROP TABLE chunks;--','a'*1000]:self.assertEqual(c.search(q),[])
  def test_provenance_detects_tamper(self):
   text,records=self.chunks();db=c.connect();db.execute('INSERT INTO license_evidence VALUES(?,?,?,?)',('evidence','atlas-015',c.digest(b'license'),'{}'));db.commit();c.write(c.STATE/'raw'/c.digest(text),text);self.assertEqual(c.validate_records(records,db),1);records[0]['body_markdown']='tampered';self.assertRaises(AssertionError,c.validate_records,records,db);db.close()
+ def test_quality_failure_prevents_export_publication(self):
+  text,records=self.chunks();db=c.connect();db.execute('INSERT INTO license_evidence VALUES(?,?,?,?)',('evidence','atlas-015',c.digest(b'license'),'{}'));c.store_chunk(db,records[0]);db.commit();db.close();c.write(c.STATE/'raw'/c.digest(text),text)
+  with patch.object(c,'quality_gate',side_effect=RuntimeError('QUALITY_GATE_FAILED')):
+   with self.assertRaisesRegex(RuntimeError,'QUALITY_GATE_FAILED'):c.export()
+  self.assertIsNone(c.status()['corpus_id']);self.assertEqual(list((c.STATE/'exports').iterdir()),[])
  def test_url_allowlist(self):
   f=c.Fetcher()
   for url in ['http://api.github.com','https://127.0.0.1/','https://user@api.github.com/','https://api.github.com:443/','https://evil.example/']:

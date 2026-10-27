@@ -63,7 +63,7 @@ def research(dry=False):
     c.writejson(c.STATE/'state/research-status.json',result);return result
 
 def scan(paths=None):
-    paths=paths or [p for folder in ['apps','pipeline','scripts','config','corpus','docs','research','packages','evals'] for p in (c.ROOT/folder).rglob('*') if p.is_file() and not any(x in p.parts for x in ['node_modules','.next','out','.wrangler','dist','__pycache__']) and not p.name.startswith('._')]
+    paths=paths or [p for folder in ['apps','pipeline','scripts','services','config','corpus','docs','research','packages','evals'] for p in (c.ROOT/folder).rglob('*') if p.is_file() and not any(x in p.parts for x in ['node_modules','.next','out','.wrangler','dist','__pycache__']) and not p.name.startswith('._')]
     verifier=Path.home()/'.local/share/pubster/secrets/password-verifier.json';v=c.readjson(verifier,{})
     scanned=0
     for p in paths:
@@ -125,6 +125,10 @@ def run():
                 try:
                     result['ingestion']=c.ingest()
                     if result['ingestion']['changed_sources']:result['corpus_id']=c.export()['corpus_id']
+                    db=c.connect()
+                    records=[json.loads(r[0]) for r in db.execute('SELECT record_json FROM chunks ORDER BY chunk_id')]
+                    db.close()
+                    result['quality']=c.quality_gate(records)
                     result['backup']=c.backup()
                     result['research']=research()
                 except Exception as e:result['pipeline_error']=str(e)[:100] if isinstance(e,RuntimeError) else type(e).__name__
