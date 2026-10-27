@@ -6,7 +6,7 @@ from markdown_it import MarkdownIt
 from jsonschema import validate as schema_validate
 ROOT=Path(__file__).resolve().parents[2]
 STATE=Path(os.environ.get('PUBSTER_STATE','/Volumes/SYYR/Pubster-state'))
-VERSION='0.1.0'
+VERSION='0.2.0'
 def canonical(v): return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False)
 def digest(v): return hashlib.sha256(v if isinstance(v,bytes) else v.encode()).hexdigest()
 def identity(*parts): return 'sha256:'+digest(canonical(parts))
@@ -67,25 +67,41 @@ class Fetcher:
                 time.sleep(min(3,attempt+1))
         raise RuntimeError('FETCH_FAILED')
     def api(self,path):return json.loads(self.get('https://api.github.com/'+path))
+def verify_license(body,spdx,expected_hash=None):
+    if expected_hash and digest(body)!=expected_hash:raise RuntimeError('LICENSE_CHANGED_REVIEW_REQUIRED')
+    valid=(spdx=='Apache-2.0' and b'Apache License' in body and b'Version 2.0' in body) or (spdx=='MIT' and b'Permission is hereby granted, free of charge' in body and b'THE SOFTWARE IS PROVIDED' in body)
+    if not valid:raise RuntimeError('LICENSE_MISMATCH')
+
 def approved_sources(): return readjson(ROOT/'config/rights-policy.json')['approved_repositories']
-def ingest(force=False):
-    init(); f=Fetcher();db=connect();changed=0;counts={}
+def ingest(force=False,max_sources=2):
+    init(); f=Fetcher();db=connect();changed=0;counts={};attempted=0
     for repo in approved_sources():
         source=next(json.loads(r[0]) for r in db.execute('SELECT record_json FROM sources') if json.loads(r[0])['label']==repo)
         sid=source['source_id']; previous=db.execute('SELECT checked_at,commit_sha FROM source_revisions WHERE source_id=?',(sid,)).fetchone()
         if previous and not force and time.time()-previous['checked_at']<86400:counts[sid]='fresh';continue
+        if attempted>=max_sources:counts[sid]='deferred_source_budget';continue
+        attempted+=1
+        review=readjson(ROOT/'config/rights-policy.json').get('repository_reviews',{}).get(repo,{})
+        spdx=review.get('spdx','Apache-2.0');license_path=review.get('license_path','LICENSE.txt')
         info=f.api('repos/'+repo)
-        if info['full_name']!=repo or info['archived'] or (info.get('license') or {}).get('spdx_id')!='Apache-2.0': raise RuntimeError('RIGHTS_REVIEW_REQUIRED')
+        if info['full_name']!=repo or info['archived'] or (info.get('license') or {}).get('spdx_id')!=spdx: raise RuntimeError('RIGHTS_REVIEW_REQUIRED')
         commit=f.api('repos/'+repo+'/commits/'+info['default_branch'])['sha']
+        if review and commit!=review['commit']:
+            counts[sid]='new_revision_requires_review';continue
         if previous and previous['commit_sha']==commit:
             db.execute('UPDATE source_revisions SET checked_at=? WHERE source_id=?',(int(time.time()),sid));db.commit();counts[sid]='unchanged';continue
-        license_bytes=f.get(f'https://raw.githubusercontent.com/{repo}/{commit}/LICENSE.txt')
-        if b'Apache License' not in license_bytes or b'Version 2.0' not in license_bytes:raise RuntimeError('LICENSE_MISMATCH')
-        evidence=identity(repo,commit,'LICENSE.txt',digest(license_bytes))
+        license_bytes=f.get(f'https://raw.githubusercontent.com/{repo}/{commit}/{license_path}')
+        verify_license(license_bytes,spdx,review.get('license_sha256'))
+        evidence=identity(repo,commit,license_path,digest(license_bytes))
         write(STATE/'raw'/digest(license_bytes),license_bytes)
         tree=f.api('repos/'+repo+'/git/trees/'+commit+'?recursive=1')
         if tree.get('truncated'):raise RuntimeError('TREE_TRUNCATED')
         paths=sorted(x['path'] for x in tree['tree'] if x['type']=='blob' and x['path'].endswith('.md') and (x['path']=='README.md' or x['path'].startswith(('Guides/','Documentation/'))))[:35]
+        if review:
+            # Review grants only these pinned document bytes, not the entire repository.
+            if commit!=review['commit']: raise RuntimeError('NEW_REVISION_REVIEW_REQUIRED')
+            paths=[review['readme_path']]
+        source['rights']['spdx_expression']=spdx
         notices={}
         for x in tree['tree']:
             if x['type']=='blob' and '/' not in x['path'] and x['path'].upper().startswith(('NOTICE','LICENSE')):
@@ -93,13 +109,14 @@ def ingest(force=False):
         allchunks=[]
         for path in paths:
             raw=f.get(f'https://raw.githubusercontent.com/{repo}/{commit}/{path}');text=raw.decode('utf-8')
+            if review and digest(raw)!=review['readme_sha256']:raise RuntimeError('DOCUMENT_REVIEW_MISMATCH')
             write(STATE/'raw'/digest(raw),raw)
             allchunks+=chunk_markdown(text,source,repo,commit,path,evidence)
         if not allchunks:raise RuntimeError('EMPTY_SOURCE')
         quality_gate(allchunks)
         source.update(canonical_url='https://github.com/'+repo,status='indexed',authority='official')
         source['verification'].update(default_branch=info['default_branch'],resolved_commit=commit,archived=False,license_evidence=[evidence])
-        source['rights'].update(status='redistribute_approved',spdx_expression='Apache-2.0',can_fetch_full_text=True,can_redistribute=True)
+        source['rights'].update(status='redistribute_approved',spdx_expression=spdx,can_fetch_full_text=True,can_redistribute=True)
         with db:
             old={r[0] for r in db.execute('SELECT chunk_id FROM chunks WHERE source_id=?',(sid,))}; new={r['chunk_id'] for r in allchunks}
             for cid in old-new:db.execute('INSERT OR IGNORE INTO tombstones VALUES (?,?)',(cid,commit))
@@ -125,7 +142,7 @@ def chunk_markdown(text,source,repo,commit,path,evidence):
         body=''.join(lines[start:end]).strip()
         if len(body)<40 or len(body)>8000:continue
         did=identity(source['source_id'],path,'en');rid=identity(did,commit,digest(text));cid=identity(rid,[start+1,end],digest(body))
-        c={'schema_version':'1.0','chunk_id':cid,'document_id':did,'revision_id':rid,'source_id':source['source_id'],'kind':'reference','title':title,'heading_path':heading,'body_markdown':body,'body_text':body,'language':'en','code_languages':sorted(set(re.findall(r'```(\w+)',body))),'domains':[source['domain']],'topics':[],'symbols':[],'platforms':[],'availability':{'swift_toolchain':None,'swift_language_mode':None,'xcode':None,'os_minimums':{},'evidence':[]},'origin':{'canonical_url':f'https://github.com/{repo}/blob/{commit}/{path}#L{start+1}-L{end}','repository':repo,'commit':commit,'path':path,'line_start':start+1,'line_end':end,'anchor':None,'raw_sha256':digest(text)},'rights':{'status':'redistribute_approved','license_ids':['Apache-2.0'],'license_evidence_ids':[evidence],'attribution_ids':[evidence],'can_send_to_inference_provider':False},'verification':{'state':'source_verified','code_test_state':'not_run','evidence_ids':[evidence],'reviewed_at':None},'derived':False,'parent_chunk_ids':[],'extractor':{'name':'markdown-it-py','version':'4.0.0'}}
+        c={'schema_version':'1.0','chunk_id':cid,'document_id':did,'revision_id':rid,'source_id':source['source_id'],'kind':'reference','title':title,'heading_path':heading,'body_markdown':body,'body_text':body,'language':'en','code_languages':sorted(set(re.findall(r'```(\w+)',body))),'domains':[source['domain']],'topics':[],'symbols':[],'platforms':[],'availability':{'swift_toolchain':None,'swift_language_mode':None,'xcode':None,'os_minimums':{},'evidence':[]},'origin':{'canonical_url':f'https://github.com/{repo}/blob/{commit}/{path}#L{start+1}-L{end}','repository':repo,'commit':commit,'path':path,'line_start':start+1,'line_end':end,'anchor':None,'raw_sha256':digest(text)},'rights':{'status':'redistribute_approved','license_ids':[source.get('rights',{}).get('spdx_expression','Apache-2.0')],'license_evidence_ids':[evidence],'attribution_ids':[evidence],'can_send_to_inference_provider':False},'verification':{'state':'source_verified','code_test_state':'not_run','evidence_ids':[evidence],'reviewed_at':None},'derived':False,'parent_chunk_ids':[],'extractor':{'name':'markdown-it-py','version':'4.0.0'}}
         out.append(c)
     return out
 def store_chunk(db,c):
@@ -180,18 +197,18 @@ def export():
     docs={r['document_id']:{'document_id':r['document_id'],'revision_id':r['revision_id'],'source_id':r['source_id'],'origin':r['origin']} for r in records}
     write(out/'documents.jsonl.gz',gzip.compress(jsonl([docs[k] for k in sorted(docs)]).encode(),mtime=0))
     for name in ['concepts','examples']:write(out/(name+'.jsonl.gz'),gzip.compress(b'',mtime=0))
-    rights=[];notices=[]
+    rights=[];notices=[];source_licenses={s['source_id']:s['rights'].get('spdx_expression','NOASSERTION') for s in sources}
     for e in db.execute('SELECT * FROM license_evidence ORDER BY evidence_id'):
-        rights.append({'evidence_id':e['evidence_id'],'source_id':e['source_id'],'license_sha256':e['license_sha256'],'license':'Apache-2.0'})
+        rights.append({'evidence_id':e['evidence_id'],'source_id':e['source_id'],'license_sha256':e['license_sha256'],'license':source_licenses[e['source_id']]})
         for name,body in json.loads(e['notices_json']).items():write(out/'rights/licenses'/e['source_id']/name,body)
-        notices.append(e['source_id']+' — upstream repository content, Apache-2.0; originals preserved without modification. See source URL, commit and line spans per record.\n')
+        notices.append(e['source_id']+' — upstream repository content, '+source_licenses[e['source_id']]+'; originals preserved without modification. See source URL, commit and line spans per record.\n')
     write(out/'rights/manifest.jsonl',jsonl(rights));write(out/'rights/THIRD_PARTY_NOTICES.txt',''.join(notices))
-    for r in records:write(out/'knowledge'/r['domains'][0]/(r['chunk_id'][7:]+'.md'),r['body_markdown']+'\n\nSource: '+r['origin']['canonical_url']+'\nLicense: Apache-2.0; extracted source, code not executed.\n')
+    for r in records:write(out/'knowledge'/r['domains'][0]/(r['chunk_id'][7:]+'.md'),r['body_markdown']+'\n\nSource: '+r['origin']['canonical_url']+'\nLicense: '+', '.join(r['rights']['license_ids'])+'; extracted source, code not executed.\n')
     artifacts=[]
     for p in sorted(out.rglob('*')):
         if p.is_file() and not p.name.startswith('._') and p.name not in ['manifest.json','SHA256SUMS']:
             rel=p.relative_to(out).as_posix();artifacts.append({'id':digest(rel)[:24],'path':rel,'mime':'application/gzip' if rel.endswith('.gz') else 'text/plain; charset=utf-8','size':p.stat().st_size,'sha256':digest(p.read_bytes())})
-    manifest={'schema_version':'1.0','corpus_id':cid,'pipeline_version':VERSION,'source_revision_set':sorted({r['origin']['repository']+'@'+r['origin']['commit'] for r in records}),'accepted_record_counts_by_kind':{'reference':len(records),'documents':len(docs),'skills':0},'coverage_by_domain':{d:sum(d in r['domains'] for r in records) for d in sorted({x for r in records for x in r['domains']})},'known_gaps':['Only two approved repository documentation sets indexed','Oversized sections excluded pending structural subchunk adapter','No executed Swift examples','No reviewed skill packs','Semantic search and model inference unavailable'],'verification_summary':{'schema_valid':len(records),'source_verified':len(records),'code_tested':0},'rights_summary':{'Apache-2.0':len(records)},'artifacts':artifacts,'reproducibility_inputs':{'extractor':'markdown-it-py 4.0.0','gzip_mtime':0},'minimum_reader_version':'0.1.0','created_at':None}
+    manifest={'schema_version':'1.0','corpus_id':cid,'pipeline_version':VERSION,'source_revision_set':sorted({r['origin']['repository']+'@'+r['origin']['commit'] for r in records}),'accepted_record_counts_by_kind':{'reference':len(records),'documents':len(docs),'skills':0},'coverage_by_domain':{d:sum(d in r['domains'] for r in records) for d in sorted({x for r in records for x in r['domains']})},'known_gaps':['Newly admitted repositories are restricted to reviewed README snapshots','Oversized sections excluded pending structural subchunk adapter','No executed Swift examples','No reviewed skill packs','Semantic search and model inference unavailable'],'verification_summary':{'schema_valid':len(records),'source_verified':len(records),'code_tested':0},'rights_summary':{license:sum(license in r['rights']['license_ids'] for r in records) for license in sorted({license for r in records for license in r['rights']['license_ids']})},'artifacts':artifacts,'reproducibility_inputs':{'extractor':'markdown-it-py 4.0.0','gzip_mtime':0},'minimum_reader_version':'0.1.0','created_at':None}
     writejson(out/'manifest.json',manifest)
     write(out/'SHA256SUMS',''.join(a['sha256']+'  '+a['path']+'\n' for a in artifacts)+digest((out/'manifest.json').read_bytes())+'  manifest.json\n')
     with db:

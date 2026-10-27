@@ -1,0 +1,55 @@
+{
+  "backup": {
+    "backup_sha256": "56a248ed115836ec2d791e10a978b0deaea5e32b8139352a35d2fe287f2544da",
+    "integrity": "ok"
+  },
+  "checksums_verified": 481,
+  "corpus_id": "eecd0a3d7ae2f61ff9d425ed31bf6fb06de710f2c5abe8ee5389fada186bdd98",
+  "counts": {
+    "documents": 52,
+    "reference": 459,
+    "skills": 0
+  },
+  "evaluation": {
+    "mrr": 0.95,
+    "queries": 20,
+    "recall_at_10": 1.0,
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "suite_sha256": "93fcfba2a520efb226a555620edebef3b9be1e2a2a270f4be9dc119a3b21772a"
+  },
+  "rights": {
+    "Apache-2.0": 293,
+    "MIT": 166
+  },
+  "sources": 15,
+  "new_excerpts": 197,
+  "new_sources": 13,
+  "excluded_candidates": 9,
+  "prior_mrr": 0.975,
+  "tests_passed": 29,
+  "research": {
+    "state": "DAILY_LIMIT",
+    "model_calls": 0
+  }
+}

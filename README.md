@@ -4,8 +4,8 @@ Private Swift engineering library. **Local/GitHub release; no public site deploy
 
 ## Working now
 
-- 100 original atlas candidates + 13 separately recorded supplements.
-- 2 rights-approved, commit-pinned Apple sources; 262 extracted documentation chunks.
+- 100 original atlas candidates + 23 separately recorded supplements.
+- 15 rights-approved, commit-pinned sources; 459 extracted documentation chunks.
 - Canonical SQLite WAL/FTS5, line-span provenance, preserved licenses/notices.
 - Deterministic JSONL/gzip/Markdown exports, SHA-256 manifests, local backup.
 - Real Next.js static-export UI with Tailwind and shadcn/ui Button; no corpus in bundles.
@@ -41,8 +41,8 @@ Use Python `requirements.lock` and `pnpm-lock.yaml` for reproducibility. Do not 
 
 Cloudflare deployment deferred by user. No R2/D1 resources, public URL, or remote auth
 acceptance proof. Corpus answering and semantic retrieval are not configured. Research uses existing
-OAuth capacity with no API-key fallback. No Swift examples were executed. Only the two approved sources are
-refreshed automatically; catalog candidates are not automatically rights-approved.
+OAuth capacity with no API-key fallback. No Swift examples were executed. Only approved sources are
+checked automatically; newly admitted README snapshots require review of changed revisions; catalog candidates are not automatically rights-approved.
 No reviewed skill packs, DocC JSON/HTML adapters, or cloud publication/rollback yet.
 The local CLI is the operational interface; not every command in the aspirational
 implementation specification is implemented. See `docs/OPERATIONS.md` and reports.

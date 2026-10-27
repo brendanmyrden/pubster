@@ -1,2 +1,15 @@
+discovery-002 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+atlas-025 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+atlas-031 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-010 — upstream repository content, Apache-2.0; originals preserved without modification. See source URL, commit and line spans per record.
 atlas-016 — upstream repository content, Apache-2.0; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-009 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
 atlas-015 — upstream repository content, Apache-2.0; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-001 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-005 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-004 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-007 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+atlas-017 — upstream repository content, Apache-2.0; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-008 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-003 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.
+discovery-006 — upstream repository content, MIT; originals preserved without modification. See source URL, commit and line spans per record.

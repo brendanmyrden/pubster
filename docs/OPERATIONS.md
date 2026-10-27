@@ -53,3 +53,21 @@ SQLite backup only into a disposable path first; run PRAGMA integrity_check. Reb
 from the pinned source registry if necessary. Credentials are restored separately.
 Cloud deployment is deferred; never deploy the placeholder-free but unbound Worker
 config as a functioning corpus service. Provision and validate private bindings first.
+
+## Reviewed discovery admissions (2026-10-27)
+
+Thirteen discovered repositories now have explicit README-only approvals in
+`config/rights-policy.json` (`repository_reviews`). Each binds a commit, document
+path/hash, license path/hash, and SPDX identifier. MIT and Apache-2.0 are supported;
+license text and root notices are preserved. Different license bytes, unreviewed
+commits, linked websites, third-party directories, and other documents are not
+implicitly authorized. New upstream revisions are reported for review without
+replacing the accepted snapshot. Training export/provider processing stays off.
+`research/candidate-admission-review.json` records all 22 repository decisions.
+Nine remain outside the corpus. The successful admission run added 197 excerpts,
+bringing the corpus to 459 excerpts across 15 sources (52 documents).
+
+Normal ingestion checks at most two due sources per tick. The explicit manual
+admission batch used a 20-source ceiling under the existing 480-second/768-MiB
+watchdog. Export version 0.2.0 preserves per-source/per-chunk license labels and
+mixed-license summary counts; it no longer assumes all content is Apache-2.0.
