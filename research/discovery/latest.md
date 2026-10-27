@@ -1,10 +1,12 @@
-# Adjacent repository candidates: swift-area-011
+# Adjacent repository candidates: swift-area-012
 
 Discovery only: license, security and compatibility require review.
 
-- [apple/swift-collections](https://github.com/apple/swift-collections): score 23; license Apache-2.0; last push 2026-10-27T01:22:43Z
-- [pointfreeco/swift-identified-collections](https://github.com/pointfreeco/swift-identified-collections): score 23; license MIT; last push 2026-06-08T21:36:47Z
-- [JohnSundell/SwiftTips](https://github.com/JohnSundell/SwiftTips): score 13; license MIT; last push 2023-11-22T03:10:52Z
-- [SwifterSwift/SwifterSwift](https://github.com/SwifterSwift/SwifterSwift): score 13; license MIT; last push 2026-10-20T16:34:40Z
-- [jrasmusson/swift-arcade](https://github.com/jrasmusson/swift-arcade): score 13; license MIT; last push 2023-07-30T15:27:26Z
-- [onmyway133/awesome-ios-animation](https://github.com/onmyway133/awesome-ios-animation): score 13; license MIT; last push 2023-11-29T09:32:10Z
+- [apple/swift-numerics](https://github.com/apple/swift-numerics): score 23; license Apache-2.0; last push 2026-10-11T21:06:00Z
+- [xwu/NumericAnnex](https://github.com/xwu/NumericAnnex): score 23; license MIT; last push 2018-04-01T03:48:29Z
+- [k-arindam/SwiftNP](https://github.com/k-arindam/SwiftNP): score 13; license MIT; last push 2025-06-25T17:14:57Z
+- [objecthub/swift-numberkit](https://github.com/objecthub/swift-numberkit): score 13; license Apache-2.0; last push 2026-10-06T15:49:20Z
+- [philipce/nifty](https://github.com/philipce/nifty): score 13; license Apache-2.0; last push 2018-08-13T04:27:03Z
+- [phlegmaticprogrammer/LANumerics](https://github.com/phlegmaticprogrammer/LANumerics): score 13; license MIT; last push 2021-04-29T09:19:19Z
+- [creaceed/CeedNumerics](https://github.com/creaceed/CeedNumerics): score 10; license NOASSERTION; last push 2026-02-12T16:30:03Z
+- [acemoglu/SwiftMetalNumerics](https://github.com/acemoglu/SwiftMetalNumerics): score 3; license MIT; last push 2026-04-19T17:18:50Z
