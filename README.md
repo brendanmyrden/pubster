@@ -13,8 +13,9 @@ Private Swift engineering library. **Local/GitHub release; no public site deploy
   protected search/reader/download API. Node integration tests are not remote Worker proof.
 - Quiet hourly deterministic maintenance; approved sources rechecked after 24 hours,
   not refetched every hour. No-change runs do not rebuild the site or make empty commits.
-- Bounded, model-free retrieval experiments with a frozen 20-query regression suite
-  and separate development cases. Reject no improvement or any regression.
+- Bounded OpenClaw/OAuth-proposed retrieval experiments with a frozen 20-query
+  regression suite and separate development cases. One numeric proposal/day;
+  reject no improvement or any regression. No corpus text sent to the model.
 
 ## Run locally
 
@@ -39,14 +40,15 @@ Use Python `requirements.lock` and `pnpm-lock.yaml` for reproducibility. Do not 
 ## Honest boundaries
 
 Cloudflare deployment deferred by user. No R2/D1 resources, public URL, or remote auth
-acceptance proof. Inference and semantic retrieval are not configured; no paid model
-calls occur. No Swift examples were executed. Only the two approved sources are
+acceptance proof. Corpus answering and semantic retrieval are not configured. Research uses existing
+OAuth capacity with no API-key fallback. No Swift examples were executed. Only the two approved sources are
 refreshed automatically; catalog candidates are not automatically rights-approved.
 No reviewed skill packs, DocC JSON/HTML adapters, or cloud publication/rollback yet.
 The local CLI is the operational interface; not every command in the aspirational
 implementation specification is implemented. See `docs/OPERATIONS.md` and reports.
 
 Generated research is not unrestricted self-modifying code or model training.
+See [OpenClaw-authenticated autoresearch adaptation](docs/AUTORESEARCH.md).
 
 ## Data quality
 

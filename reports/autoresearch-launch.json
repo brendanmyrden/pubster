@@ -1,0 +1,20 @@
+{
+  "baseline_mrr": 0.975,
+  "baseline_weight": 2,
+  "candidate_mrr": 0.975,
+  "candidate_weight": 2.5,
+  "corpus_id": "6cf3f656ceb51a9c1ef6558e7649cab621438abdaa0a43463d0187120ddc7eb6",
+  "dev_mrr": 1.0,
+  "duration_seconds": 80.997,
+  "evaluator_digest": "434cf5dda57da2e57081946d40fd902f5eb8de56e3b0faa30c84c3b92827164e",
+  "hypothesis": "Weight 1 left MRR unchanged, while 4 reduced it. A modest increase to 2.5 may promote relevant title matches without the excessive title emphasis seen at 4. Measurement must confirm strict regression MRR improvement, no individual regression-query loss, and no development aggregate loss.",
+  "mode": "openclaw-autoresearch",
+  "model": "openai/gpt-6-astra",
+  "model_calls": 1,
+  "openclaw_config_unchanged": true,
+  "scheduled_proposal_limit_daily": 1,
+  "setup_auth_smoke_passed": true,
+  "state": "REJECTED",
+  "tests_passed": 18,
+  "upstream_training_executed": false
+}

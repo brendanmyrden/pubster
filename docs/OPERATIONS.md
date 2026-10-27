@@ -23,11 +23,30 @@ A diverged remote leaves work pending for review. Code changes are committed by 
 operator; hourly commits include only approved generated corpus/research paths.
 No GitHub Actions are installed. Export release attachments are separate from Git. Approved immutable bundles up to 25 MiB are uploaded only when the corpus changes, then downloaded and checksum-verified. A reserved daily 250 MiB transfer budget caps uploads plus verification downloads.
 
-Research: one title-weight experiment per eligible tick, at most two/day, at most
-300 seconds each. A corpus has a finite candidate set; after exhaustion the controller
-reports NO_ELIGIBLE_HYPOTHESIS. Only strict MRR improvement without per-query regression
-is retained. Evaluator copies and hashes are outside the candidate scope. No arbitrary
-patches, model calls, training, credential access, or spending occurs in experiments.
+Research: the enabled OpenClaw adapter requests one numeric title-weight hypothesis
+per day (America/Toronto), only on resource-eligible ticks. It uses the existing
+OpenAI OAuth via `openclaw infer model run --local`; no tool-enabled agent, gateway
+chat session, copied tokens, paid API-key fallback, or OpenClaw config mutation.
+The provider receives only the research instructions and aggregate experiment
+numbers, never corpus text or frozen test questions/answers. Corpus inference
+remains disabled. Failures and timeouts consume the day's proposal slot.
+
+Each experiment has a 300-second wall budget; auth checks and inference each have
+120-second subprocess deadlines. One proposal at a time. Only numeric title_weight
+values 0.25..16 in 0.25 increments are candidate-editable. Strict MRR improvement,
+no per-query regression, and no development-set aggregate loss are required.
+Auth, budgets, source rights, evaluator, Git targets and deployment are not editable.
+The original deterministic grid remains available only when the adapter is disabled.
+No eligible untried candidate means skip rather than manufacture progress.
+
+Shared OpenClaw configuration is fingerprinted locally. Drift disables research until
+review; it does not change or repair OpenClaw. OAuth profiles must be the effective
+OpenAI auth route, with no API-key or token profiles mixed in. Account usage and host
+resources are shared; this is not a claim of zero usage impact or isolated billing.
+The CLI may refresh OAuth credentials through OpenClaw's normal auth lifecycle.
+The existing hourly job/supervisor and Git sync are unchanged.
+
+See docs/AUTORESEARCH.md for provenance, controls and test evidence.
 
 Recovery: inspect last-run.json and hourly.log in external private state. Restore a
 SQLite backup only into a disposable path first; run PRAGMA integrity_check. Rebuild

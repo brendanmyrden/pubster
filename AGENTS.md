@@ -16,3 +16,10 @@ for distinct quality functions; use OpenRefine for local human review. Preserve
 immutable originals, code and source provenance. Similarity/outlier flags are
 review suggestions, never evidence that a technical claim is false. Never silently
 merge distinct source evidence. Pin library versions and index compatibility.
+
+## OpenClaw-authenticated research (Josh, 2026-10-27)
+Use OpenClaw's existing OAuth through its stateless inference CLI, not copied tokens.
+Never change OpenClaw config, default models, auth, services or scheduler for this
+adapter. Share no corpus text with the provider. One proposal/day maximum; numeric
+title-weight proposals only, no executable output. Frozen evaluation decides retention.
+Account quota and machine resources remain shared; zero usage impact is not promised.

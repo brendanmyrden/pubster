@@ -38,6 +38,12 @@ def evaluate(weight=None,suite='regression'):
     return {'queries':len(tests),'mrr':sum(scores)/len(scores),'recall_at_10':sum(x>0 for x in scores)/len(scores),'scores':scores,'suite_sha256':c.digest(path.read_bytes())}
 
 def research(dry=False):
+    if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled'):
+        from .autoresearch import run
+        return run(dry)
+    return legacy_research(dry)
+
+def legacy_research(dry=False):
     db=c.connect();now=int(time.time());start=int(datetime.datetime.now(ZoneInfo("America/Toronto")).replace(hour=0,minute=0,second=0,microsecond=0).timestamp())
     if db.execute('SELECT count(*) FROM experiments WHERE created_at>=?',(start,)).fetchone()[0]>=2:return {'state':'DAILY_LIMIT'}
     expected=c.readjson(c.STATE/'evaluator/manifest.json',{})
@@ -131,6 +137,7 @@ def run():
                     result['quality']=c.quality_gate(records)
                     result['backup']=c.backup()
                     result['research']=research()
+                    result['model_calls']=result['research'].get('model_calls',0)
                 except Exception as e:result['pipeline_error']=str(e)[:100] if isinstance(e,RuntimeError) else type(e).__name__
             c.writejson(c.STATE/'state/managed-files.json',managed_snapshot())
             try:result['git']=sync()
@@ -149,7 +156,14 @@ def dispatch(a):
     if a.command=='run':return run()
     if a.command=='security':return scan()
     if a.command=='evaluate':return evaluate(suite='dev' if a.suite=='dev' else 'regression')
-    if a.command=='research':return research(a.dry_run) if a.action=='run-one' else {'frozen_evaluator':bool(c.readjson(c.STATE/'evaluator/manifest.json')),'editable_fields':['title_weight'],'arbitrary_code_execution':False,'max_experiments_daily':2,'model_calls':0}
+    if a.command=='research':
+        if a.action=='run-one':
+            with c.lock():
+                assert_managed_untouched()
+                result=research(a.dry_run)
+                if not a.dry_run:c.writejson(c.STATE/'state/managed-files.json',managed_snapshot())
+                return result
+        return {'frozen_evaluator':bool(c.readjson(c.STATE/'evaluator/manifest.json')),'editable_fields':['title_weight'],'arbitrary_code_execution':False,'max_experiments_daily':1 if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled') else 2,'mode':'openclaw-oauth-proposals' if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled') else 'deterministic-grid','model_calls':0}
     if a.command in ['sync-github','verify-github']:return sync()
     if a.command=='scheduler':
         alljobs=json.loads(command(['openclaw','automations','list','--all','--json']))
