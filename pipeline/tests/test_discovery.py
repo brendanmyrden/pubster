@@ -39,3 +39,22 @@ class DiscoveryTests(unittest.TestCase):
     self.assertEqual(d.tick()['state'],'CACHED')
     self.assertEqual(discover.call_count,4)
     for t in targets:self.assertTrue((root/'reports'/(t['id']+'.json')).exists())
+ def test_mastery_catalog_maps_all_250_areas(self):
+  cfg=d.c.readjson(d.c.ROOT/'config/discovery.json')
+  areas=d.c.readjson(d.c.ROOT/'config/swift-knowledge-areas.json')['areas']
+  ids=[t['id'] for t in cfg['targets']]
+  self.assertEqual(len(ids),len(set(ids)))
+  self.assertEqual([a['number'] for a in areas],list(range(1,251)))
+  self.assertTrue(all(a['target_id'] in ids for a in areas))
+  self.assertIn('swift-databases',ids)
+ def test_failed_target_is_recorded_and_does_not_starve_next(self):
+  import tempfile,json
+  from pathlib import Path
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);(root/'config').mkdir();(root/'state/locks').mkdir(parents=True)
+   targets=[{'id':x,'seed':'owner/'+x,'public_objective':x} for x in ['bad','good']]
+   (root/'config/discovery.json').write_text(json.dumps({'enabled':True,'targets':targets}))
+   with patch.object(d.c,'ROOT',root),patch.object(d.c,'STATE',root/'state'),patch.object(d,'REPORT',root/'reports/latest.json'),patch.object(d,'CACHE',root/'cache'),patch.object(d,'discover',side_effect=RuntimeError('Unavailable')):
+    self.assertEqual(d.tick()['target'],'bad')
+    self.assertEqual(d.tick()['target'],'good')
+    self.assertEqual(d.tick()['state'],'CACHED')

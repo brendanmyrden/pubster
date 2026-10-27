@@ -5,27 +5,1508 @@
     {
       "id": "swift-algorithms",
       "seed": "apple/swift-algorithms",
-      "public_objective": "Swift algorithms collections"
+      "public_objective": "Swift algorithms collections",
+      "lane": "priority"
     },
     {
       "id": "swiftui",
       "seed": "siteline/swiftui-introspect",
-      "public_objective": "SwiftUI"
+      "public_objective": "SwiftUI",
+      "lane": "priority"
     },
     {
       "id": "objective-c",
       "seed": "AFNetworking/AFNetworking",
-      "public_objective": "Objective-C"
+      "public_objective": "Objective-C",
+      "lane": "priority"
     },
     {
       "id": "bare-metal",
       "seed": "apple/swift-embedded-examples",
-      "public_objective": "bare metal embedded"
+      "public_objective": "bare metal embedded",
+      "lane": "priority"
     },
     {
       "id": "apple-silicon",
       "seed": "AsahiLinux/m1n1",
-      "public_objective": "Apple Silicon"
+      "public_objective": "Apple Silicon",
+      "lane": "priority"
+    },
+    {
+      "id": "swift-databases",
+      "seed": "groue/GRDB.swift",
+      "public_objective": "Swift SQLite database",
+      "lane": "priority"
+    },
+    {
+      "id": "swift-area-001",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Language Fundamentals",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-002",
+      "seed": "swiftlang/swift",
+      "public_objective": "Advanced Swift",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-004",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift UIKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-005",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift AppKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-007",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Objective-C Interoperability",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-008",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift C/C++ Interoperability",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-009",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Standard Library",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-011",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Collections",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-012",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Numerics",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-013",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Atomics",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-014",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Synchronization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-015",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Concurrency",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-016",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Structured Concurrency",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-017",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Actors and Global Actors",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-018",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Async/Await",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-019",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift AsyncSequence and AsyncStream",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-020",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Grand Central Dispatch (GCD)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-021",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift OperationQueue",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-022",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Threads and Thread Safety",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-023",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Memory Management",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-024",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Automatic Reference Counting (ARC)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-025",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Ownership and Borrowing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-026",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Move-Only Types and Noncopyable Types",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-027",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Value and Reference Semantics",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-028",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Generics and Associated Types",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-029",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Protocol-Oriented Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-030",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Functional Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-031",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Object-Oriented Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-032",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Reactive Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-033",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Combine",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-034",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Observation Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-035",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Macros",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-036",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Property Wrappers",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-037",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Result Builders",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-038",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Reflection and Runtime Metadata",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-039",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Type System",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-040",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Error Handling and Typed Throws",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-041",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Sendable and Data-Race Safety",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-042",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift ABI and Module Stability",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-043",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Compiler Internals",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-044",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Intermediate Language (SIL)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-045",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift LLVM",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-046",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Package Manager (SwiftPM)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-047",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Build System",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-048",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Xcode",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-049",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Playgrounds",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-050",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Instruments and Performance Profiling",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-051",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift LLDB Debugging",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-052",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift XCTest",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-053",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Testing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-054",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Test-Driven Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-055",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Property-Based Testing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-056",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Snapshot Testing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-057",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift UI Automation and XCUITest",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-058",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Continuous Integration and Delivery",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-059",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Code Signing and Provisioning",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-060",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift App Store Connect and Distribution",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-061",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Apple Platform Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-062",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift iOS Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-063",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift iPadOS Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-064",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift macOS Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-065",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift watchOS Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-066",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift tvOS Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-067",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift visionOS Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-068",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Server-Side Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-069",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Vapor",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-070",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Hummingbird",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-071",
+      "seed": "swiftlang/swift",
+      "public_objective": "SwiftNIO",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-072",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Distributed Actors",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-073",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Network Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-074",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift URLSession",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-075",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift HTTP/REST APIs",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-076",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift WebSockets",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-077",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift gRPC and Protocol Buffers",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-078",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Codable and Serialization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-079",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift JSON, XML, and Binary Formats",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-080",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Data",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-081",
+      "seed": "swiftlang/swift",
+      "public_objective": "SwiftData",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-082",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift SQLite",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-083",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift GRDB",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-084",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift CloudKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-085",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Foundation",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-086",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Foundation",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-087",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Graphics",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-088",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Animation",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-089",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Image",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-090",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Metal",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-091",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Metal Shading Language",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-092",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Metal Performance Shaders",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-093",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift GPU Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-095",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift ARM64 Assembly",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-096",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift SIMD and Vectorization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-097",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Accelerate Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-098",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift vDSP and BLAS/LAPACK",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-099",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core ML",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-100",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Create ML",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-101",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Vision Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-102",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Natural Language Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-103",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Speech Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-104",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Foundation Models Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-105",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift On-Device AI Inference",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-106",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Neural Engine Optimization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-107",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Audio",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-108",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift AVFoundation",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-109",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Audio Units and AUv3 Plugins",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-110",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift AudioKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-111",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Digital Signal Processing (DSP)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-112",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Real-Time Audio Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-113",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift MIDI and Core MIDI",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-114",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift VideoToolbox",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-115",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Media",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-116",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift SceneKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-117",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift SpriteKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-118",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift RealityKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-119",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift ARKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-120",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift GameplayKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-121",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Game Controller Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-122",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Physics Simulation",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-123",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Spatial Computing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-124",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Immersive Interface Design",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-125",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Human Interface Guidelines",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-126",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Accessibility",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-127",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Localization and Internationalization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-128",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Adaptive Layouts",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-129",
+      "seed": "swiftlang/swift",
+      "public_objective": "Custom SwiftUI Layouts",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-130",
+      "seed": "swiftlang/swift",
+      "public_objective": "SwiftUI Rendering and View Identity",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-131",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift State Management",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-132",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Navigation Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-133",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Dependency Injection",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-134",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift MVVM",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-135",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift MVC",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-136",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Clean Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-137",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Hexagonal Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-138",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift The Composable Architecture (TCA)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-139",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Modular App Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-140",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Design Systems and Reusable Components",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-141",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift App Lifecycle and Scene Management",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-142",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Background Tasks",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-143",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Push Notifications",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-144",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Live Activities and ActivityKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-145",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift WidgetKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-146",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift App Intents and Shortcuts",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-147",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Siri Integration",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-148",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Spotlight and Core Spotlight",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-149",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift StoreKit and In-App Purchases",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-150",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift AuthenticationServices",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-151",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Sign in with Apple",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-152",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Keychain Services",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-153",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift CryptoKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-154",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Secure Enclave",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-155",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift LocalAuthentication",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-156",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift App Sandbox and Entitlements",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-157",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Privacy and Data Protection",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-158",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Network Security and TLS",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-159",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Passkeys and WebAuthn",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-160",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift HealthKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-161",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift HomeKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-162",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Bluetooth",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-163",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core NFC",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-164",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Core Location",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-165",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift MapKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-166",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Nearby Interaction",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-167",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Multipeer Connectivity",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-168",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift External Accessory Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-169",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift IOKit and DriverKit",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-170",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift System Extensions",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-171",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Endpoint Security Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-172",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift FileProvider Framework",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-173",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift FileManager and File Coordination",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-174",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Interprocess Communication (IPC)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-175",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift XPC Services",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-176",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift POSIX APIs",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-177",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Darwin System APIs",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-178",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Mach Kernel Fundamentals",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-179",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Operating System Internals",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-181",
+      "seed": "swiftlang/swift",
+      "public_objective": "Embedded Swift",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-182",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Microcontroller Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-183",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Real-Time Operating Systems (RTOS)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-184",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Hardware Abstraction Layers",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-185",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Memory-Mapped I/O",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-186",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Interrupt Handling",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-187",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Embedded Memory Management",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-188",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Firmware Development",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-189",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Bootloaders and Toolchains",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-190",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Cross-Compilation",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-191",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Linkers and Binary Formats",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-192",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Mach-O Binary Structure",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-193",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Static and Dynamic Linking",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-194",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Foreign Function Interfaces (FFI)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-195",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Unsafe Pointers and Raw Memory",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-196",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Memory Layout and Alignment",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-197",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Lock-Free Data Structures",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-198",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Cache-Aware Programming",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-199",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Algorithmic Complexity",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-200",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Data Structures and Algorithms",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-201",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Computational Geometry",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-202",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Graph Algorithms",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-203",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Numerical Computing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-204",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Cryptographic Algorithms",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-205",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Compiler Design",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-206",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Parsers and Abstract Syntax Trees",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-207",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Domain-Specific Languages (DSLs)",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-208",
+      "seed": "swiftlang/swift",
+      "public_objective": "SwiftSyntax",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-209",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift SourceKit and SourceKit-LSP",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-210",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Compiler Plugins",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-211",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Evolution Proposals",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-212",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift API Design Guidelines",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-213",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift API Resilience and Library Evolution",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-214",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Binary Framework Distribution",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-215",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift XCFrameworks",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-216",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Package Plugins and Build Tool Plugins",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-217",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Documentation and DocC",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-218",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Benchmarking and Microbenchmarking",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-219",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Energy Efficiency and Battery Optimization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-220",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Memory and CPU Profiling",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-221",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Launch-Time Optimization",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-222",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Rendering Performance and Frame Pacing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-223",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Networking Performance",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-224",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Offline-First Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-225",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Data Synchronization and Conflict Resolution",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-226",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Caching and Persistence Strategies",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-227",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Distributed Systems Fundamentals",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-228",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Event-Driven Architecture",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-229",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Observability and Structured Logging",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-230",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Crash Reporting and Diagnostics",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-231",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Feature Flags and Runtime Configuration",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-232",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Backward Compatibility and API Availability",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-233",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Security Engineering and Threat Modeling",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-234",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Reverse Engineering and Binary Analysis",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-235",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Dynamic Instrumentation and Runtime Inspection",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-236",
+      "seed": "swiftlang/swift",
+      "public_objective": "Open-Source Swift Ecosystem",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-237",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift on Linux",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-238",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift on Windows",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-239",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift on Android",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-240",
+      "seed": "swiftlang/swift",
+      "public_objective": "WebAssembly and SwiftWasm",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-241",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for Web Backends",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-242",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift Embedded and Edge Computing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-243",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift in Robotics and IoT",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-244",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for Machine Learning Infrastructure",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-245",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for High-Performance Computing",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-246",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for CLI Tools and Developer Utilities",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-247",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for Daemons and Background Services",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-248",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for Networking and Protocol Implementations",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-249",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for Blockchain and Cryptography",
+      "lane": "breadth"
+    },
+    {
+      "id": "swift-area-250",
+      "seed": "swiftlang/swift",
+      "public_objective": "Swift for Audio Engines and Music Software",
+      "lane": "breadth"
     }
   ]
 }

@@ -49,15 +49,15 @@ def inspect(client,r):
     manifests={'Package.swift','Package.resolved','package.json','pyproject.toml','requirements.txt','Cargo.toml','go.mod'}
     return dict(revision=commit,dependency_manifests=[dict(path=e['path'],url='https://github.com/'+name+'/blob/'+commit+'/'+urllib.parse.quote(e['path']),sha=e['sha']) for e in entries if e['name'] in manifests],dependency_resolution='MANIFEST_REFERENCES_ONLY')
 
-def discover(seed,objective):
+def discover(seed,objective,focused=False):
     seed=repo_id(seed)
     if not 1<=len(objective)<=160: raise ValueError('Objective must be 1..160 characters and public')
     client=Client(); root=client.public(seed)
     terms=re.findall(r'[A-Za-z0-9_]+',objective)[:5]
     queries=[' '.join(terms)+' is:public archived:false']
     topics=root.get('topics',[])
-    if topics: queries.append('topic:'+topics[0]+' is:public archived:false')
-    found={seed:root}; errors=[]
+    if topics and not focused: queries.append('topic:'+topics[0]+' is:public archived:false')
+    found={} if focused else {seed:root}; errors=[]
     for q in queries:
         try:
             for r in client.get('search/repositories?'+urllib.parse.urlencode({'q':q,'per_page':8})).get('items',[]):
@@ -84,7 +84,7 @@ def tick(force=False):
     cfg=c.readjson(c.ROOT/'config/discovery.json')
     if not cfg or not cfg.get('enabled'): return {'state':'DISABLED'}
     targets=cfg.get('targets',[cfg])
-    if not 1<=len(targets)<=8: raise ValueError('Expected 1..8 discovery targets')
+    if not 1<=len(targets)<=300: raise ValueError('Expected 1..300 discovery targets')
     seen=set()
     for target in targets:
         key=target.get('id','default')
@@ -106,15 +106,36 @@ def tick(force=False):
                 due.append((prior['observed_at'] if matches else 0,target,path))
         if not due: return {'state':'CACHED','targets':len(targets)}
         # One oldest/missing target per tick preserves the original network budget.
-        _,target,path=min(due,key=lambda row:row[0])
-        result=discover(target['seed'],target['public_objective'])
+        last=c.readjson(REPORT,{})
+        desired='breadth' if last.get('lane')=='priority' else 'priority'
+        lane_due=[row for row in due if row[1].get('lane','priority')==desired]
+        _,target,path=min(lane_due or due,key=lambda row:row[0])
+        try:
+            if target.get('lane')=='breadth':
+                result=discover(target['seed'],target['public_objective'],focused=True)
+            else: result=discover(target['seed'],target['public_objective'])
+            result['state']='COMPLETE'
+        except Exception as exc:
+            # A bad seed or unavailable provider must not starve all later topics.
+            result={'state':'FAILED','seed':target['seed'],'objective':target['public_objective'],
+                    'observed_at':int(time.time()),'candidates':[],'github_requests':0,
+                    'ecosyste_ms':{'state':'not_attempted'},'error':type(exc).__name__}
+        result['lane']=target.get('lane','priority')
         result['target_id']=target.get('id','default')
         c.writejson(CACHE/path.name,result)
         c.writejson(path,result)
         c.writejson(REPORT,result)
+        coverage=[]
+        for item in targets:
+            saved=c.readjson(REPORT.parent/(item.get('id','default')+'.json'))
+            coverage.append({'target_id':item.get('id','default'),'objective':item['public_objective'],
+                'state':saved.get('state','COMPLETE') if saved else 'QUEUED',
+                'observed_at':saved.get('observed_at') if saved else None,
+                'candidates':len(saved.get('candidates',[])) if saved else 0})
+        c.writejson(REPORT.parent/'coverage.json',{'targets':coverage,'note':'Discovery attempts, not corpus coverage or source approval'})
         lines=['# Adjacent repository candidates: '+result['target_id'],'','Discovery only: license, security and compatibility require review.','']
         for x in result['candidates']:
             lines += [f"- [{x['repository']}]({x['url']}): score {x['score']}; license {x['license']}; last push {x['pushed_at']}"]
         c.write(path.with_suffix('.md'),'\n'.join(lines)+'\n')
         c.write(REPORT.with_suffix('.md'),'\n'.join(lines)+'\n')
-        return {'state':'COMPLETE','target':result['target_id'],'candidates':len(result['candidates']),'github_requests':result['github_requests'],'ecosyste_ms':result['ecosyste_ms']['state']}
+        return {'state':result['state'],'target':result['target_id'],'candidates':len(result['candidates']),'github_requests':result['github_requests'],'ecosyste_ms':result['ecosyste_ms']['state']}

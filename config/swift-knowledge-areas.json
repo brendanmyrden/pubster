@@ -1,0 +1,1255 @@
+{
+  "areas": [
+    {
+      "number": 1,
+      "area": "Swift Language Fundamentals",
+      "target_id": "swift-area-001"
+    },
+    {
+      "number": 2,
+      "area": "Advanced Swift",
+      "target_id": "swift-area-002"
+    },
+    {
+      "number": 3,
+      "area": "SwiftUI",
+      "target_id": "swiftui"
+    },
+    {
+      "number": 4,
+      "area": "UIKit",
+      "target_id": "swift-area-004"
+    },
+    {
+      "number": 5,
+      "area": "AppKit",
+      "target_id": "swift-area-005"
+    },
+    {
+      "number": 6,
+      "area": "Objective-C",
+      "target_id": "objective-c"
+    },
+    {
+      "number": 7,
+      "area": "Objective-C Interoperability",
+      "target_id": "swift-area-007"
+    },
+    {
+      "number": 8,
+      "area": "C/C++ Interoperability",
+      "target_id": "swift-area-008"
+    },
+    {
+      "number": 9,
+      "area": "Swift Standard Library",
+      "target_id": "swift-area-009"
+    },
+    {
+      "number": 10,
+      "area": "Swift Algorithms",
+      "target_id": "swift-algorithms"
+    },
+    {
+      "number": 11,
+      "area": "Swift Collections",
+      "target_id": "swift-area-011"
+    },
+    {
+      "number": 12,
+      "area": "Swift Numerics",
+      "target_id": "swift-area-012"
+    },
+    {
+      "number": 13,
+      "area": "Swift Atomics",
+      "target_id": "swift-area-013"
+    },
+    {
+      "number": 14,
+      "area": "Swift Synchronization",
+      "target_id": "swift-area-014"
+    },
+    {
+      "number": 15,
+      "area": "Swift Concurrency",
+      "target_id": "swift-area-015"
+    },
+    {
+      "number": 16,
+      "area": "Structured Concurrency",
+      "target_id": "swift-area-016"
+    },
+    {
+      "number": 17,
+      "area": "Actors and Global Actors",
+      "target_id": "swift-area-017"
+    },
+    {
+      "number": 18,
+      "area": "Async/Await",
+      "target_id": "swift-area-018"
+    },
+    {
+      "number": 19,
+      "area": "AsyncSequence and AsyncStream",
+      "target_id": "swift-area-019"
+    },
+    {
+      "number": 20,
+      "area": "Grand Central Dispatch (GCD)",
+      "target_id": "swift-area-020"
+    },
+    {
+      "number": 21,
+      "area": "OperationQueue",
+      "target_id": "swift-area-021"
+    },
+    {
+      "number": 22,
+      "area": "Threads and Thread Safety",
+      "target_id": "swift-area-022"
+    },
+    {
+      "number": 23,
+      "area": "Memory Management",
+      "target_id": "swift-area-023"
+    },
+    {
+      "number": 24,
+      "area": "Automatic Reference Counting (ARC)",
+      "target_id": "swift-area-024"
+    },
+    {
+      "number": 25,
+      "area": "Ownership and Borrowing",
+      "target_id": "swift-area-025"
+    },
+    {
+      "number": 26,
+      "area": "Move-Only Types and Noncopyable Types",
+      "target_id": "swift-area-026"
+    },
+    {
+      "number": 27,
+      "area": "Value and Reference Semantics",
+      "target_id": "swift-area-027"
+    },
+    {
+      "number": 28,
+      "area": "Generics and Associated Types",
+      "target_id": "swift-area-028"
+    },
+    {
+      "number": 29,
+      "area": "Protocol-Oriented Programming",
+      "target_id": "swift-area-029"
+    },
+    {
+      "number": 30,
+      "area": "Functional Programming",
+      "target_id": "swift-area-030"
+    },
+    {
+      "number": 31,
+      "area": "Object-Oriented Programming",
+      "target_id": "swift-area-031"
+    },
+    {
+      "number": 32,
+      "area": "Reactive Programming",
+      "target_id": "swift-area-032"
+    },
+    {
+      "number": 33,
+      "area": "Combine",
+      "target_id": "swift-area-033"
+    },
+    {
+      "number": 34,
+      "area": "Observation Framework",
+      "target_id": "swift-area-034"
+    },
+    {
+      "number": 35,
+      "area": "Swift Macros",
+      "target_id": "swift-area-035"
+    },
+    {
+      "number": 36,
+      "area": "Property Wrappers",
+      "target_id": "swift-area-036"
+    },
+    {
+      "number": 37,
+      "area": "Result Builders",
+      "target_id": "swift-area-037"
+    },
+    {
+      "number": 38,
+      "area": "Reflection and Runtime Metadata",
+      "target_id": "swift-area-038"
+    },
+    {
+      "number": 39,
+      "area": "Swift Type System",
+      "target_id": "swift-area-039"
+    },
+    {
+      "number": 40,
+      "area": "Error Handling and Typed Throws",
+      "target_id": "swift-area-040"
+    },
+    {
+      "number": 41,
+      "area": "Sendable and Data-Race Safety",
+      "target_id": "swift-area-041"
+    },
+    {
+      "number": 42,
+      "area": "Swift ABI and Module Stability",
+      "target_id": "swift-area-042"
+    },
+    {
+      "number": 43,
+      "area": "Swift Compiler Internals",
+      "target_id": "swift-area-043"
+    },
+    {
+      "number": 44,
+      "area": "Swift Intermediate Language (SIL)",
+      "target_id": "swift-area-044"
+    },
+    {
+      "number": 45,
+      "area": "LLVM",
+      "target_id": "swift-area-045"
+    },
+    {
+      "number": 46,
+      "area": "Swift Package Manager (SwiftPM)",
+      "target_id": "swift-area-046"
+    },
+    {
+      "number": 47,
+      "area": "Swift Build System",
+      "target_id": "swift-area-047"
+    },
+    {
+      "number": 48,
+      "area": "Xcode",
+      "target_id": "swift-area-048"
+    },
+    {
+      "number": 49,
+      "area": "Swift Playgrounds",
+      "target_id": "swift-area-049"
+    },
+    {
+      "number": 50,
+      "area": "Instruments and Performance Profiling",
+      "target_id": "swift-area-050"
+    },
+    {
+      "number": 51,
+      "area": "LLDB Debugging",
+      "target_id": "swift-area-051"
+    },
+    {
+      "number": 52,
+      "area": "XCTest",
+      "target_id": "swift-area-052"
+    },
+    {
+      "number": 53,
+      "area": "Swift Testing",
+      "target_id": "swift-area-053"
+    },
+    {
+      "number": 54,
+      "area": "Test-Driven Development",
+      "target_id": "swift-area-054"
+    },
+    {
+      "number": 55,
+      "area": "Property-Based Testing",
+      "target_id": "swift-area-055"
+    },
+    {
+      "number": 56,
+      "area": "Snapshot Testing",
+      "target_id": "swift-area-056"
+    },
+    {
+      "number": 57,
+      "area": "UI Automation and XCUITest",
+      "target_id": "swift-area-057"
+    },
+    {
+      "number": 58,
+      "area": "Continuous Integration and Delivery",
+      "target_id": "swift-area-058"
+    },
+    {
+      "number": 59,
+      "area": "Code Signing and Provisioning",
+      "target_id": "swift-area-059"
+    },
+    {
+      "number": 60,
+      "area": "App Store Connect and Distribution",
+      "target_id": "swift-area-060"
+    },
+    {
+      "number": 61,
+      "area": "Apple Platform Architecture",
+      "target_id": "swift-area-061"
+    },
+    {
+      "number": 62,
+      "area": "iOS Development",
+      "target_id": "swift-area-062"
+    },
+    {
+      "number": 63,
+      "area": "iPadOS Development",
+      "target_id": "swift-area-063"
+    },
+    {
+      "number": 64,
+      "area": "macOS Development",
+      "target_id": "swift-area-064"
+    },
+    {
+      "number": 65,
+      "area": "watchOS Development",
+      "target_id": "swift-area-065"
+    },
+    {
+      "number": 66,
+      "area": "tvOS Development",
+      "target_id": "swift-area-066"
+    },
+    {
+      "number": 67,
+      "area": "visionOS Development",
+      "target_id": "swift-area-067"
+    },
+    {
+      "number": 68,
+      "area": "Swift Server-Side Development",
+      "target_id": "swift-area-068"
+    },
+    {
+      "number": 69,
+      "area": "Vapor",
+      "target_id": "swift-area-069"
+    },
+    {
+      "number": 70,
+      "area": "Hummingbird",
+      "target_id": "swift-area-070"
+    },
+    {
+      "number": 71,
+      "area": "SwiftNIO",
+      "target_id": "swift-area-071"
+    },
+    {
+      "number": 72,
+      "area": "Distributed Actors",
+      "target_id": "swift-area-072"
+    },
+    {
+      "number": 73,
+      "area": "Network Framework",
+      "target_id": "swift-area-073"
+    },
+    {
+      "number": 74,
+      "area": "URLSession",
+      "target_id": "swift-area-074"
+    },
+    {
+      "number": 75,
+      "area": "HTTP/REST APIs",
+      "target_id": "swift-area-075"
+    },
+    {
+      "number": 76,
+      "area": "WebSockets",
+      "target_id": "swift-area-076"
+    },
+    {
+      "number": 77,
+      "area": "gRPC and Protocol Buffers",
+      "target_id": "swift-area-077"
+    },
+    {
+      "number": 78,
+      "area": "Codable and Serialization",
+      "target_id": "swift-area-078"
+    },
+    {
+      "number": 79,
+      "area": "JSON, XML, and Binary Formats",
+      "target_id": "swift-area-079"
+    },
+    {
+      "number": 80,
+      "area": "Core Data",
+      "target_id": "swift-area-080"
+    },
+    {
+      "number": 81,
+      "area": "SwiftData",
+      "target_id": "swift-area-081"
+    },
+    {
+      "number": 82,
+      "area": "SQLite",
+      "target_id": "swift-area-082"
+    },
+    {
+      "number": 83,
+      "area": "GRDB",
+      "target_id": "swift-area-083"
+    },
+    {
+      "number": 84,
+      "area": "CloudKit",
+      "target_id": "swift-area-084"
+    },
+    {
+      "number": 85,
+      "area": "Core Foundation",
+      "target_id": "swift-area-085"
+    },
+    {
+      "number": 86,
+      "area": "Foundation",
+      "target_id": "swift-area-086"
+    },
+    {
+      "number": 87,
+      "area": "Core Graphics",
+      "target_id": "swift-area-087"
+    },
+    {
+      "number": 88,
+      "area": "Core Animation",
+      "target_id": "swift-area-088"
+    },
+    {
+      "number": 89,
+      "area": "Core Image",
+      "target_id": "swift-area-089"
+    },
+    {
+      "number": 90,
+      "area": "Metal",
+      "target_id": "swift-area-090"
+    },
+    {
+      "number": 91,
+      "area": "Metal Shading Language",
+      "target_id": "swift-area-091"
+    },
+    {
+      "number": 92,
+      "area": "Metal Performance Shaders",
+      "target_id": "swift-area-092"
+    },
+    {
+      "number": 93,
+      "area": "GPU Programming",
+      "target_id": "swift-area-093"
+    },
+    {
+      "number": 94,
+      "area": "Apple Silicon Architecture",
+      "target_id": "apple-silicon"
+    },
+    {
+      "number": 95,
+      "area": "ARM64 Assembly",
+      "target_id": "swift-area-095"
+    },
+    {
+      "number": 96,
+      "area": "SIMD and Vectorization",
+      "target_id": "swift-area-096"
+    },
+    {
+      "number": 97,
+      "area": "Accelerate Framework",
+      "target_id": "swift-area-097"
+    },
+    {
+      "number": 98,
+      "area": "vDSP and BLAS/LAPACK",
+      "target_id": "swift-area-098"
+    },
+    {
+      "number": 99,
+      "area": "Core ML",
+      "target_id": "swift-area-099"
+    },
+    {
+      "number": 100,
+      "area": "Create ML",
+      "target_id": "swift-area-100"
+    },
+    {
+      "number": 101,
+      "area": "Vision Framework",
+      "target_id": "swift-area-101"
+    },
+    {
+      "number": 102,
+      "area": "Natural Language Framework",
+      "target_id": "swift-area-102"
+    },
+    {
+      "number": 103,
+      "area": "Speech Framework",
+      "target_id": "swift-area-103"
+    },
+    {
+      "number": 104,
+      "area": "Foundation Models Framework",
+      "target_id": "swift-area-104"
+    },
+    {
+      "number": 105,
+      "area": "On-Device AI Inference",
+      "target_id": "swift-area-105"
+    },
+    {
+      "number": 106,
+      "area": "Neural Engine Optimization",
+      "target_id": "swift-area-106"
+    },
+    {
+      "number": 107,
+      "area": "Core Audio",
+      "target_id": "swift-area-107"
+    },
+    {
+      "number": 108,
+      "area": "AVFoundation",
+      "target_id": "swift-area-108"
+    },
+    {
+      "number": 109,
+      "area": "Audio Units and AUv3 Plugins",
+      "target_id": "swift-area-109"
+    },
+    {
+      "number": 110,
+      "area": "AudioKit",
+      "target_id": "swift-area-110"
+    },
+    {
+      "number": 111,
+      "area": "Digital Signal Processing (DSP)",
+      "target_id": "swift-area-111"
+    },
+    {
+      "number": 112,
+      "area": "Real-Time Audio Programming",
+      "target_id": "swift-area-112"
+    },
+    {
+      "number": 113,
+      "area": "MIDI and Core MIDI",
+      "target_id": "swift-area-113"
+    },
+    {
+      "number": 114,
+      "area": "VideoToolbox",
+      "target_id": "swift-area-114"
+    },
+    {
+      "number": 115,
+      "area": "Core Media",
+      "target_id": "swift-area-115"
+    },
+    {
+      "number": 116,
+      "area": "SceneKit",
+      "target_id": "swift-area-116"
+    },
+    {
+      "number": 117,
+      "area": "SpriteKit",
+      "target_id": "swift-area-117"
+    },
+    {
+      "number": 118,
+      "area": "RealityKit",
+      "target_id": "swift-area-118"
+    },
+    {
+      "number": 119,
+      "area": "ARKit",
+      "target_id": "swift-area-119"
+    },
+    {
+      "number": 120,
+      "area": "GameplayKit",
+      "target_id": "swift-area-120"
+    },
+    {
+      "number": 121,
+      "area": "Game Controller Framework",
+      "target_id": "swift-area-121"
+    },
+    {
+      "number": 122,
+      "area": "Physics Simulation",
+      "target_id": "swift-area-122"
+    },
+    {
+      "number": 123,
+      "area": "Spatial Computing",
+      "target_id": "swift-area-123"
+    },
+    {
+      "number": 124,
+      "area": "Immersive Interface Design",
+      "target_id": "swift-area-124"
+    },
+    {
+      "number": 125,
+      "area": "Human Interface Guidelines",
+      "target_id": "swift-area-125"
+    },
+    {
+      "number": 126,
+      "area": "Accessibility",
+      "target_id": "swift-area-126"
+    },
+    {
+      "number": 127,
+      "area": "Localization and Internationalization",
+      "target_id": "swift-area-127"
+    },
+    {
+      "number": 128,
+      "area": "Adaptive Layouts",
+      "target_id": "swift-area-128"
+    },
+    {
+      "number": 129,
+      "area": "Custom SwiftUI Layouts",
+      "target_id": "swift-area-129"
+    },
+    {
+      "number": 130,
+      "area": "SwiftUI Rendering and View Identity",
+      "target_id": "swift-area-130"
+    },
+    {
+      "number": 131,
+      "area": "State Management",
+      "target_id": "swift-area-131"
+    },
+    {
+      "number": 132,
+      "area": "Navigation Architecture",
+      "target_id": "swift-area-132"
+    },
+    {
+      "number": 133,
+      "area": "Dependency Injection",
+      "target_id": "swift-area-133"
+    },
+    {
+      "number": 134,
+      "area": "MVVM",
+      "target_id": "swift-area-134"
+    },
+    {
+      "number": 135,
+      "area": "MVC",
+      "target_id": "swift-area-135"
+    },
+    {
+      "number": 136,
+      "area": "Clean Architecture",
+      "target_id": "swift-area-136"
+    },
+    {
+      "number": 137,
+      "area": "Hexagonal Architecture",
+      "target_id": "swift-area-137"
+    },
+    {
+      "number": 138,
+      "area": "The Composable Architecture (TCA)",
+      "target_id": "swift-area-138"
+    },
+    {
+      "number": 139,
+      "area": "Modular App Architecture",
+      "target_id": "swift-area-139"
+    },
+    {
+      "number": 140,
+      "area": "Design Systems and Reusable Components",
+      "target_id": "swift-area-140"
+    },
+    {
+      "number": 141,
+      "area": "App Lifecycle and Scene Management",
+      "target_id": "swift-area-141"
+    },
+    {
+      "number": 142,
+      "area": "Background Tasks",
+      "target_id": "swift-area-142"
+    },
+    {
+      "number": 143,
+      "area": "Push Notifications",
+      "target_id": "swift-area-143"
+    },
+    {
+      "number": 144,
+      "area": "Live Activities and ActivityKit",
+      "target_id": "swift-area-144"
+    },
+    {
+      "number": 145,
+      "area": "WidgetKit",
+      "target_id": "swift-area-145"
+    },
+    {
+      "number": 146,
+      "area": "App Intents and Shortcuts",
+      "target_id": "swift-area-146"
+    },
+    {
+      "number": 147,
+      "area": "Siri Integration",
+      "target_id": "swift-area-147"
+    },
+    {
+      "number": 148,
+      "area": "Spotlight and Core Spotlight",
+      "target_id": "swift-area-148"
+    },
+    {
+      "number": 149,
+      "area": "StoreKit and In-App Purchases",
+      "target_id": "swift-area-149"
+    },
+    {
+      "number": 150,
+      "area": "AuthenticationServices",
+      "target_id": "swift-area-150"
+    },
+    {
+      "number": 151,
+      "area": "Sign in with Apple",
+      "target_id": "swift-area-151"
+    },
+    {
+      "number": 152,
+      "area": "Keychain Services",
+      "target_id": "swift-area-152"
+    },
+    {
+      "number": 153,
+      "area": "CryptoKit",
+      "target_id": "swift-area-153"
+    },
+    {
+      "number": 154,
+      "area": "Secure Enclave",
+      "target_id": "swift-area-154"
+    },
+    {
+      "number": 155,
+      "area": "LocalAuthentication",
+      "target_id": "swift-area-155"
+    },
+    {
+      "number": 156,
+      "area": "App Sandbox and Entitlements",
+      "target_id": "swift-area-156"
+    },
+    {
+      "number": 157,
+      "area": "Privacy and Data Protection",
+      "target_id": "swift-area-157"
+    },
+    {
+      "number": 158,
+      "area": "Network Security and TLS",
+      "target_id": "swift-area-158"
+    },
+    {
+      "number": 159,
+      "area": "Passkeys and WebAuthn",
+      "target_id": "swift-area-159"
+    },
+    {
+      "number": 160,
+      "area": "HealthKit",
+      "target_id": "swift-area-160"
+    },
+    {
+      "number": 161,
+      "area": "HomeKit",
+      "target_id": "swift-area-161"
+    },
+    {
+      "number": 162,
+      "area": "Core Bluetooth",
+      "target_id": "swift-area-162"
+    },
+    {
+      "number": 163,
+      "area": "Core NFC",
+      "target_id": "swift-area-163"
+    },
+    {
+      "number": 164,
+      "area": "Core Location",
+      "target_id": "swift-area-164"
+    },
+    {
+      "number": 165,
+      "area": "MapKit",
+      "target_id": "swift-area-165"
+    },
+    {
+      "number": 166,
+      "area": "Nearby Interaction",
+      "target_id": "swift-area-166"
+    },
+    {
+      "number": 167,
+      "area": "Multipeer Connectivity",
+      "target_id": "swift-area-167"
+    },
+    {
+      "number": 168,
+      "area": "External Accessory Framework",
+      "target_id": "swift-area-168"
+    },
+    {
+      "number": 169,
+      "area": "IOKit and DriverKit",
+      "target_id": "swift-area-169"
+    },
+    {
+      "number": 170,
+      "area": "System Extensions",
+      "target_id": "swift-area-170"
+    },
+    {
+      "number": 171,
+      "area": "Endpoint Security Framework",
+      "target_id": "swift-area-171"
+    },
+    {
+      "number": 172,
+      "area": "FileProvider Framework",
+      "target_id": "swift-area-172"
+    },
+    {
+      "number": 173,
+      "area": "FileManager and File Coordination",
+      "target_id": "swift-area-173"
+    },
+    {
+      "number": 174,
+      "area": "Interprocess Communication (IPC)",
+      "target_id": "swift-area-174"
+    },
+    {
+      "number": 175,
+      "area": "XPC Services",
+      "target_id": "swift-area-175"
+    },
+    {
+      "number": 176,
+      "area": "POSIX APIs",
+      "target_id": "swift-area-176"
+    },
+    {
+      "number": 177,
+      "area": "Darwin System APIs",
+      "target_id": "swift-area-177"
+    },
+    {
+      "number": 178,
+      "area": "Mach Kernel Fundamentals",
+      "target_id": "swift-area-178"
+    },
+    {
+      "number": 179,
+      "area": "Operating System Internals",
+      "target_id": "swift-area-179"
+    },
+    {
+      "number": 180,
+      "area": "Bare-Metal Swift",
+      "target_id": "bare-metal"
+    },
+    {
+      "number": 181,
+      "area": "Embedded Swift",
+      "target_id": "swift-area-181"
+    },
+    {
+      "number": 182,
+      "area": "Microcontroller Programming",
+      "target_id": "swift-area-182"
+    },
+    {
+      "number": 183,
+      "area": "Real-Time Operating Systems (RTOS)",
+      "target_id": "swift-area-183"
+    },
+    {
+      "number": 184,
+      "area": "Hardware Abstraction Layers",
+      "target_id": "swift-area-184"
+    },
+    {
+      "number": 185,
+      "area": "Memory-Mapped I/O",
+      "target_id": "swift-area-185"
+    },
+    {
+      "number": 186,
+      "area": "Interrupt Handling",
+      "target_id": "swift-area-186"
+    },
+    {
+      "number": 187,
+      "area": "Embedded Memory Management",
+      "target_id": "swift-area-187"
+    },
+    {
+      "number": 188,
+      "area": "Firmware Development",
+      "target_id": "swift-area-188"
+    },
+    {
+      "number": 189,
+      "area": "Bootloaders and Toolchains",
+      "target_id": "swift-area-189"
+    },
+    {
+      "number": 190,
+      "area": "Cross-Compilation",
+      "target_id": "swift-area-190"
+    },
+    {
+      "number": 191,
+      "area": "Linkers and Binary Formats",
+      "target_id": "swift-area-191"
+    },
+    {
+      "number": 192,
+      "area": "Mach-O Binary Structure",
+      "target_id": "swift-area-192"
+    },
+    {
+      "number": 193,
+      "area": "Static and Dynamic Linking",
+      "target_id": "swift-area-193"
+    },
+    {
+      "number": 194,
+      "area": "Foreign Function Interfaces (FFI)",
+      "target_id": "swift-area-194"
+    },
+    {
+      "number": 195,
+      "area": "Unsafe Pointers and Raw Memory",
+      "target_id": "swift-area-195"
+    },
+    {
+      "number": 196,
+      "area": "Memory Layout and Alignment",
+      "target_id": "swift-area-196"
+    },
+    {
+      "number": 197,
+      "area": "Lock-Free Data Structures",
+      "target_id": "swift-area-197"
+    },
+    {
+      "number": 198,
+      "area": "Cache-Aware Programming",
+      "target_id": "swift-area-198"
+    },
+    {
+      "number": 199,
+      "area": "Algorithmic Complexity",
+      "target_id": "swift-area-199"
+    },
+    {
+      "number": 200,
+      "area": "Data Structures and Algorithms",
+      "target_id": "swift-area-200"
+    },
+    {
+      "number": 201,
+      "area": "Computational Geometry",
+      "target_id": "swift-area-201"
+    },
+    {
+      "number": 202,
+      "area": "Graph Algorithms",
+      "target_id": "swift-area-202"
+    },
+    {
+      "number": 203,
+      "area": "Numerical Computing",
+      "target_id": "swift-area-203"
+    },
+    {
+      "number": 204,
+      "area": "Cryptographic Algorithms",
+      "target_id": "swift-area-204"
+    },
+    {
+      "number": 205,
+      "area": "Compiler Design",
+      "target_id": "swift-area-205"
+    },
+    {
+      "number": 206,
+      "area": "Parsers and Abstract Syntax Trees",
+      "target_id": "swift-area-206"
+    },
+    {
+      "number": 207,
+      "area": "Domain-Specific Languages (DSLs)",
+      "target_id": "swift-area-207"
+    },
+    {
+      "number": 208,
+      "area": "SwiftSyntax",
+      "target_id": "swift-area-208"
+    },
+    {
+      "number": 209,
+      "area": "SourceKit and SourceKit-LSP",
+      "target_id": "swift-area-209"
+    },
+    {
+      "number": 210,
+      "area": "Swift Compiler Plugins",
+      "target_id": "swift-area-210"
+    },
+    {
+      "number": 211,
+      "area": "Swift Evolution Proposals",
+      "target_id": "swift-area-211"
+    },
+    {
+      "number": 212,
+      "area": "Swift API Design Guidelines",
+      "target_id": "swift-area-212"
+    },
+    {
+      "number": 213,
+      "area": "API Resilience and Library Evolution",
+      "target_id": "swift-area-213"
+    },
+    {
+      "number": 214,
+      "area": "Binary Framework Distribution",
+      "target_id": "swift-area-214"
+    },
+    {
+      "number": 215,
+      "area": "XCFrameworks",
+      "target_id": "swift-area-215"
+    },
+    {
+      "number": 216,
+      "area": "Package Plugins and Build Tool Plugins",
+      "target_id": "swift-area-216"
+    },
+    {
+      "number": 217,
+      "area": "Swift Documentation and DocC",
+      "target_id": "swift-area-217"
+    },
+    {
+      "number": 218,
+      "area": "Benchmarking and Microbenchmarking",
+      "target_id": "swift-area-218"
+    },
+    {
+      "number": 219,
+      "area": "Energy Efficiency and Battery Optimization",
+      "target_id": "swift-area-219"
+    },
+    {
+      "number": 220,
+      "area": "Memory and CPU Profiling",
+      "target_id": "swift-area-220"
+    },
+    {
+      "number": 221,
+      "area": "Launch-Time Optimization",
+      "target_id": "swift-area-221"
+    },
+    {
+      "number": 222,
+      "area": "Rendering Performance and Frame Pacing",
+      "target_id": "swift-area-222"
+    },
+    {
+      "number": 223,
+      "area": "Networking Performance",
+      "target_id": "swift-area-223"
+    },
+    {
+      "number": 224,
+      "area": "Offline-First Architecture",
+      "target_id": "swift-area-224"
+    },
+    {
+      "number": 225,
+      "area": "Data Synchronization and Conflict Resolution",
+      "target_id": "swift-area-225"
+    },
+    {
+      "number": 226,
+      "area": "Caching and Persistence Strategies",
+      "target_id": "swift-area-226"
+    },
+    {
+      "number": 227,
+      "area": "Distributed Systems Fundamentals",
+      "target_id": "swift-area-227"
+    },
+    {
+      "number": 228,
+      "area": "Event-Driven Architecture",
+      "target_id": "swift-area-228"
+    },
+    {
+      "number": 229,
+      "area": "Observability and Structured Logging",
+      "target_id": "swift-area-229"
+    },
+    {
+      "number": 230,
+      "area": "Crash Reporting and Diagnostics",
+      "target_id": "swift-area-230"
+    },
+    {
+      "number": 231,
+      "area": "Feature Flags and Runtime Configuration",
+      "target_id": "swift-area-231"
+    },
+    {
+      "number": 232,
+      "area": "Backward Compatibility and API Availability",
+      "target_id": "swift-area-232"
+    },
+    {
+      "number": 233,
+      "area": "Security Engineering and Threat Modeling",
+      "target_id": "swift-area-233"
+    },
+    {
+      "number": 234,
+      "area": "Reverse Engineering and Binary Analysis",
+      "target_id": "swift-area-234"
+    },
+    {
+      "number": 235,
+      "area": "Dynamic Instrumentation and Runtime Inspection",
+      "target_id": "swift-area-235"
+    },
+    {
+      "number": 236,
+      "area": "Open-Source Swift Ecosystem",
+      "target_id": "swift-area-236"
+    },
+    {
+      "number": 237,
+      "area": "Swift on Linux",
+      "target_id": "swift-area-237"
+    },
+    {
+      "number": 238,
+      "area": "Swift on Windows",
+      "target_id": "swift-area-238"
+    },
+    {
+      "number": 239,
+      "area": "Swift on Android",
+      "target_id": "swift-area-239"
+    },
+    {
+      "number": 240,
+      "area": "WebAssembly and SwiftWasm",
+      "target_id": "swift-area-240"
+    },
+    {
+      "number": 241,
+      "area": "Swift for Web Backends",
+      "target_id": "swift-area-241"
+    },
+    {
+      "number": 242,
+      "area": "Swift Embedded and Edge Computing",
+      "target_id": "swift-area-242"
+    },
+    {
+      "number": 243,
+      "area": "Swift in Robotics and IoT",
+      "target_id": "swift-area-243"
+    },
+    {
+      "number": 244,
+      "area": "Swift for Machine Learning Infrastructure",
+      "target_id": "swift-area-244"
+    },
+    {
+      "number": 245,
+      "area": "Swift for High-Performance Computing",
+      "target_id": "swift-area-245"
+    },
+    {
+      "number": 246,
+      "area": "Swift for CLI Tools and Developer Utilities",
+      "target_id": "swift-area-246"
+    },
+    {
+      "number": 247,
+      "area": "Swift for Daemons and Background Services",
+      "target_id": "swift-area-247"
+    },
+    {
+      "number": 248,
+      "area": "Swift for Networking and Protocol Implementations",
+      "target_id": "swift-area-248"
+    },
+    {
+      "number": 249,
+      "area": "Swift for Blockchain and Cryptography",
+      "target_id": "swift-area-249"
+    },
+    {
+      "number": 250,
+      "area": "Swift for Audio Engines and Music Software",
+      "target_id": "swift-area-250"
+    }
+  ],
+  "note": "Discovery scope, not verified knowledge coverage"
+}
