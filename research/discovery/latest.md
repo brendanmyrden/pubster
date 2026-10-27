@@ -1,12 +1,12 @@
-# Adjacent repository candidates: swift-area-001
+# Adjacent repository candidates: swift-area-005
 
 Discovery only: license, security and compatibility require review.
 
-- [asimcanyagiz/Swift-Roadmap](https://github.com/asimcanyagiz/Swift-Roadmap): score 33; license MIT; last push 2026-09-09T22:05:42Z
-- [YuliiaEngman/SwiftFoundamentalsReview](https://github.com/YuliiaEngman/SwiftFoundamentalsReview): score 30; license UNKNOWN; last push 2020-11-12T04:20:40Z
-- [dbbudd/Geometry-Swift-PlaygroundBook](https://github.com/dbbudd/Geometry-Swift-PlaygroundBook): score 30; license UNKNOWN; last push 2026-03-07T03:32:29Z
-- [dtrikam1/unitec-app-development-with-swift](https://github.com/dtrikam1/unitec-app-development-with-swift): score 30; license UNKNOWN; last push 2019-10-21T21:28:08Z
-- [gupta29470/swift-language-fundamentals](https://github.com/gupta29470/swift-language-fundamentals): score 30; license UNKNOWN; last push 2026-02-18T04:38:10Z
-- [joshanjohn/Swift-fundamentals](https://github.com/joshanjohn/Swift-fundamentals): score 30; license UNKNOWN; last push 2024-08-18T09:59:26Z
-- [bocaletto-luca/multilanguage-test-example](https://github.com/bocaletto-luca/multilanguage-test-example): score 23; license GPL-3.0; last push 2025-06-17T17:31:53Z
-- [JibachhhMahto764/java-for-beginners](https://github.com/JibachhhMahto764/java-for-beginners): score 20; license UNKNOWN; last push 2025-02-21T10:00:26Z
+- [FabrizioBrancati/BFKit-Swift](https://github.com/FabrizioBrancati/BFKit-Swift): score 23; license MIT; last push 2020-11-01T16:48:14Z
+- [danielsaidi/RichTextKit](https://github.com/danielsaidi/RichTextKit): score 23; license MIT; last push 2026-06-05T14:27:25Z
+- [migueldeicaza/SwiftTerm](https://github.com/migueldeicaza/SwiftTerm): score 23; license MIT; last push 2026-10-26T15:38:45Z
+- [moreSwift/swift-cross-ui](https://github.com/moreSwift/swift-cross-ui): score 23; license MIT; last push 2026-09-30T02:49:37Z
+- [nodes-app/swift-markdown-engine](https://github.com/nodes-app/swift-markdown-engine): score 23; license Apache-2.0; last push 2026-10-26T09:59:29Z
+- [swhitty/SwiftDraw](https://github.com/swhitty/SwiftDraw): score 23; license Zlib; last push 2026-08-25T22:32:03Z
+- [lexrus/SwiftyMenu](https://github.com/lexrus/SwiftyMenu): score 13; license MIT; last push 2025-10-07T09:43:50Z
+- [siteline/swiftui-introspect](https://github.com/siteline/swiftui-introspect): score 13; license MIT; last push 2026-10-07T19:47:25Z
