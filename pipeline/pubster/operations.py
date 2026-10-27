@@ -7,7 +7,7 @@ from . import core as c
 def command(argv,timeout=45):
     r=subprocess.run(argv,cwd=c.ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout)
     if r.returncode:raise RuntimeError('COMMAND_FAILED_'+Path(argv[0]).name)
-    return r.stdout.strip()
+    return r.stdout.rstrip("\r\n")
 def doctor():
     import psutil
     return {'state_free_gib':round(shutil.disk_usage(c.STATE).free/2**30,2),'memory_available_gib':round(psutil.virtual_memory().available/2**30,2),'battery':bool(psutil.sensors_battery() and not psutil.sensors_battery().power_plugged),'python':sys.version.split()[0],'inference_enabled':False,'cloud':'DEFERRED_BY_USER'}

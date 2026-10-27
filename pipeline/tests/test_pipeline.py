@@ -37,4 +37,8 @@ class PipelineTests(unittest.TestCase):
   c.write(c.STATE/'state/paused','paused');self.assertEqual(op.run()['state'],'SKIPPED_PAUSED');(c.STATE/'state/paused').unlink();self.assertFalse(c.status()['paused'])
  def test_backup_integrity(self):
   self.assertEqual(c.backup()['integrity'],'ok');db=sqlite3.connect(next((c.STATE/'backups').glob('*.sqlite3')));self.assertEqual(db.execute('SELECT count(*) FROM sources').fetchone()[0],113);db.close()
+ def test_command_preserves_git_porcelain_leading_spaces(self):
+  from types import SimpleNamespace
+  with patch.object(op.subprocess,'run',return_value=SimpleNamespace(returncode=0,stdout=' M research/discovery/latest.json\n',stderr='')):
+   self.assertEqual(op.command(['git','status','--porcelain']), ' M research/discovery/latest.json')
 if __name__=='__main__':unittest.main()
