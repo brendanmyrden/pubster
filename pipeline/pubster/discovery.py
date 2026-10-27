@@ -83,14 +83,38 @@ def discover(seed,objective):
 def tick(force=False):
     cfg=c.readjson(c.ROOT/'config/discovery.json')
     if not cfg or not cfg.get('enabled'): return {'state':'DISABLED'}
+    targets=cfg.get('targets',[cfg])
+    if not 1<=len(targets)<=8: raise ValueError('Expected 1..8 discovery targets')
+    seen=set()
+    for target in targets:
+        key=target.get('id','default')
+        if not re.fullmatch(r'[a-z0-9-]{1,40}',key) or key in seen: raise ValueError('Invalid or duplicate target id')
+        seen.add(key)
     with c.lock('discovery'):
-        prior=c.readjson(REPORT)
-        if not force and prior and time.time()-prior['observed_at']<max(86400,cfg.get('refresh_seconds',86400)) and prior.get('seed')==cfg['seed'] and prior.get('objective')==cfg['public_objective']: return {'state':'CACHED','candidates':len(prior['candidates'])}
-        result=discover(cfg['seed'],cfg['public_objective'])
-        c.writejson(CACHE/'latest.json',result)
+        due=[]
+        for target in targets:
+            path=REPORT.parent/(target.get('id','default')+'.json')
+            prior=c.readjson(path)
+            # Preserve the original report when upgrading from a single target.
+            if prior is None:
+                legacy=c.readjson(REPORT)
+                if legacy and legacy.get('seed')==target['seed'] and legacy.get('objective')==target['public_objective']:
+                    prior=legacy
+                    c.writejson(path,prior)
+            matches=prior and prior.get('seed')==target['seed'] and prior.get('objective')==target['public_objective']
+            if force or not matches or time.time()-prior['observed_at']>=max(86400,cfg.get('refresh_seconds',86400)):
+                due.append((prior['observed_at'] if matches else 0,target,path))
+        if not due: return {'state':'CACHED','targets':len(targets)}
+        # One oldest/missing target per tick preserves the original network budget.
+        _,target,path=min(due,key=lambda row:row[0])
+        result=discover(target['seed'],target['public_objective'])
+        result['target_id']=target.get('id','default')
+        c.writejson(CACHE/path.name,result)
+        c.writejson(path,result)
         c.writejson(REPORT,result)
-        lines=['# Adjacent repository candidates','','Discovery only: license, security and compatibility require review.','']
+        lines=['# Adjacent repository candidates: '+result['target_id'],'','Discovery only: license, security and compatibility require review.','']
         for x in result['candidates']:
             lines += [f"- [{x['repository']}]({x['url']}): score {x['score']}; license {x['license']}; last push {x['pushed_at']}"]
+        c.write(path.with_suffix('.md'),'\n'.join(lines)+'\n')
         c.write(REPORT.with_suffix('.md'),'\n'.join(lines)+'\n')
-        return {'state':'COMPLETE','candidates':len(result['candidates']),'github_requests':result['github_requests'],'ecosyste_ms':result['ecosyste_ms']['state']}
+        return {'state':'COMPLETE','target':result['target_id'],'candidates':len(result['candidates']),'github_requests':result['github_requests'],'ecosyste_ms':result['ecosyste_ms']['state']}

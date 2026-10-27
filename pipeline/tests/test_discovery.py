@@ -25,3 +25,17 @@ class DiscoveryTests(unittest.TestCase):
  def test_ranking_does_not_approve_sources(self):
   result=d.summary({'full_name':'a/b','html_url':'https://github.com/a/b','description':'Swift collections','license':{'spdx_id':'MIT'}},'Swift')
   self.assertEqual(result['rights'],'UNREVIEWED');self.assertEqual(result['security'],'NOT_AUDITED');self.assertEqual(result['matched_terms'],['swift'])
+ def test_rotates_targets_and_caches_without_replacing_others(self):
+  import tempfile,json
+  from pathlib import Path
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);(root/'config').mkdir()
+   targets=[{'id':name,'seed':'owner/'+name,'public_objective':name} for name in ['swiftui','objective-c','bare-metal','apple-silicon']]
+   (root/'config/discovery.json').write_text(json.dumps({'enabled':True,'targets':targets}))
+   def fake(seed,objective):return {'seed':seed,'objective':objective,'observed_at':int(d.time.time()),'candidates':[],'github_requests':1,'ecosyste_ms':{'state':'available'}}
+   with patch.object(d.c,'ROOT',root),patch.object(d.c,'STATE',root/'state'),patch.object(d,'REPORT',root/'reports/latest.json'),patch.object(d,'CACHE',root/'cache'),patch.object(d,'discover',side_effect=fake) as discover:
+    (root/'state/locks').mkdir(parents=True)
+    self.assertEqual([d.tick()['target'] for _ in targets],[t['id'] for t in targets])
+    self.assertEqual(d.tick()['state'],'CACHED')
+    self.assertEqual(discover.call_count,4)
+    for t in targets:self.assertTrue((root/'reports'/(t['id']+'.json')).exists())

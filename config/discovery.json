@@ -1,1 +1,31 @@
-{"enabled":true,"seed":"apple/swift-algorithms","public_objective":"Swift algorithms collections","refresh_seconds":86400}
+{
+  "enabled": true,
+  "refresh_seconds": 86400,
+  "targets": [
+    {
+      "id": "swift-algorithms",
+      "seed": "apple/swift-algorithms",
+      "public_objective": "Swift algorithms collections"
+    },
+    {
+      "id": "swiftui",
+      "seed": "siteline/swiftui-introspect",
+      "public_objective": "SwiftUI"
+    },
+    {
+      "id": "objective-c",
+      "seed": "AFNetworking/AFNetworking",
+      "public_objective": "Objective-C"
+    },
+    {
+      "id": "bare-metal",
+      "seed": "apple/swift-embedded-examples",
+      "public_objective": "bare metal embedded"
+    },
+    {
+      "id": "apple-silicon",
+      "seed": "AsahiLinux/m1n1",
+      "public_objective": "Apple Silicon"
+    }
+  ]
+}
