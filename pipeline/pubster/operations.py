@@ -131,6 +131,9 @@ def run():
             c.writejson(c.STATE/'state/managed-files.json',managed_snapshot())
             try:result['git']=sync()
             except Exception as e:result['git']={'state':str(e)[:100] if isinstance(e,RuntimeError) else type(e).__name__}
+            if result.get('git',{}).get('state') in ['synced','unchanged']:
+                try:result['release']=json.loads(command([sys.executable,str(c.ROOT/'scripts/export-release.py')],90))
+                except Exception as e:result['release']={'state':'PENDING','error':type(e).__name__}
             result['duration_seconds']=round(time.monotonic()-started,2);c.writejson(c.STATE/'state/last-run.json',result);return result
     except RuntimeError as e:
         if str(e)=='SKIPPED_ALREADY_RUNNING':return {'state':str(e)}

@@ -1,0 +1,60 @@
+{
+  "id": "a8c25970-7b94-46fc-9203-19293294a222",
+  "declarationKey": "pubster-hourly-maintenance-v1",
+  "name": "Pubster hourly maintenance",
+  "enabled": true,
+  "createdAtMs": 1793090532974,
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 * * * *",
+    "tz": "America/Toronto",
+    "staggerMs": 0
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "command",
+    "argv": [
+      "/Volumes/SYYR/Pubster/scripts/run-hourly.sh"
+    ],
+    "cwd": "/Volumes/SYYR/Pubster",
+    "timeoutSeconds": 540,
+    "outputMaxBytes": 4096
+  },
+  "delivery": {
+    "mode": "none",
+    "channel": "last"
+  },
+  "state": {
+    "lastRunAtMs": 1793090567140,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 7879,
+    "lastDiagnostics": {
+      "entries": [
+        {
+          "ts": 1793090575019,
+          "source": "exec",
+          "severity": "info",
+          "message": "command ok with no output: \"/Volumes/SYYR/Pubster/scripts/run-hourly.sh\"",
+          "exitCode": 0
+        }
+      ]
+    },
+    "lastDiagnosticSummary": "command ok with no output: \"/Volumes/SYYR/Pubster/scripts/run-hourly.sh\"",
+    "lastDeliveryStatus": "not-requested",
+    "lastFailureNotificationDeliveryStatus": "not-requested",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0,
+    "scheduleErrorCount": 0,
+    "scheduleActivatedAtMs": 1793090666172,
+    "nextRunAtMs": 1793091600000
+  },
+  "updatedAtMs": 1793090666172,
+  "configRevision": "sha256:ukan2rkYx0XNgi921boZATBagZ4-4l0Rss5gaiOd-qY",
+  "nextRunAtMs": 1793091600000,
+  "lastRunAtMs": 1793090567140,
+  "lastRunStatus": "ok",
+  "lastDeliveryStatus": "not-requested",
+  "lastFailureNotificationDeliveryStatus": "not-requested"
+}

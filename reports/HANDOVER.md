@@ -24,3 +24,5 @@ The existing supplied-password verifier remains outside Git on the internal disk
 
 Scheduler registration/manual-run evidence is recorded separately in scheduler.json.
 A manual trigger does not prove an actual clock-triggered occurrence.
+
+Scheduler enabled: `a8c25970-7b94-46fc-9203-19293294a222`, hourly at minute 0 Toronto, delivery none. Manual OpenClaw run succeeded; no clock-triggered occurrence yet observed. Approved export private release uploaded, downloaded and SHA-256 verified; see release.json.

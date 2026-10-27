@@ -10,7 +10,7 @@ aggregate live process CPU, 768 MiB aggregate live RSS; 2 MiB logs with four rot
 These CPU samples are not a kernel CPU quota. A short-lived child can escape a sample;
 network subprocesses have their own deadlines. Pipeline runs use only bounded Python
 work and Git/CLI subprocesses. Backups retain four daily files. No raw-source cleanup
-runs automatically yet; 20 GiB managed data hard-cap deferral must remain enabled.
+runs automatically yet; 20 GiB managed data hard-cap deferral is enabled.
 
 `pubsterctl pause` / `resume` stops new work. `stop` currently pauses future work;
 it does not terminate an in-progress short transaction. The supervisor enforces the
@@ -21,7 +21,7 @@ no staged user edits, no unexpected dirty paths, and generated file hashes. It n
 force pushes, resets, rebases, changes visibility, or overwrites unrelated files.
 A diverged remote leaves work pending for review. Code changes are committed by the
 operator; hourly commits include only approved generated corpus/research paths.
-No GitHub Actions are installed. Export release attachments are separate from Git.
+No GitHub Actions are installed. Export release attachments are separate from Git. Approved immutable bundles up to 25 MiB are uploaded only when the corpus changes, then downloaded and checksum-verified. A reserved daily 250 MiB transfer budget caps uploads plus verification downloads.
 
 Research: one title-weight experiment per eligible tick, at most two/day, at most
 300 seconds each. A corpus has a finite candidate set; after exhaustion the controller
