@@ -1,0 +1,13 @@
+{
+  "project_path": "/Volumes/SYYR/Pubster",
+  "workspace_link": "/Users/brendanmyrden/.openclaw/workspace/pubster",
+  "backup_path": "/Users/brendanmyrden/.openclaw/workspace/pubster.pre-external-backup",
+  "verified_files": 10,
+  "free_gib": 931.3,
+  "filesystem": "exFAT",
+  "sqlite_wal_probe": "passed",
+  "fts5_probe": "passed",
+  "symlink_creation_probe": "passed",
+  "deployment": "not deployed",
+  "internal_disk_free_gib": 1.1
+}

@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS sessions(token_hash TEXT PRIMARY KEY,csrf_hash TEXT NOT NULL,created_at INTEGER NOT NULL,last_seen_at INTEGER NOT NULL,expires_at INTEGER NOT NULL,credential_version TEXT NOT NULL,revoked_at INTEGER);
+CREATE TABLE IF NOT EXISTS auth_rate_buckets(bucket_key TEXT PRIMARY KEY,window_start INTEGER,count INTEGER);
+CREATE TABLE IF NOT EXISTS inference_usage(bucket_key TEXT PRIMARY KEY,reserved_units INTEGER,consumed_units INTEGER,expires_at INTEGER);
+CREATE TABLE IF NOT EXISTS published_records(rowid INTEGER PRIMARY KEY,corpus_id TEXT NOT NULL,chunk_id TEXT NOT NULL,source_id TEXT NOT NULL,title TEXT,body_text TEXT,tags TEXT,record_object_key TEXT,verified_state TEXT,rights_state TEXT,UNIQUE(corpus_id,chunk_id));
+CREATE VIRTUAL TABLE IF NOT EXISTS published_fts USING fts5(title,body_text,tags,content='published_records',content_rowid='rowid');
+CREATE TRIGGER IF NOT EXISTS records_ai AFTER INSERT ON published_records BEGIN INSERT INTO published_fts(rowid,title,body_text,tags) VALUES(new.rowid,new.title,new.body_text,new.tags); END;
+CREATE TRIGGER IF NOT EXISTS records_ad AFTER DELETE ON published_records BEGIN INSERT INTO published_fts(published_fts,rowid,title,body_text,tags) VALUES('delete',old.rowid,old.title,old.body_text,old.tags); END;
+CREATE TRIGGER IF NOT EXISTS records_au AFTER UPDATE ON published_records BEGIN INSERT INTO published_fts(published_fts,rowid,title,body_text,tags) VALUES('delete',old.rowid,old.title,old.body_text,old.tags);INSERT INTO published_fts(rowid,title,body_text,tags) VALUES(new.rowid,new.title,new.body_text,new.tags); END;
+CREATE TABLE IF NOT EXISTS corpus_registry(corpus_id TEXT PRIMARY KEY,manifest_key TEXT,state TEXT,record_count INTEGER,digest TEXT,created_at INTEGER);
+CREATE TABLE IF NOT EXISTS publication_state(singleton_id INTEGER PRIMARY KEY CHECK(singleton_id=1),active_corpus_id TEXT,previous_corpus_id TEXT,version INTEGER NOT NULL DEFAULT 0);
+INSERT OR IGNORE INTO publication_state VALUES(1,NULL,NULL,0);
+CREATE TABLE IF NOT EXISTS published_sources(corpus_id TEXT,source_id TEXT,record_json TEXT,PRIMARY KEY(corpus_id,source_id));

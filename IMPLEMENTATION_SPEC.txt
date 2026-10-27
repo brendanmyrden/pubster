@@ -1,0 +1,2283 @@
+PUBSTER
+IMPLEMENTATION SPECIFICATION + OPENCLAW / VARKON EXECUTION GUIDE
+Version 1.0 | Prepared 2026-10-27 | Scheduling timezone: America/Toronto
+
+DOCUMENT STATUS
+This is a build specification and execution contract, not evidence that a website,
+repository, database, scheduler, or deployment already exists. OpenClaw/Varkon must
+execute it on its authorized host and return verified deployment evidence.
+
+READ FIRST: EXECUTION ORDER
+1. Read sections 1-5 and perform the non-destructive capability preflight.
+2. Create the project, local database, source registry, and one validated export.
+3. Build the Next.js interface and Worker authentication/API boundary.
+4. Publish a private cloud snapshot; validate the gate, viewer, search, and download.
+5. Connect and test inference using an already authorized provider and explicit budget.
+6. Create or reuse the correct PRIVATE GitHub repository; synchronize safe artifacts.
+7. Install exactly one hourly scheduler and the bounded improvement controller.
+8. Return actual URLs, hashes, test results, scheduler evidence, and honest blockers.
+If Cloudflare is blocked, finish the local/GitHub path instead of stopping the project.
+
+CONTENTS
+01 Mission, scope, and execution authority
+02 Architecture and implementation decisions
+03 Preflight and capability discovery
+04 Repository layout and local storage
+05 Runtime configuration and resource budgets
+06 Source registry, acquisition, and rights policy
+07 Knowledge model and database contracts
+08 Extraction, chunking, validation, and export pipeline
+09 Downloadable datasets and skill packs
+10 Website information architecture and interface
+11 Cloudflare Worker routing, authentication, and secrets
+12 API and inference contracts
+13 Atomic publication, replication, and rollback
+14 Hourly GitHub synchronization
+15 Quiet scheduling and host lifecycle
+16 Autoresearch-style improvement and evaluation
+17 Swift/SwiftUI/Objective-C engineering curriculum
+18 Direct implementation and deployment runbook
+19 Required CLI, errors, and operations
+20 Security, functional, and recovery acceptance tests
+21 Completion report and fallback behavior
+22 Source atlas: all 100 supplied candidate resources
+23 Supplemental sources and coverage gaps
+24 Implementation references and verification notes
+25 Final instruction to Varkon
+
+===============================================================================
+01. MISSION, SCOPE, AND EXECUTION AUTHORITY
+===============================================================================
+
+Build Pubster: a private, local-first Swift engineering knowledge system with a
+password-gated web interface. It must help people and agents find source-backed
+explanations, implementation patterns, tested examples, and targeted context packs.
+
+Required technologies:
+- Next.js App Router, TypeScript, Tailwind CSS, and shadcn/ui for the web interface.
+- Cloudflare Worker for authentication, APIs, protected viewing, and downloads.
+- Local canonical database, deterministic JSONL/Markdown exports, private GitHub sync.
+- A quiet recurring maintenance loop plus separately bounded improvement experiments.
+
+Required capabilities:
+Search, browse, inspect provenance, view Markdown/JSONL, download versioned datasets,
+assemble skill/context packs, and ask grounded questions through the website.
+Catalog all 100 supplied atlas entries without falsely labeling them verified.
+Prioritize official Swift sources; expand into Apple platforms, Objective-C/C/C++
+interop, concurrency, algorithms, graphics, audio, backend systems, and performance.
+
+The supplied swift.org/documentation/docc/ address is documentation for DocC, not a
+GitHub repository or a complete Swift curriculum. Its corresponding documentation
+compiler project is swiftlang/swift-docc. DocC is one source/format adapter, not the
+whole knowledge base and not the required Pubster frontend. See [R01], [R02].
+
+Interpret "master" as broad, organized, evaluated engineering coverage. Ingestion
+and JSONL generation do not retrain an underlying model or establish expert-level
+correctness. Retrieval quality, provenance, and tests are the measurable outputs.
+
+User authority covers this Pubster build, its private repository, scoped deployment,
+and recurring maintenance. It does NOT authorize changing unrelated projects,
+exposing the OpenClaw gateway, publishing credentials, disabling host protections,
+buying infrastructure, accepting third-party legal terms, or creating unlimited
+paid inference/crawling workloads. Existing approval/security mechanisms still apply.
+
+Initial password:
+Use the exact password supplied in the originating private request. This document
+intentionally contains neither that password nor a password-equivalent credential.
+Read it from that private context or an approved secret-input channel. Never commit
+it, echo it, put it in a command argument, place it in a URL, or include it in logs.
+If only this file is available and the password is unavailable, complete corpus and
+UI work but report PASSWORD_SETUP_REQUIRED; do not invent or publish a default.
+
+Never publish an unprotected temporary corpus while setting up authentication.
+Never describe a proposed workers.dev or fisidi.com address as an actual deployment.
+
+===============================================================================
+02. ARCHITECTURE AND IMPLEMENTATION DECISIONS
+===============================================================================
+
+PRIMARY DATA FLOW
+
+  Approved source registry + pinned upstream revisions
+                |
+  Local bounded acquisition -> parser -> rights/provenance checks
+                |
+  Canonical SQLite database + content-addressed raw/source objects
+                |
+  Evaluator -> immutable validated snapshot -> durable publication outbox
+                |                         |
+  Private GitHub code/curated data         Private R2 objects + D1 search replica
+  and eligible release attachments                        |
+                                             Cloudflare Worker auth/API
+                                                        |
+                                        Next.js static-export interface
+                                                        |
+                                    Browser reader / downloads / grounded Ask
+
+A. Local database is authoritative.
+Use SQLite WAL and FTS5 for the initial single-host deployment. Do not install a new
+Postgres, Redis, vector database, Docker daemon, or always-running crawler merely
+for Pubster. Keep a store adapter boundary for a later existing Postgres/pgvector
+service if measurements justify it. JSONL is the interchange representation, not
+a replacement for transactions, indexing, or provenance relationships.
+
+This is an explicit low-resource revision of any earlier Postgres-first proposal.
+Do not migrate or modify an existing database without identifying it first.
+
+B. Cloudflare serves snapshots, not the host filesystem.
+Publish validated data to a PRIVATE R2 bucket and a generation-tagged D1 search
+replica. The browser talks only to the Worker. A sleeping/offline Mac must not stop
+viewing/search/download of the most recently published snapshot.
+
+Do not mount local paths in a Worker, proxy the whole home directory, or expose the
+OpenClaw management API. Workers do not gain access to the host filesystem merely
+because OpenClaw can deploy them. A tunnel is NOT necessary for the primary design.
+
+C. Use real Next.js, initially as a static export.
+Configure output: 'export'; deploy the resulting assets alongside a purpose-built
+TypeScript Worker. All authenticated data is fetched at runtime from Worker APIs.
+This satisfies the requested frontend stack without maintaining a Node SSR server,
+rebuilding the app on every dataset update, or requiring a Next.js runtime adapter.
+Static export supports HTML/CSS/JS hosting; server-only Next features are outside
+this initial architecture. See [R03].
+
+Do not use Next middleware, Server Actions, server cookies, dynamic route generation,
+or Next route handlers as the authentication/API backend in this static build.
+Use stable shell pages and query parameters for dynamic resource identifiers.
+
+Future SSR is a separate decision. Cloudflare's current new-project framework guide
+recommends vinext; OpenNext remains documented for adapting Next builds. Neither
+adapter is necessary here. Do not silently replace Next.js with another framework
+or use obsolete next-on-pages instructions. See [R04], [R05].
+
+D. Worker-first authentication is mandatory.
+Set assets.run_worker_first = true. Otherwise directly matched assets can bypass
+Worker code. Protected datasets must NEVER enter Next's public/ or build output.
+Only login assets and corpus-free application bundles may be publicly served.
+See [R06].
+
+E. Search first, grounded inference second.
+Ship deterministic lexical search, exact symbol lookup, filters, and citations.
+Implement the Ask provider adapter in the first release. Activate an already
+approved inference endpoint only after a budget and successful smoke test exist.
+Semantic retrieval must actually use compatible embeddings; do not rename lexical
+search "semantic" when the embedding provider is unavailable.
+
+F. Two loops, not an endless agent process.
+The hourly loop is a deterministic program: resource check, incremental ingestion,
+validation, export, replication, and Git sync. It makes no model call when idle.
+The improvement loop runs a limited experiment only when there is a concrete
+hypothesis, budget, resource headroom, and an eligible task. No GPU training loop.
+
+G. Prefer the Fisidi product path, without disturbing existing services.
+Target https://fisidi.com/pubster/ only after verifying ownership, zone permissions,
+and non-conflicting routes. Otherwise use the actual assigned workers.dev hostname
+with the same /pubster/ base path. Do not buy a domain, replace root DNS, change MX,
+or claim the preferred URL is live before testing it.
+
+===============================================================================
+03. PREFLIGHT AND CAPABILITY DISCOVERY
+===============================================================================
+
+Run a read-only preflight before scaffolding or provisioning. Write a REDACTED
+reports/preflight.json and a brief docs/ENVIRONMENT.md. Never dump env or credentials.
+
+Discover:
+- Actual host name, OS, CPU architecture, physical/logical cores, memory pressure,
+  free disk, existing job runners, and whether the host is sleeping/on battery.
+- Actual OpenClaw version, workspace, gateway connectivity, registered tools,
+  enabled Cloudflare integration, paired execution node, and operator permissions.
+- Existing workspace candidate: ~/.openclaw/workspace. Verify; do not assume it.
+- Existing Pubster directory/repository and dirty worktree state before creating one.
+- Git and GitHub authentication, actual account, accessible owner, remotes, visibility.
+- Wrangler availability/authentication, authorized account IDs, existing Workers,
+  R2/D1 resources, worker routes, and current account usage/limits.
+- Existing Node/pnpm/Python/Swift/Xcode tools. Record exact versions and paths.
+- Existing authorized inference endpoints and budgets WITHOUT printing API keys.
+
+Safe probes, adjusted to installed tools:
+  openclaw --version
+  openclaw --help
+  git --version
+  git status --short --branch                # only inside an identified repository
+  gh auth status                            # keep credential details out of reports
+  gh api user --jq .login
+  node --version
+  pnpm --version
+  python3 --version
+  swift --version                           # optional; absence is not a corpus blocker
+  xcode-select -p                           # optional; do not launch an installer
+  wrangler --version                        # or the existing pinned local CLI
+  wrangler whoami
+
+Cloudflare tools exposed through OpenClaw take precedence over reinventing token
+handling. Read their actual schemas. Fall back to the authenticated Wrangler CLI
+only if available and authorized. Do not assume a remembered plugin is enabled.
+Do not trigger login popups or privileged package installers during unattended runs.
+
+GitHub owner:
+Prefer an existing authorized Pubster remote. Otherwise discover the authenticated
+account, then create owner/pubster privately. Historical owner hints are not proof
+of current authority. Do not create a similarly named duplicate if a repo exists.
+
+Preflight statuses:
+READY | LOCAL_READY_CLOUD_BLOCKED | LOCAL_READY_GIT_BLOCKED | PASSWORD_SETUP_REQUIRED
+INFERENCE_SETUP_REQUIRED | RESOURCE_DEFERRED | OWNER_REVIEW_REQUIRED
+
+Blocked optional integrations must not stop local corpus work. Persist the exact
+missing permission/dependency, not an invented installation or success report.
+
+===============================================================================
+04. REPOSITORY LAYOUT AND LOCAL STORAGE
+===============================================================================
+
+Default code location, after discovery:
+  $OPENCLAW_WORKSPACE/pubster
+Default private state, outside version control:
+  ~/.local/share/pubster
+Default secrets:
+  macOS Keychain or the host's existing secret manager; restricted files only as a
+  fallback, outside the repository, directories 0700 and files 0600.
+
+Repository layout:
+  pubster/
+    README.md
+    AGENTS.md
+    IMPLEMENTATION_SPEC.txt
+    pnpm-workspace.yaml
+    package.json
+    pnpm-lock.yaml
+    pyproject.toml
+    uv.lock                         # if uv is the selected existing tool
+    .gitignore
+    .gitattributes
+    .env.example                    # names only; never real values
+    apps/
+      web/                          # Next.js + Tailwind + shadcn/ui
+        app/{login,search,reader,sources,skills,downloads,ask,status}/
+        components/
+        lib/api-client.ts
+        next.config.ts
+      edge/
+        src/index.ts
+        src/{auth,api,assets,inference,security}/
+        wrangler.jsonc
+        migrations/
+    packages/
+      schemas/                      # authoritative JSON Schema contracts
+      ui/
+      retrieval/                    # pure query/ranking logic and tests
+    pipeline/
+      pubster/{cli,config,acquire,parse,chunk,validate,store,export,publish}/
+      tests/fixtures/
+    config/
+      runtime.example.json
+      sources.seed.jsonl
+      sources.lock.jsonl
+      taxonomy.json
+      rights-policy.json
+      budget-policy.json
+      evaluation-policy.json
+    corpus/
+      curated/                      # bounded, licensed, diff-friendly JSONL shards
+      knowledge/                    # curated Markdown; stable paths
+      skills/                       # validated static skill packs
+      examples/                     # trusted examples with test metadata
+      licenses/
+      manifests/                    # small immutable manifests / current pointer
+    research/
+      program.md
+      hypotheses.jsonl
+      results.jsonl
+      candidates/                   # manifests, not executable untrusted projects
+    evals/
+      dev/                          # developer-visible test set
+      regression/
+      fixtures/
+    scripts/
+      preflight.sh
+      bootstrap.sh
+      run-hourly.sh
+      pubsterctl
+      provision-cloud.ts
+      sync-github.py
+      install-scheduler.py
+      set-password.py
+      smoke-test.py
+      verify-export.py
+    docs/
+      ARCHITECTURE.md
+      DATA_DICTIONARY.md
+      SOURCE_POLICY.md
+      ENGINEERING_METHOD.md
+      OPERATIONS.md
+      SECURITY.md
+      BACKUP_RESTORE.md
+      ADR/
+    reports/                        # redacted, compact, meaningful changes only
+
+Private state layout:
+  state/pubster.sqlite3              # canonical records, tasks, revisions, outbox
+  raw/sha256/<prefix>/<digest>        # permitted raw bytes, deduplicated
+  mirrors/                           # bounded sparse upstream mirrors, when needed
+  exports/<corpus_id>/                # immutable complete approved snapshots
+  staging/                           # temporary extraction/publication
+  cache/                             # expendable conditional fetch/embedding cache
+  logs/                              # rotating structured logs, no secrets/questions
+  locks/
+  backups/
+  evaluator/                         # protected holdout/evaluator configuration
+  runtime.json                       # resolved non-secret local settings
+
+Never commit:
+Raw credentials, user passwords, session data, .env files, .dev.vars, private keys,
+OpenClaw configuration, chat transcripts, entire home directories, raw unapproved
+source dumps, SQLite WAL/SHM files, live SQLite databases, node_modules, .next,
+model weights, browser profiles, cache directories, or generated bulk archives.
+
+Track small, approved JSONL/Markdown artifacts and manifests. Publish bulky approved
+exports through private R2 and eligible private GitHub release attachments, not
+through repeated binary database commits. See section 14 and [R09].
+
+===============================================================================
+05. RUNTIME CONFIGURATION AND RESOURCE BUDGETS
+===============================================================================
+
+The following values are proposed starting limits, not measurements or performance
+promises. Lower them automatically under host pressure; never increase spending,
+privileges, or hard limits through an experiment.
+
+config/runtime.example.json:
+{
+  "schema_version": "1.0",
+  "timezone": "America/Toronto",
+  "site": {"name": "Pubster", "base_path": "/pubster", "visibility": "private"},
+  "storage": {"engine": "sqlite", "wal": true, "fts5": true},
+  "maintenance": {
+    "schedule": "0 * * * *",
+    "max_wall_seconds": 480,
+    "max_sources_per_tick": 8,
+    "max_documents_per_tick": 150,
+    "max_download_mb_per_tick": 50,
+    "max_network_requests_in_flight": 2,
+    "max_workers": 1,
+    "retry_attempts": 3
+  },
+  "resources": {
+    "pipeline_rss_soft_mb": 384,
+    "pipeline_rss_hard_mb": 768,
+    "average_cpu_target_one_core_percent": 20,
+    "max_cpu_seconds_per_tick": 90,
+    "min_free_disk_gb": 10,
+    "managed_data_soft_cap_gb": 10,
+    "managed_data_hard_cap_gb": 20,
+    "defer_on_battery": true,
+    "defer_on_memory_pressure": true,
+    "defer_on_thermal_pressure": true,
+    "idle_seconds_before_heavy_job": 300,
+    "prevent_system_sleep": false
+  },
+  "research": {
+    "enabled": true,
+    "max_experiments_per_day": 2,
+    "max_model_calls_per_day": 2,
+    "max_wall_seconds_per_experiment": 300,
+    "max_total_wall_seconds_per_day": 600,
+    "max_input_tokens_per_call": 8000,
+    "max_output_tokens_per_call": 2000,
+    "allow_model_training": false,
+    "allow_gpu": false,
+    "allow_production_policy_edits": false
+  },
+  "publication": {
+    "retained_cloud_snapshots": 3,
+    "git_max_blob_mb": 5,
+    "git_curated_total_mb": 256,
+    "release_transfer_budget_mb_per_day": 250,
+    "new_paid_services_allowed": false,
+    "new_paid_usage_budget_usd_per_day": 0
+  },
+  "inference": {
+    "mode": "auto_existing_authorized_provider",
+    "provider": null,
+    "model": null,
+    "requests_per_session_per_hour": 10,
+    "max_question_chars": 4000,
+    "max_context_tokens": 8000,
+    "max_output_tokens": 1200,
+    "timeout_seconds": 30,
+    "store_questions": false
+  },
+  "notifications": {"routine": "none", "critical": "originating_private_channel"}
+}
+
+Do not treat a zero incremental-spend budget as permission to exhaust an account's
+other paid allocation. Reuse explicitly authorized included capacity only. If no
+usage accounting or cost boundary can be enforced, leave model/crawler features
+unconfigured and report the blocked capability. Search and local exports still work.
+
+Implementation details:
+- Use one supervisor, a non-blocking process lock, checkpoints, and a persistent queue.
+- Lower process priority with nice where permitted. Nice is NOT a CPU quota.
+- Measure process-tree CPU time/RSS, not only the parent process. A watchdog pauses
+  or terminates owned child groups safely when limits are exceeded.
+- Budget fetch bytes before downloads using streaming counters, not Content-Length
+  alone; limit decompressed size, archive entries, depth, and total bytes.
+- Set OMP_NUM_THREADS=1 and similar applicable library thread controls for optional
+  numeric tasks. Do not spin up a local model or GPU just to summarize a document.
+- No browser/Terminal windows, sounds, focus changes, simulator boots, or notifications
+  during routine tasks. Do not use caffeinate or wake the machine for Pubster.
+- When source material is unchanged, do not rerun an LLM, rebuild Next, rewrite every
+  Markdown file, create a commit, or redeploy the Worker.
+- Initial frontend dependency installation/build is heavier than maintenance. Run
+  once under idle conditions, separately capped (up to 2 GiB RSS and 20 minutes by
+  default), and stop/defer if the host cannot support it. Do not claim zero impact.
+
+===============================================================================
+06. SOURCE REGISTRY, ACQUISITION, AND RIGHTS POLICY
+===============================================================================
+
+Source basis:
+Section 22 embeds every numbered entry from the supplied "Swift Mastery Atlas — Top
+100 GitHub Repositories & Resources". Preserve original identifiers and domain
+assignments. The atlas is a candidate inventory, not proof of current maintenance,
+licensing, correctness, or compatibility. Do not silently replace its entries.
+Record verified redirects, successor projects, deprecations, and alternatives as
+separate evidence-backed metadata. No requirement exists to ingest all 100 at once.
+
+Initial working set, subject to rights and runtime verification:
+  swiftlang/swift-book
+  swiftlang/swift-docc
+  swiftlang/swift-evolution
+  swiftlang/swift-package-manager
+  swiftlang/swift-testing
+  apple/swift-collections
+  apple/swift-algorithms
+  apple/swift-async-algorithms
+  apple/swift-nio
+  apple/swift-argument-parser
+
+Bootstrap with two small sources, then expand incrementally. For swiftlang/swift,
+index selected documentation and standard-library examples first. Never clone full
+compiler history or build the Swift compiler as a routine ingestion step.
+
+Registry record contract:
+{
+  "source_id": "atlas-010",
+  "label": "swiftlang/swift-docc",
+  "submitted_url": "https://github.com/swiftlang/swift-docc",
+  "canonical_url": null,
+  "kind": "github_repository",
+  "domain": "language-compiler",
+  "authority": "unverified",
+  "status": "candidate",
+  "verification": {
+    "checked_at": null,
+    "default_branch": null,
+    "resolved_commit": null,
+    "archived": null,
+    "redirect_chain": [],
+    "license_evidence": []
+  },
+  "acquisition": {
+    "mode": "metadata_only",
+    "include_globs": ["README*", "Documentation/**", "docs/**", "**/*.docc/**"],
+    "exclude_globs": [".git/**", "**/node_modules/**", "**/.build/**"],
+    "refresh_hours": 24,
+    "max_file_bytes": 2097152,
+    "max_source_bytes": 52428800
+  },
+  "rights": {
+    "status": "unknown",
+    "spdx_expression": null,
+    "can_fetch_full_text": false,
+    "can_redistribute": false,
+    "can_send_to_inference_provider": false,
+    "can_make_training_export": false,
+    "attribution_required": true
+  }
+}
+
+Allowed source lifecycle:
+candidate -> metadata_verified -> rights_reviewed -> fetch_approved -> indexed
+          -> quarantined | stale | retired | link_only
+
+Maintain sources.lock.jsonl with resolved revisions, license file hashes, source
+identity, extractor version, content policy, and last successful verification.
+Version updates are observations, not automatic endorsements of a new dependency.
+
+ACQUISITION RULES
+1. Prefer official GitHub APIs, conditional HTTP, and targeted raw-file retrieval.
+2. Pin content to commits, not floating main-branch URLs, after discovering the head.
+3. Use If-None-Match / If-Modified-Since, rate-limit headers, Retry-After, bounded
+   exponential backoff with jitter, and per-source request/byte budgets.
+4. Use a persistent deduplicated queue keyed by source + revision + path + extractor.
+5. Use sparse filtered shallow Git clones only when a docs-heavy source justifies it.
+   Inspect exact branches and paths; no recursive submodules or arbitrary hooks.
+6. Do not run upstream install scripts, Package.swift, plugins, macros, sample apps,
+   shell snippets, or build tools merely to extract documentation.
+7. If rendered HTML requires a browser, prefer source Markdown or known permitted
+   DocC JSON first. Use Firecrawl only when already available, authorized, and within
+   its assigned budget. No stealth/bypass or headless browser swarm.
+8. Discovery lists such as awesome-swift are link catalogs. Do not recursively crawl
+   every linked project or interpret popularity as authority.
+9. Never ingest secrets, user accounts, issues containing personal data, private
+   repositories, email, or unrelated projects through a broad discovery crawl.
+10. Validate redirect destinations and DNS/IP targets against the source allowlist.
+    Deny localhost, link-local, private networks, metadata services, non-HTTPS schemes,
+    credentials in URLs, oversized responses, path traversal, and archive symlinks.
+
+RIGHTS POLICY
+Publicly readable does not mean redistributable. Preserve repository/file licenses,
+notices, copyright lines, and attribution. GitHub documents the importance of an
+actual license; unknown rights must not be converted into assumed permission. [R10]
+
+Classify each source/file as:
+- redistribute_approved: specific evidence permits the planned use with obligations.
+- internal_retrieval_approved: acquisition is approved but hosted/exported full text
+  is excluded; provider processing requires its own permission flag.
+- link_only: title, URL, taxonomy, and independently authored short annotation only.
+- blocked: do not fetch or process content beyond necessary verification metadata.
+
+Default Apple Developer web pages, WWDC material, commercial tutorials, videos, PDFs,
+and websites to link_only until applicable reuse terms are checked. Do not mirror
+whole Apple documentation, paid courses, books, videos, or websites on the strength
+of a password gate. Repository code licenses do not automatically cover linked sites.
+Treat example-code licenses separately from documentation and media licenses.
+
+The user supplied a Metal specification PDF link as a candidate. Do not download or
+parse it during normal startup; apply the rights/resource review first. A future
+PDF adapter must preserve page references and distinguish text extraction from
+image/table interpretation. No OCR loop for ordinary GitHub documentation.
+
+An automated license detector is triage, not legal certainty. Ambiguous, mixed,
+missing, or custom licenses remain link_only or quarantined until reviewed.
+Do not relabel all combined exports as MIT or Apache. Each export needs a rights
+manifest and Third-Party Notices; exclude ineligible records from downloadable sets.
+
+Source freshness:
+- Initial primary docs: check at most every 24 hours by default.
+- Explicit high-change tracked sources: every 6 hours after budget verification.
+- Long-tail catalog entries: weekly metadata checks.
+- Hourly scheduling does not mean refetching all sources every hour.
+- Deleted/renamed files create tombstones/supersession links; do not silently resurrect
+  obsolete APIs. Remove prohibited content from current publications when required.
+
+===============================================================================
+07. KNOWLEDGE MODEL AND DATABASE CONTRACTS
+===============================================================================
+
+Authoritative contracts live in packages/schemas. Validate Python ingestion and
+TypeScript APIs against the same versioned JSON Schemas. Reject unknown critical
+fields rather than silently changing interpretation. Use UTF-8 and UTC timestamps.
+
+Separate identities:
+- source_id: stable catalog identity; survives repository rename.
+- document_id: hash of source_id + normalized original path + language.
+- revision_id: hash of document_id + upstream revision + raw-content digest.
+- chunk_id: hash of revision_id + structural locator + chunk-content digest.
+- corpus_id: hash of sorted accepted chunk/revision/export-profile identifiers.
+- run_id: operational timestamp/random ID; not part of content identity.
+
+Use SHA-256, documented canonical serialization, normalized URL/path rules, and
+stable ordering. Never include fetched_at alone in content digests. A no-change run
+must produce the same content files and corpus_id. Operational logs may still change.
+
+Canonical chunk JSONL shape (illustrative schema, not a verified source excerpt):
+{
+  "schema_version": "1.0",
+  "chunk_id": "sha256:<derived>",
+  "document_id": "sha256:<derived>",
+  "revision_id": "sha256:<derived>",
+  "source_id": "atlas-010",
+  "kind": "reference",
+  "title": "<actual extracted heading>",
+  "heading_path": ["<section>", "<subsection>"],
+  "body_markdown": "<actual preserved source text>",
+  "body_text": "<searchable plain-text projection>",
+  "language": "en",
+  "code_languages": ["swift"],
+  "domains": ["language-compiler", "learning-tooling"],
+  "topics": ["documentation"],
+  "symbols": [],
+  "platforms": [],
+  "availability": {
+    "swift_toolchain": null,
+    "swift_language_mode": null,
+    "xcode": null,
+    "os_minimums": {},
+    "evidence": []
+  },
+  "origin": {
+    "canonical_url": "<verified upstream URL>",
+    "repository": "swiftlang/swift-docc",
+    "commit": "<full verified SHA>",
+    "path": "<actual path>",
+    "line_start": 1,
+    "line_end": 1,
+    "anchor": null,
+    "raw_sha256": "<digest>"
+  },
+  "rights": {
+    "status": "redistribute_approved",
+    "license_ids": ["<verified identifier or local license reference>"],
+    "license_evidence_ids": ["<record id>"],
+    "attribution_ids": ["<notice id>"]
+  },
+  "verification": {
+    "state": "source_verified",
+    "code_test_state": "not_run",
+    "evidence_ids": [],
+    "reviewed_at": null
+  },
+  "derived": false,
+  "parent_chunk_ids": [],
+  "extractor": {"name": "<adapter>", "version": "<pinned>"}
+}
+
+Do not fill unknown OS minimums, Swift versions, licenses, citations, test outputs,
+or maintenance status with plausible guesses. null means unknown. Differentiate
+Swift compiler version, language mode, SDK, OS availability, and package version.
+An accepted evolution proposal is not automatically shipped; capture status and
+implementation version from evidence.
+
+Derived concept/recipe record adds:
+  problem, constraints, assumptions, invariants, recommended_approach,
+  alternatives, complexity_time, complexity_space, ownership_model,
+  concurrency_model, failure_modes, security_considerations,
+  tests, profiling_method, applicability, counterexamples,
+  supporting_chunk_ids, authoring_model_or_human, review_state.
+
+Generated text is always derived=true and initially candidate. Preserve its cited
+parents. Structural validation is not semantic verification. A model confidence
+number is not a correctness measurement. Keep unverified synthesis out of the
+verified knowledge view and out of automatic skill promotion.
+
+Core SQLite tables:
+  sources, source_revisions, license_evidence, documents, document_revisions,
+  chunks, chunk_citations, concepts, concept_evidence, examples, test_runs,
+  skill_packs, skill_pack_items, tasks, task_attempts, corpus_snapshots,
+  export_artifacts, publication_outbox, experiments, evaluation_runs, tombstones.
+
+Core local SQL baseline:
+  PRAGMA foreign_keys = ON;
+  PRAGMA journal_mode = WAL;
+  PRAGMA busy_timeout = 5000;
+  PRAGMA synchronous = NORMAL;
+
+  CREATE TABLE IF NOT EXISTS tasks (
+    id TEXT PRIMARY KEY,
+    task_key TEXT NOT NULL UNIQUE,
+    kind TEXT NOT NULL,
+    payload_json TEXT NOT NULL CHECK(json_valid(payload_json)),
+    state TEXT NOT NULL CHECK(state IN
+      ('queued','leased','done','retry','quarantined','cancelled')),
+    attempts INTEGER NOT NULL DEFAULT 0,
+    available_at INTEGER NOT NULL,
+    lease_owner TEXT,
+    lease_expires_at INTEGER,
+    last_error_code TEXT,
+    updated_at INTEGER NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS tasks_due ON tasks(state, available_at);
+
+  CREATE TABLE IF NOT EXISTS chunks (
+    rowid INTEGER PRIMARY KEY,
+    chunk_id TEXT NOT NULL UNIQUE,
+    document_id TEXT NOT NULL,
+    revision_id TEXT NOT NULL,
+    source_id TEXT NOT NULL,
+    title TEXT NOT NULL,
+    body_text TEXT NOT NULL,
+    body_markdown TEXT NOT NULL,
+    tags TEXT NOT NULL DEFAULT '',
+    record_json TEXT NOT NULL CHECK(json_valid(record_json)),
+    status TEXT NOT NULL,
+    redistribute INTEGER NOT NULL CHECK(redistribute IN (0,1)),
+    content_sha256 TEXT NOT NULL
+  );
+  CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
+    title, body_text, tags,
+    content='chunks', content_rowid='rowid'
+  );
+
+Implement and test INSERT/UPDATE/DELETE triggers that keep external-content FTS in
+sync, or use one transactional write path plus explicit rebuild verification. Do
+not leave an FTS table defined but unpopulated. All schema changes need migrations.
+
+Use short write transactions. Claim a task with an atomic lease operation, renew only
+while healthy, and recover expired leases on restart. A source/checkpoint/export is
+not done until its transaction and durability checks complete. Do not hold a SQLite
+write transaction across network calls or model inference.
+
+Cloud D1 projection, separate from the canonical database:
+  published_records(rowid, corpus_id, chunk_id, source_id, title, body_text,
+                    tags, record_object_key, verified_state, rights_state)
+  published_fts: FTS5 over title/body_text/tags with tested synchronization
+  corpus_registry(corpus_id, manifest_key, state, record_count, digest, created_at)
+  publication_state(singleton_id, active_corpus_id, previous_corpus_id, version)
+  sessions(token_hash, csrf_hash, created_at, last_seen_at, expires_at,
+           credential_version, revoked_at)
+  auth_rate_buckets(bucket_key, window_start, count)
+  inference_usage(bucket_key, reserved_units, consumed_units, expires_at)
+
+D1 supports FTS5; it is a SEARCH REPLICA, not a place to expose the local jobs table
+or secret state. [R07] Verify current database limits and retain at most the active,
+previous, and one staging corpus within the allowed storage budget.
+
+Use prepared statements. Translate user query text into a bounded escaped FTS
+expression; parameterization alone does not prevent invalid/expensive FTS syntax.
+Limit query length, terms, result count, offsets, and retrieval time.
+
+===============================================================================
+08. EXTRACTION, CHUNKING, VALIDATION, AND EXPORT PIPELINE
+===============================================================================
+
+Pipeline state machine:
+DISCOVER -> RESOLVE_REVISION -> CHECK_RIGHTS -> FETCH -> PARSE -> NORMALIZE
+         -> CHUNK -> DEDUP -> VALIDATE -> INDEX_LOCAL -> EXPORT_CANDIDATE
+         -> EVALUATE -> ACCEPT_LOCAL -> STAGE_CLOUD -> PUBLISH -> SYNC_GIT
+
+Every transition records input hashes, output hashes, tool version, duration,
+resource usage, status, and typed errors. Retry only transient failures. Poisoned
+inputs are quarantined with reasons, not retried forever.
+
+Adapters to implement:
+A. GitHub Markdown/README/documentation: parse with a real Markdown parser; preserve
+   code fences, headings, tables, lists, admonitions, links, and source line spans.
+B. DocC source: preserve documentation comments, symbol links, directives, tutorial
+   structure, language/platform variants, and references. Unsupported directives
+   remain in raw form with a parse warning; do not silently delete them.
+C. Existing permitted DocC JSON/archive: parse documented structures conservatively,
+   keep symbol identifiers and references, and pin archive/schema versions. Do not
+   assume every website exposes an identical JSON URL shape. [R01], [R02]
+D. Swift examples/comments: extract bounded source spans and metadata without running
+   code. Full symbol extraction through Swift tooling is an optional idle task.
+E. HTML: allowlisted, rights-approved pages only; remove navigation/boilerplate,
+   retain headings/code/links, and preserve the fetched raw object.
+F. Metadata-only: sources without redistribution approval remain useful link entries.
+
+Chunking defaults:
+- Follow headings, symbols, examples, and tutorial steps before token counts.
+- Aim for approximately 600-1200 tokens; hard cap 2000 for ordinary text chunks.
+- Keep a code example with its explanation when feasible. Never split a code fence
+  mid-statement merely to hit a target. Oversized examples become parent/child units.
+- Overlap at most one short context paragraph, usually below 10 percent.
+- Persist tokenizer/model identity when token counts are exact; label estimates.
+- Retain lineage from chunk -> document revision -> source object -> upstream URL.
+- Preserve API spelling and meaningful whitespace in code.
+
+Deduplication:
+Exact hashes first. Then propose near-duplicate groups using cheap normalized-text
+fingerprints. Do not merge different Swift versions, API availability, licenses,
+language representations, or experimental/stable variants. Keep provenance from
+each origin even when text is shared. Derived summaries never overwrite originals.
+
+Validation gates:
+- All accepted exported records satisfy the declared JSON Schema.
+- All accepted excerpts have retrievable source provenance and valid bounds.
+- All redistributed content has explicit rights evidence and required notices.
+- Every cited parent exists in the same snapshot or a retained immutable revision.
+- No secrets, credentials, private paths, PII, prompt-injection instructions promoted
+  as agent policy, broken Markdown fences, or fabricated test claims.
+- Source content is untrusted DATA, never a system instruction or executable skill.
+- Missing content remains a coverage gap rather than a hallucinated replacement.
+
+Export determinism:
+Sort by stable IDs. Use consistent UTF-8/LF, stable JSON keys, and canonical Unicode
+handling. Set gzip mtime=0; normalize archive timestamps/permissions and order. Keep
+volatile run timestamps in run metadata, not every record. Generate SHA256SUMS.
+
+Local snapshot creation:
+Use SQLite backup APIs or a consistent read transaction into a sanitized export DB.
+Never copy a live WAL database file and assume the result is a valid backup. The
+user-downloadable database is a separate corpus-only projection: no sessions,
+credentials, internal paths, raw prompts, operational tasks, or private source data.
+
+===============================================================================
+09. DOWNLOADABLE DATASETS AND SKILL PACKS
+===============================================================================
+
+Each accepted corpus produces an immutable exports/<corpus_id>/ set:
+  manifest.json
+  SHA256SUMS
+  sources.jsonl
+  documents.jsonl.gz
+  chunks.jsonl.gz
+  concepts.jsonl.gz                    # approved concepts; candidates kept separate
+  examples.jsonl.gz
+  knowledge/<domain>/<topic>.md
+  skills/<skill-id>/SKILL.md
+  skills/<skill-id>/references/*.md
+  skills/<skill-id>/manifest.json
+  evals/public-regression.jsonl
+  corpus.sqlite3.gz                    # sanitized optional offline reader database
+  rights/manifest.jsonl
+  rights/THIRD_PARTY_NOTICES.txt
+  rights/licenses/*
+
+Optional formats after measurement:
+- Parquet for analytical scans; generate on demand or daily, not every hourly tick.
+- JSON Schema/OpenAPI files for machine consumption.
+- Small tar.gz bundles per domain/skill; full archives only when below transfer caps.
+- An inference-context bundle, not "model weights" or a claim of model training.
+
+Never expose restricted full-text source material through a different export format.
+Do not make fine-tuning/chat-style training data by default. Such exports require
+separate rights, dataset-quality review, and target-provider schema validation.
+
+Manifest requirements:
+  schema_version, corpus_id, source_revision_set, pipeline_version,
+  accepted_record_counts_by_kind, coverage_by_domain, known_gaps,
+  verification_summary, rights_summary, artifacts[{id,path,mime,size,sha256}],
+  reproducibility_inputs, minimum_reader_version, created_at.
+
+Viewer requirements:
+- Markdown: sanitized rendered view plus raw text toggle and provenance panel.
+- JSONL: server-paginated records, schema display, search/filter, and raw download.
+- Never load a huge JSONL file into the browser or parse the full corpus in Worker RAM.
+- Viewer pagination uses D1 record locators or prebuilt small view shards. A
+  line_start parameter must not trigger scanning a multi-gigabyte gzip object.
+- Downloads require auth for GET, HEAD, and Range; stream R2 bodies.
+- Provide size, checksum, corpus revision, license summary, and Copy citation.
+
+Skill pack contract:
+  name, description, domain, version, corpus_id, source_revisions,
+  prerequisites, target_platforms, toolchain_constraints,
+  workflow, invariants, anti_patterns, test_strategy, performance_checks,
+  examples, references, uncertainty, licensing, token_budget.
+
+SKILL.md is a concise entry point, generally <= 1500 tokens. Put substantial detail
+in references/ and load it selectively. Provide compact/standard/deep context
+profiles around 2k/8k/24k tokens, never exceeding the requesting model's actual
+context budget after system/task/output reserve.
+
+Starter skill pack IDs:
+  swift-language-foundations
+  swift-structured-concurrency
+  swiftui-state-navigation
+  swift-testing-and-determinism
+  swift-data-and-persistence
+  swift-networking-and-streaming
+  swift-metal-and-performance
+  swift-audio-and-real-time-safety
+  swift-objective-c-cxx-interop
+  swift-security-and-production-delivery
+
+Do not install downloaded third-party skills automatically. Generated Pubster skills
+must contain only reviewed declarative workflows/reference links by default: no
+shell hooks, executable files, hidden callbacks, or secret access. If OpenClaw has
+its own skill format, validate against the INSTALLED version before registration.
+A compatibility adapter must not grant additional tools or filesystem privileges.
+
+===============================================================================
+10. WEBSITE INFORMATION ARCHITECTURE AND INTERFACE
+===============================================================================
+
+Brand: Pubster. Description: "Private Swift engineering library."
+Mobile-first, keyboard-accessible, restrained interface; no autoplay, animation
+engine, heavy visual effects, or unrelated Luminoise branding. Use system fonts.
+Light and dark themes with semantic Tailwind tokens, accessible contrast, visible
+focus indicators, reduced-motion support, and responsive code/table overflow.
+
+Next shell routes, all under /pubster:
+  /login/       Password form, generic errors, no corpus metadata.
+  /             Overview, search, domain cards, last published revision.
+  /search/      Query, exact symbols, filters, ranked results, source citations.
+  /reader/      ?id=<chunk/document id>&corpus=<id>; Markdown/raw/JSON tabs.
+  /sources/     Candidate/verified/link-only/stale sources and provenance.
+  /skills/      Targeted skill packs, token budgets, preview, download.
+  /downloads/   Versioned artifacts, hashes, formats, rights notices.
+  /ask/         Grounded question/answer with inline citations and provider status.
+  /status/      Protected health, jobs, publication, evaluation, and coverage.
+
+Avoid dynamic [id] pages in the static export. Use a stable reader shell with query
+parameters or separately proven static-export-compatible routing. Every fetched
+record is authorized by the Worker. Do not bake corpus text into Server Components,
+pre-rendered HTML, RSC payloads, JavaScript, sitemaps, OG images, or source maps.
+
+Core shadcn components:
+Button, Input, Card, Tabs, Badge, Dialog, Sheet, Select, Table, ScrollArea, Skeleton,
+Tooltip, Alert. Install only needed components with a pinned CLI/dependency set.
+Prefer native form semantics and explicit loading/error/empty/offline states.
+
+Search controls:
+Domain, source, platform, API/symbol, Swift toolchain/language mode where known,
+verification state, license eligibility, example/test status, and snapshot version.
+Display lexical/semantic/hybrid mode honestly. Do not display an uncalibrated score
+as "confidence" or imply that every search result is production-ready.
+
+Reader:
+Title, source badge, immutable upstream reference, revision, version applicability,
+license, extracted vs derived label, warnings, example validation, and related items.
+Show archived/experimental/unknown-support sources without presenting them as
+recommended dependencies. Surface contradictory versions rather than merging them.
+
+Status page:
+Local last heartbeat, last successful ingestion, cloud publication, Git sync,
+queue depth, quarantine count, disk estimate, coverage per domain, model availability,
+and active limits. Distinguish local changes from published changes and pending sync.
+Do not display absolute home paths, credentials, account tokens, or private prompts.
+
+No web admin that can execute shell commands, edit arbitrary paths, add arbitrary
+URLs, change auth policy, or deploy code. Pause/resume/budget control belongs to the
+local pubsterctl CLI initially. The ordinary shared password is a reader credential.
+
+A single shared password intentionally provides no per-person identity or audit
+attribution. Do not claim multi-user isolation. Add individual authentication later
+if more people need independent access; it is not a prerequisite for this build.
+
+===============================================================================
+11. CLOUDFLARE WORKER ROUTING, AUTHENTICATION, AND SECRETS
+===============================================================================
+
+11.1 BINDINGS AND DEFAULT CONFIGURATION
+
+apps/edge/wrangler.jsonc starter (fill discovered IDs; do not deploy placeholders):
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pubster",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../web/out",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "r2_buckets": [{"binding": "CORPUS", "bucket_name": "pubster-corpus"}],
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "pubster-index",
+    "database_id": "<DISCOVER_OR_CREATE_ID>",
+    "migrations_dir": "migrations"
+  }],
+  "vars": {
+    "BASE_PATH": "/pubster",
+    "AUTH_CREDENTIAL_VERSION": "1",
+    "INFERENCE_ENABLED": "false"
+  }
+}
+
+Validate this against the installed Wrangler schema; optional schema paths can
+vary with workspace installation. Pin compatibility_date after testing rather
+than silently bumping it in an hourly run. Add native rate-limit bindings according
+to the installed schema. No secret belongs in vars or NEXT_PUBLIC_*.
+
+Keep R2 public access and custom-domain public bucket access DISABLED. R2 is private
+by default; do not enable r2.dev to make downloads easier. [R08] Access objects only
+through the authenticated Worker binding. No public GitHub Pages mirror.
+
+11.2 BASE PATH AND ASSET MAPPING
+
+Next configuration:
+  const nextConfig = {
+    output: 'export',
+    basePath: '/pubster',
+    trailingSlash: true,
+    images: { unoptimized: true },
+    productionBrowserSourceMaps: false
+  };
+  export default nextConfig;
+
+Worker behavior:
+- /pubster -> 308 /pubster/.
+- Reject unrelated paths on workers.dev with 404; never proxy another Fisidi app.
+- Normalize and validate the URL once; reject ambiguous encoded separators,
+  traversal, backslashes, malformed encodings, duplicate credential cookies, and
+  unexpected methods. Apply the same normalization before route/auth decisions.
+- Strip /pubster ONLY in the internal request to env.ASSETS.fetch.
+- Map known static shell routes to their exact exported file, e.g. /search/ to
+  /search/index.html. Map /_next/static/... to the matching immutable asset.
+- With html_handling='none', explicitly control redirects and 404 behavior in the
+  Worker so asset redirects cannot lose the public /pubster prefix.
+- Never serve arbitrary local paths or derive R2 object keys from a URL path.
+
+Public allowlist, after normalization:
+GET /pubster/login/ (exact shell), its corpus-free required static assets,
+GET /pubster/favicon.ico, GET /pubster/robots.txt, GET /pubster/healthz,
+POST /pubster/auth/login (rate-limited).
+
+It is acceptable to expose hashed /_next/static/* application bundles because they
+contain only application code. Prove through build inspection that they contain no
+corpus, credentials, source tokens, private status, or server configuration. All
+other routes require authentication, including raw files, JSON, text, HTML aliases,
+Next navigation payloads, manifests, downloads, HEAD, and Range requests.
+
+Unknown protected routes should return 401/redirect before revealing existence.
+Do not let a SPA fallback serve a successful HTML page for an unauthorized API call.
+Use 303 to login for browser navigation; 401 JSON for API requests. No open redirects;
+returnTo must be a validated same-origin /pubster path.
+
+11.3 PASSWORD VERIFIER
+
+Treat the supplied password as an initial shared secret, not as repository content.
+Use a salted slow password verifier; never a plain SHA-256 password hash.
+
+Recommended Workers-compatible profile to implement and stage-test:
+  scrypt, N=32768, r=8, p=3, salt=32 random bytes, derived key=32 bytes,
+  maxmem=64 MiB, encoded as a versioned JSON verifier.
+
+OWASP documents memory-hard password hashing and scrypt alternatives. Current
+Cloudflare documentation lists node:crypto support with exceptions; native Argon2
+is listed as unsupported. Verify scrypt behavior, CPU cost, memory, and concurrency
+in the actual deployed runtime before enabling login. [R11], [R12]
+
+The chosen scrypt profile is a design default, not a guarantee that every account's
+Worker CPU quota can accommodate it. Limit concurrent verifications per isolate,
+apply rate limits BEFORE KDF work, reject excess work promptly, and test wrong and
+correct passwords remotely. Never downgrade the KDF just to fit an unmeasured plan.
+If the existing account cannot run it, keep the deployment gated/closed and report
+AUTH_RUNTIME_LIMIT; continue local/GitHub work. Do not purchase an upgrade silently.
+
+Do not assume native PBKDF2 allows any iteration count: upstream workerd has a
+history of production limits. Avoid copying a 600,000-iteration WebCrypto example
+without testing actual production behavior. Do not invent a custom cryptosystem.
+
+Verifier JSON:
+  {"version":1,"algorithm":"scrypt","N":32768,"r":8,"p":3,
+   "salt_b64":"<random>","key_b64":"<derived>"}
+
+Store this as Worker secret PUBSTER_PASSWORD_VERIFIER. Generate locally with a
+trusted script reading no-echo input or an approved secret channel, then pipe
+verifier bytes to Wrangler secret put. Use constant-time comparison of fixed-size
+buffers. Do not pass the password in argv/env logs or retain plaintext afterward.
+Password rotation regenerates salt/verifier, increments credential version, revokes
+existing sessions, and reruns acceptance tests.
+
+11.4 SESSIONS, CSRF, AND RATE LIMITS
+
+On valid login:
+- Generate a cryptographically random 256-bit opaque session token.
+- Store only SHA-256(token), creation/expiry, last_seen, credential version, and
+  revocation state in D1. The token is random, so a slow KDF is unnecessary here.
+- Cookie: __Host-pubster_session=<token>; HttpOnly; Secure; SameSite=Strict; Path=/.
+  No Domain attribute. Use a distinct name; do not overwrite other Fisidi cookies.
+- Absolute lifetime 8 hours; idle lifetime 60 minutes; never silently indefinite.
+- Rotate session on login; reject expired/revoked/old-version sessions on the server.
+- Logout is POST, deletes/revokes the session, clears cookie, and clears UI state.
+
+Only HTTPS in production. Reject missing/invalid Origin for login and state-changing
+browser requests; compare against explicit allowed deployment origins. Require JSON
+Content-Type for fetch-based login and a CSRF header/token for authenticated POSTs.
+Use a session-bound CSRF token available through a no-store session endpoint.
+Reject cross-origin credentialed CORS; do not use Access-Control-Allow-Origin: *.
+
+Rate limiting:
+- Fast per-IP gate before any KDF, initially 5 login attempts/minute.
+- D1 atomic per-IP/global windows for slower limits, initially 20 attempts/IP/hour
+  and 60 total attempts/minute; generic 429 + Retry-After.
+- Hash IP-derived limiter keys using a separate secret; retain only short windows.
+- Never globally lock all readers out forever because an attacker failed logins.
+- Native Worker rate limits are not a globally exact accounting system; use atomic
+  state for strict quotas and model-cost reservations. [R13]
+- If auth state/limiter services fail, fail closed, not unauthenticated.
+
+11.5 SECURITY HEADERS AND RENDERING
+
+Protected responses: Cache-Control: private, no-store; Vary: Cookie where useful;
+X-Content-Type-Options: nosniff; Referrer-Policy: no-referrer;
+X-Robots-Tag: noindex, nofollow, noarchive.
+
+CSP: default-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none';
+connect-src 'self'; conservative image/font/script/style policies. Static Next HTML
+can contain inline bootstrap scripts: extract build-specific CSP hashes rather
+than adding unsafe-eval or a blanket unsafe-inline script exemption. Test client
+navigation and shadcn behavior. Do not set domain-wide HSTS policies that could break
+other Fisidi services; scope header changes to the authorized application.
+
+Render Markdown as data with sanitization. No runtime MDX evaluation, arbitrary raw
+HTML, scripts, iframes, javascript: URLs, or untrusted remote images by default.
+Treat extracted snippets as inert text. Disable browser service-worker/offline corpus
+caching initially. After logout no new protected bytes may be retrieved; previously
+viewed/downloaded content cannot be retroactively erased from a user's device.
+
+11.6 SECRET INVENTORY
+
+Required: PUBSTER_PASSWORD_VERIFIER; IP_RATE_LIMIT_KEY; deployment credentials scoped
+outside the app; local GitHub credential through existing credential storage.
+Optional: INFERENCE_API_KEY or Workers AI binding; read-only PUBSTER_AGENT_TOKEN_HASH;
+private R2 upload credentials; export/manifest signing key if adopted.
+
+A browser never receives Cloudflare/GitHub/provider credentials. Do not expose a
+publish/admin endpoint secured only by the shared reader password. Use direct scoped
+Cloudflare deployment APIs from the trusted local publisher instead.
+
+===============================================================================
+12. API AND INFERENCE CONTRACTS
+===============================================================================
+
+Prefix every endpoint with /pubster. API schemas belong in packages/schemas and a
+versioned docs/openapi.json. Error envelope:
+  {"error":{"code":"AUTH_REQUIRED","message":"Authentication required",
+   "retryable":false},"request_id":"<opaque>"}
+Never include stack traces, raw SQL, secrets, or private filesystem paths in errors.
+
+Endpoint                          Access          Contract
+GET  /healthz                     public          {"ok":true}; no detailed status
+POST /auth/login                  public-limited  password JSON; session cookie
+POST /auth/logout                 session+CSRF    revoke cookie/session
+GET  /api/session                 session         session state + CSRF token
+GET  /api/status                  session         redacted publication/health state
+GET  /api/sources                 session         bounded cursor pagination
+GET  /api/search                  session         query + filters + corpus_id
+GET  /api/records/:id              session         verified record + source metadata
+GET  /api/artifacts                session         manifest-listed artifacts
+GET  /api/artifacts/:id/preview    session         paginated safe preview
+GET  /api/artifacts/:id/download   session         protected streaming download
+HEAD /api/artifacts/:id/download   session         authorized metadata
+GET  /api/skills                  session         available versioned skill packs
+POST /api/context                 session+CSRF    bounded task-specific context bundle
+POST /api/ask                     session+CSRF    grounded answer or explicit unavailable
+
+All data responses include corpus_id. Search pagination cursors bind query, filters,
+corpus, and last key. No mixing of revisions mid-page. Validate IDs against published
+manifests; don't accept a raw SQL expression, local filename, R2 key, or arbitrary URL.
+
+Search pipeline:
+1. Validate and normalize query; use exact symbol/API lookup where applicable.
+2. FTS5/BM25 retrieve a bounded candidate set; join only the requested active/retained
+   corpus and apply rights/verification/platform/version filters.
+3. If configured, embed query with the same pinned model/version/dimensions used for
+   documents and merge semantic candidates using a tested fusion/rerank method.
+4. Preserve authoritative/derived distinction, provenance, and version applicability.
+5. Return snippets with location citations and honest retrieval mode.
+
+For semantic indexing, prefer an existing approved remote embedding service and
+Cloudflare Vectorize only when already available/budgeted; otherwise retain the
+adapter and report semantic_mode=unavailable. A local embedding model is opt-in,
+idle-only, capped, and not resident by default. Cache by content digest + embedding
+model identity; model changes require a new compatible index, never mixed vectors.
+
+Grounded Ask execution:
+- Authenticate, enforce CSRF, validate <=16 KiB request and <=4000 character question.
+- Atomically reserve quota before any model request. Refuse when budget is unknown,
+  exhausted, or the feature is not configured. No blind paid fallback.
+- Retrieve up to 8 relevant source chunks under the context budget, using the
+  selected corpus and compatible version/platform filters.
+- Exclude sources that prohibit sending content to the selected provider.
+- Include chunk IDs and immutable citation metadata; label sources as untrusted data.
+- Call the configured adapter with tools disabled, a bounded output, and a deadline.
+- Ask for structured {answer, citations, limitations, assumptions}; validate output.
+- Check that every citation ID exists in retrieved evidence. Unsupported citations
+  cause rejection or a marked unavailable answer, not invented URLs.
+- Support streaming only after the non-streaming correctness contract passes. Use
+  cancellation propagation; settle usage reservations when the request finishes.
+- Distinguish unsupported evidence from model unavailability. Return "insufficient
+  source evidence" where appropriate rather than forcing a confident explanation.
+
+Provider interface:
+  generate({model, messages, maxOutputTokens, signal}) -> structured result + usage
+  embed({model, texts, signal}) -> vectors + dimensions + modelVersion
+
+Preferred provider order:
+An existing explicitly authorized remote inference endpoint, or an available
+Cloudflare Workers AI binding with verified model capability and budget. Discover
+current model IDs; pin a tested choice in runtime configuration. Do not hard-code a
+remembered model, assume a paid chat subscription supplies API credits, or expose
+OpenClaw's gateway as a public model service.
+
+No provider available:
+The Ask page remains present and explains INFERENCE_NOT_CONFIGURED. It offers the
+retrieved evidence/context download. This is a functional fallback, NOT completed
+AI inference. Mark release PARTIAL until a real question succeeds through the site.
+Similarly, lexical search is not proof that semantic search is enabled.
+
+Optional future local inference bridge:
+Only through a separately authenticated read-only service bound to loopback and a
+scoped tunnel/Access service boundary. Never tunnel ~/.openclaw or its management
+port. Require independently reviewed auth, timeouts, and host availability. This
+bridge is deliberately excluded from the primary low-resource deployment.
+
+User questions/answers are not automatically ingested, used as training examples,
+or stored in Git. Store redacted aggregate metrics by default; retention of question
+content requires an explicit configuration decision. The model has no filesystem,
+GitHub-write, deployment, shell, or database-mutation tools through the Ask endpoint.
+
+Downloads:
+Use R2 streaming; resolve artifact ID through the snapshot manifest; set sanitized
+Content-Disposition filenames and appropriate MIME. Implement single byte ranges
+and 416 for invalid ranges. A .gz artifact is downloaded as that file: avoid an
+unintended Content-Encoding decompression that would invalidate the advertised hash.
+Limit preview bytes and use per-record shards/indexes. No unrestricted presigned
+links that bypass the password gate; every download request is authorized.
+
+===============================================================================
+13. ATOMIC PUBLICATION, REPLICATION, AND ROLLBACK
+===============================================================================
+
+A publication is a generation, not an in-place edit to the live corpus. Local
+SQLite, R2, D1, and Git cannot share one transaction. Use a durable outbox and
+idempotent stages; never pretend cross-service writes are atomic.
+
+Publication algorithm:
+1. Under the local writer lock, freeze a candidate source/record set and build
+   deterministic sanitized exports. Assign content-derived corpus_id.
+2. Verify schemas, rights, record references, hashes, and regression gates locally.
+3. Record an outbox item keyed by corpus_id; commit local transaction.
+4. Upload immutable R2 objects under corpora/<corpus_id>/... or content hashes.
+   Existing matching objects are reused; mismatched objects abort publication.
+5. Read back required manifests and sample/full bounded checksums. Record counts,
+   bytes, and verification outcomes. Never log credentials.
+6. Stage D1 rows tagged with corpus_id; idempotent chunked writes with bounded batch
+   sizes. FTS synchronization must be complete for that corpus before promotion.
+7. Validate remote row counts, required-object existence, manifest digest, sample
+   retrieval, and rights exclusions. Mark the staged corpus ready.
+8. In one D1 transaction/batch, compare the current publication version and switch
+   active_corpus_id to the ready corpus, retaining the prior active ID. Abort on
+   conflict instead of last-writer-wins overwriting another publisher.
+9. Mark the local outbox published. If this final local update fails, reconcile from
+   D1/R2 on restart instead of republishing a different generation.
+10. Synchronize safe Git artifacts and update independent publication/Git status.
+    A Git outage must not corrupt cloud data, and a cloud outage must not stop Git.
+
+D1 publication_state is the authoritative online pointer. Do not keep an unrelated
+KV "latest" pointer that can serve a different generation. Resolve the pointer once
+per request and use that ID for all downstream reads. Dataset refreshes do NOT
+redeploy the Next frontend or Worker code.
+
+Retain active + prior good + one staging generation within storage budget. Clean
+orphaned staging uploads only after a grace period and reference scan. Do not delete
+active files because a local cache cleanup ran. Upstream removal/rights withdrawal
+has an explicit purge path and may override historical retention.
+
+Rollback:
+pubsterctl rollback --corpus <retained-verified-id> validates the manifest/objects,
+then atomically changes the online pointer and records an audit event. Application
+code rollback is separate and uses the previous known-good Worker deployment.
+A research experiment must never roll back the user's unrelated repository changes.
+
+Backups:
+Daily local database backup using SQLite backup API, capped retention of 3 daily +
+1 weekly snapshots initially; checksum and test restore periodically. Keep at least
+one independently stored approved export in private R2/GitHub release storage when
+available. Git alone is not a complete live-database backup. [R09]
+
+===============================================================================
+14. HOURLY GITHUB SYNCHRONIZATION
+===============================================================================
+
+"Push everything" means all Pubster code, configuration without secrets, approved
+curated knowledge, manifests, evaluation results, and eligible release artifacts.
+It does not mean the entire computer, raw private state, credentials, dependencies,
+model weights, unrestricted upstream mirrors, or every intermediate cache file.
+
+Repository defaults:
+- Name: pubster; PRIVATE. Reuse an existing authorized repo if present.
+- Owner: discovered from existing remote/authenticated account, not guessed.
+- Main branch: implementation, docs, schemas, config, approved curated corpus.
+- Separate candidate branches/worktrees for experiments.
+- If branch protection prevents direct writes, push automation/pubster-sync and
+  report/open the appropriate PR; do not weaken protection or force-push.
+- No public forks, Pages, public releases, or visibility changes.
+
+Hourly sync sequence, under a separate bounded sync lock:
+1. Verify repository root, remote URL, allowed owner, PRIVATE visibility, branch,
+   clean automation-owned state, and no unexpected human edits/conflicts.
+2. Fetch remote refs without altering files. If remote diverged, stop mutation and
+   record GIT_DIVERGED; preserve both versions. Never force-push/reset/stash the user's
+   changes or silently resolve conflicts with generated output.
+3. Build/refresh only changed safe managed files from accepted local snapshots.
+4. Secret scan changed content and filenames, check rights policy, schema, large-file
+   limits, and generated-skill safety. Exclude the source request containing password.
+5. Stage only a reviewed explicit path allowlist. Never git add . across the workspace.
+6. If no staged change, do not create an empty commit. A heartbeat alone is not a
+   corpus change; no timestamp-only README/status churn.
+7. Commit with a stable summary, e.g. "corpus: refresh 2 sources, +14/-3 records".
+8. Push fast-forward with bounded retries. Persist remote commit SHA and status.
+9. Upload changed eligible bulk exports as PRIVATE release attachments with digest
+   verification and a manifest linking them to the corpus_id/commit. Reuse identical
+   content-addressed artifacts rather than reuploading every hour.
+10. Record independent code/data/release-sync statuses. Report a budget-limited or
+    failed bulk sync as pending, not "everything pushed".
+
+Regular Git limits:
+Keep individual managed blobs <=5 MiB and the curated tracked corpus <=256 MiB by
+policy. GitHub currently warns above 50 MiB and blocks regular files above 100 MiB;
+it advises against large database dumps in ordinary Git history. [R09] Do not solve
+this with hourly full SQLite commits or automatically enabled paid LFS.
+
+Complete approved exports:
+Keep large JSONL/SQLite/tar.gz objects local and in private R2, with optional private
+GitHub release attachments. Verify current release per-file/account limits before
+upload. Split large artifacts into manifest-listed parts if needed and permitted.
+No single private repo can be promised as unlimited free object storage.
+
+If a corpus exceeds transfer or storage budgets, continue small incremental safe
+Git changes and local work, keep the exact pending artifact list, and stop bulk
+uploads until capacity exists. Do not delete irreplaceable data to make a push pass.
+
+Do not create GitHub Actions that run on every hourly corpus commit. Use local
+validation and deployment by default. Optional hosted CI should filter code paths,
+not corpus-only changes, and must have explicit budget permission. GitHub Actions
+availability or billing problems must not stop deterministic local tests or sync.
+
+===============================================================================
+15. QUIET SCHEDULING AND HOST LIFECYCLE
+===============================================================================
+
+Install exactly ONE scheduler for the maintenance controller, not cron + launchd +
+OpenClaw timers simultaneously. Discover existing Pubster jobs and update in place.
+The controller can select one research experiment after maintenance when eligible;
+do not create a second unrestricted background agent loop.
+
+Schedule: minute 0 of each hour, America/Toronto; single running instance.
+The configured hourly schedule is not an uptime guarantee. When the host is asleep,
+offline, logged out, or unpowered, no local push can occur. On recovery run one
+coalesced catch-up for the latest state; do not replay dozens of missed hours.
+Do not change sleep settings, create a wake schedule, or prevent sleep.
+
+Preferred scheduler: existing OpenClaw command automation, when supported and
+operator-authorized. Command payloads can execute without a model-backed turn;
+validate installed CLI names/flags and privileges. [R14]
+
+Current documented command shape (verify installed --help before use):
+  openclaw automations create "0 * * * *" \
+    --name "Pubster hourly maintenance" \
+    --tz "America/Toronto" \
+    --command-argv '["/ABSOLUTE/PATH/TO/pubster/scripts/run-hourly.sh"]' \
+    --command-cwd "/ABSOLUTE/PATH/TO/pubster" \
+    --timeout-seconds 900 \
+    --no-deliver
+
+Use the actual executable paths discovered during preflight. Prefer an exact argv
+payload, not arbitrary shell text. Do not store credentials in command payloads,
+arguments, scheduler environment reports, or prompts. Set delivery mode NONE and
+configure only the critical deduplicated alert path separately.
+
+If the installed version exposes only older cron syntax, use its real schema/help
+rather than assuming the current docs match. Do not edit OpenClaw's internal jobs
+store or grant yourself operator.admin. If scheduler access is unavailable but
+normal authorized local execution permits it, use the OS scheduler below.
+
+macOS LaunchAgent fallback (substitute escaped absolute paths):
+  Label: com.fisidi.pubster.hourly
+  ProgramArguments: ["/absolute/pubster/scripts/run-hourly.sh"]
+  WorkingDirectory: /absolute/pubster
+  StartCalendarInterval: {Minute: 0}
+  RunAtLoad: false
+  ProcessType: Background
+  LowPriorityIO: true
+  Nice: 10
+  StandardOutPath: /absolute/private-state/logs/launchd.stdout.log
+  StandardErrorPath: /absolute/private-state/logs/launchd.stderr.log
+
+Write only ~/Library/LaunchAgents/com.fisidi.pubster.hourly.plist. Use launchctl
+bootstrap/bootout for that exact label in the current user's GUI domain. No sudo,
+LaunchDaemons, broad service restarts, or edits to another application's jobs.
+Install log rotation. Verify a manually triggered run, then verify scheduler state
+and an actual scheduled run when it occurs; do not invent that latter evidence.
+
+Linux fallback:
+A user systemd timer/service with equivalent schedule, CPU/RSS limits where
+supported, no privileged units, and one coalesced missed-run policy. Check user
+service persistence; do not enable lingering globally without authority.
+
+Controller pseudocode:
+  acquire nonblocking project lock; otherwise record SKIPPED_ALREADY_RUNNING
+  load validated config and secrets through approved channels
+  if paused: record SKIPPED_PAUSED and exit
+  recover expired task leases and reconcile unfinished publication
+  inspect resource/network/disk conditions
+  if safe: process due sources within per-tick budgets
+  if changed: validate -> export -> evaluate -> accept/publish
+  attempt bounded Git sync of already accepted work even if ingestion was deferred
+  if idle/headroom/budget/eligible hypothesis: run ONE bounded improvement candidate
+  persist redacted status and metrics
+  release lock; exit
+
+A network outage is not permission to hammer retry loops. Retry at most the configured
+attempt count, then leave work queued with backoff. A 304 response or no-change
+revision costs no model call. Research failure does not disable corpus browsing.
+
+Routine delivery: none. Critical alerts: one concise private message per incident,
+with cooldown, only for suspected credential exposure, repeated publication failure,
+corruption, severe disk pressure, or a persistent capability block. No hourly chat
+spam. Visible pause/status controls must exist through pubsterctl.
+
+Full stop:
+pubsterctl pause stops future new tasks and lets safe short transactions finish.
+pubsterctl stop cancels only this project's process groups, closes resources, and
+preserves resumable checkpoints. It does not kill Node/Python globally.
+
+===============================================================================
+16. AUTORESEARCH-STYLE IMPROVEMENT AND EVALUATION
+===============================================================================
+
+Use the experiment/evaluate/retain-or-reject method associated with autoresearch,
+not its GPU language-model training workload. The referenced upstream project is
+built around automated training experiments; Pubster deliberately adapts the loop
+to corpus/retrieval/skill quality. Do not clone it and start train.py on this host.
+See [R15]. This is not automatic modification of an underlying model's weights.
+
+Allowed improvement targets:
+- Chunk boundaries and context grouping.
+- Duplicate detection thresholds, without removing provenance/versions.
+- Query normalization, exact-symbol handling, ranking/fusion weights.
+- Taxonomy mappings and coverage-gap prioritization.
+- Static skill-pack organization and context selection.
+- Parser fixes backed by new fixtures and complete existing regressions.
+
+Forbidden automatic targets:
+Authentication, authorization, secrets, spending/resource limits, source/rights
+allowlists, evaluator code, holdout answers, deployment scopes, scheduler privileges,
+Git remotes, repository visibility, destructive migrations, or unrelated projects.
+The optimizer cannot relax its own acceptance gates or give itself more tools.
+
+Experiment process:
+1. Pick a concrete failing case from an approved dev evaluation or coverage gap.
+2. Write one hypothesis, baseline corpus/config/code digests, intended change,
+   expected metric, risk, and time/resource budget.
+3. Create an isolated candidate workspace. The proposal model receives only the
+   minimal relevant fixtures/text and may output a patch/config proposal; no secrets,
+   deployment credentials, arbitrary shell, or direct production write tools.
+4. Validate allowed paths, patch size, schema, symlinks, and policy constraints.
+5. Apply the proposal in the candidate workspace through a trusted runner.
+6. Run the frozen evaluator on identical inputs and hardware/conditions where possible.
+7. Retain only candidates that pass every hard gate and improve a preregistered
+   objective without unacceptable regressions. Otherwise discard the candidate.
+8. Record results, rationale, measured resource use, and rollback reference.
+9. Promote eligible low-risk data/ranking changes to the accepted snapshot. Code
+   changes outside the narrowly approved parser/retrieval area remain review-needed.
+
+No "infinite self-improvement" instruction. Stop at experiment/day/time/token limits,
+when no hypothesis exists, under resource pressure, or after repeated regressions.
+A quiet deterministic cleanup can proceed without an LLM; no-budget AI experiments
+remain queued with a truthful status.
+
+Evaluation design:
+- Seed at least 20 grounded launch queries before the first automatic promotion.
+- Expand toward 100+ curated queries across the ten domains and Objective-C/interop.
+- Keep development, regression, and protected holdout partitions. Split related
+  source/examples together to avoid near-duplicate leakage across partitions.
+- Keep the authoritative evaluator and holdout outside candidate-editable paths.
+  A same-user filesystem path is not a security sandbox: enforce tool/path controls,
+  remove credentials, and use a stronger approved sandbox for executable candidates.
+- Derive results in the trusted runner; do not accept model-written scores.
+- Never let the optimizer edit gold answers or the evaluator to raise its score.
+
+Hard gates for an accepted snapshot:
+100% schema-valid exported records; 100% resolvable provenance for accepted excerpts;
+100% rights compliance under the configured export policy; zero credential leaks;
+zero fabricated citation IDs; zero auth bypasses; zero failing required regressions.
+
+Retrieval improvement measures:
+Recall@10, nDCG@10, exact-symbol hit rate, version/platform precision, duplicate
+rate, source coverage, and measured p50/p95 latency on a declared environment.
+Record the sample size and test-corpus digest with each score. Start from measured
+baselines; a target such as Recall@10 >=0.90 is a goal, not an achieved fact.
+
+Promotion example:
+Require a reproducible nDCG@10 gain of at least 0.01 absolute on the development set,
+no new critical regression, no holdout decline beyond measurement noise, and no
+p95/resource regression beyond a declared budget. For parser repairs, recovered
+valid records plus unchanged regressions can be the objective instead. Choose the
+objective BEFORE running the candidate. Repeat noisy performance measurements.
+
+Evidence quality is separate from extraction validity. Model-generated statements
+must not be auto-labeled true solely because citations exist. Verified synthesis
+requires substantive review or a narrowly defined reproducible check appropriate to
+the claim. A compiler pass does not prove algorithmic correctness or API guidance.
+
+research/program.md must contain:
+  objective; allowed_paths; forbidden_paths; immutable_policy_digests;
+  budgets; candidate_selection; evaluation_command; hard_gates;
+  retain_rule; discard_rule; stop_rules; audit_fields; rollback_procedure.
+
+results.jsonl fields:
+  experiment_id, hypothesis_id, baseline_digest, candidate_digest,
+  changed_paths, evaluator_digest, corpus_id, metrics_before, metrics_after,
+  tests_passed, tests_failed, duration_ms, peak_rss_mb, cpu_seconds,
+  model_usage, estimated_or_observed_cost, decision, reason, promoted_commit.
+
+Do not treat a failed experiment as an operational emergency. Keep the last good
+production state. Prevent repeated exploration of identical rejected changes by
+hashing hypotheses and recording the measured reason for rejection.
+
+===============================================================================
+17. SWIFT / SWIFTUI / OBJECTIVE-C ENGINEERING CURRICULUM
+===============================================================================
+
+Preserve the atlas's ten domains:
+1 language/compiler; 2 learning/tooling; 3 interfaces; 4 architecture/testing;
+5 concurrency/networking; 6 data/persistence; 7 graphics/performance;
+8 audio/multimedia; 9 AI/ML; 10 security/systems.
+
+Add cross-cutting tracks instead of pretending the atlas already covers everything:
+Objective-C runtime and ARC; C/C++ interoperability; ABI/FFI; build/link/toolchains;
+embedded Swift and constrained systems; accessibility; platform availability;
+profiling; failure analysis; deployment and reproducibility.
+
+Separate categories:
+- Official API contracts and language documentation.
+- Approved/implemented language proposals with status and version evidence.
+- Reference implementations and production libraries.
+- Educational samples and historical patterns.
+- Experimental/archived projects useful only with explicit qualifications.
+- Pubster-authored recipes with evidence and reproducible tests.
+
+Do not claim a user-space SwiftUI app is "bare metal." Distinguish embedded targets,
+runtime internals, kernel/driver concepts, and normal sandboxed application APIs.
+Index unsupported or experimental techniques as such, not as universal capabilities.
+
+Every engineering recipe uses this method:
+Problem -> measurable requirements -> constraints/assumptions -> data/ownership model
+-> invariants -> algorithm -> complexity -> concurrency/backpressure -> failure modes
+-> security -> implementation -> tests -> profiling -> alternatives -> source evidence.
+
+Examples of concrete problem families:
+- Bounded async pipeline with cancellation, backpressure, and deterministic tests.
+- SwiftUI state ownership, identity, navigation restoration, and view update diagnosis.
+- SQLite transaction boundaries, migrations, offline synchronization, and retries.
+- HTTP range/caching strategies and cancellation in a media client.
+- Audio render-thread allocation/locking avoidance and measured buffer behavior.
+- Metal resource lifetime, frame pacing, GPU profiling, and thermal constraints.
+- Objective-C ARC/bridging/dispatch interaction and C/C++ ownership boundaries.
+- Algorithm choice with real input bounds and measured time/space complexity.
+- Typed errors, logs, metrics, dependency injection, and reproducible builds.
+- Security-sensitive storage, transport, cryptographic API selection, and test vectors.
+
+Compilation/testing policy:
+Default ingestion never runs arbitrary upstream code. Run only approved small
+fixtures in an isolated work directory with no secrets, no network, bounded CPU/RSS,
+and pinned dependencies/toolchains. Disable package plugins/macros/build scripts
+unless separately reviewed. Do not boot simulators or build large frameworks hourly.
+
+Verification labels:
+not_run | syntax_checked | typechecked | compiled | unit_tested | integration_tested
+| manually_reviewed | measured_on_target
+
+Record exact commands, toolchain, platform/architecture, dependency lock, exit status,
+and output digest. Never promote "compiled on macOS" into "tested on iOS/watchOS/
+visionOS." SDK availability and Intel/Apple Silicon constraints must be detected.
+Do not claim real-time safety from code inspection alone; retain its measured scope.
+
+Learning paths are curated indexes into evidence, not automatically fabricated
+textbooks. Highlight missing domains and unanswered engineering cases. Prioritize
+useful, validated coverage over record count, repository stars, or verbose summaries.
+
+===============================================================================
+18. DIRECT IMPLEMENTATION AND DEPLOYMENT RUNBOOK
+===============================================================================
+
+This section is addressed to the implementing OpenClaw/Varkon agent. The named
+pubsterctl commands and scripts are implementation deliverables; they do not exist
+merely because this document names them. Implement and test them before invoking
+the complete execution sequence. Do not ship a README pretending stubs are working.
+
+PHASE 0 — INSPECT, RESOLVE, AND CREATE SAFE BOUNDARIES
+- Perform section 3. Resolve code/state directories and the existing integrations.
+- Preserve any existing project and dirty files. Record planned changes in an ADR.
+- Create directories with restrictive permissions; establish source/config schemas.
+- Write .gitignore BEFORE copying any input or creating secrets. Do not copy the full
+  conversation/request into the repository: it contains the original password.
+- Embed this password-free spec as IMPLEMENTATION_SPEC.txt.
+- Convert section 22 into config/sources.seed.jsonl without changing source identity.
+- Record the additional URLs from section 23 separately, with origin=supplemental.
+
+PHASE 1 — SCAFFOLD THE IMPLEMENTATION
+Choose mutually compatible stable package versions using the official docs/registries
+at execution time, record exact versions, and commit the lockfile. Do not install
+an old remembered version or auto-upgrade the host's global Node/Python/OpenClaw.
+
+Use the existing supported Node runtime. Scaffold apps/web with create-next-app
+using TypeScript, App Router, Tailwind, and the selected package manager. Example
+shape, after resolving and exporting a real pinned CREATE_NEXT_APP_VERSION:
+  pnpm dlx create-next-app@"$CREATE_NEXT_APP_VERSION" apps/web \
+    --typescript --tailwind --eslint --app --use-pnpm --import-alias '@/*'
+
+Do not invoke interactive scaffolding blindly in unattended mode. Read the pinned
+CLI help and provide required non-interactive flags/config for that version. Create
+the workspace root intentionally; do not nest a second unrelated Git repository.
+
+Initialize shadcn/ui inside apps/web with a resolved pinned CLI version, then add
+only required components. Use its current Tailwind-compatible setup; do not mix
+older Tailwind directives/config with a different installed major version. [R16]
+
+Create apps/edge as a small TypeScript Worker package with pinned Wrangler, testing,
+schema validation, and Cloudflare types. A minimal router or a small pinned router
+library is sufficient; do not introduce a heavyweight server framework.
+
+Pipeline implementation:
+Python stdlib sqlite3/argparse/hashlib/gzip/tarfile plus a minimal pinned dependency
+set for HTTP, Markdown parsing, JSON Schema validation, and resource observation.
+Use a project virtual environment and a lockfile, not system pip installation.
+
+Recommended root commands to implement:
+  pnpm check                  # TS checks, schema compatibility, lint
+  pnpm test                   # deterministic unit/integration tests
+  pnpm --filter @pubster/web build
+  pnpm --filter @pubster/edge test
+  ./scripts/pubsterctl doctor --redacted
+  ./scripts/pubsterctl init
+  ./scripts/pubsterctl sources import config/sources.seed.jsonl
+
+PHASE 2 — MAKE LOCAL INGESTION WORK END TO END
+Implement the registry, rights rules, schema migrations, queue, leases, parsers,
+chunker, deduplication, FTS sync, exports, deterministic manifests, and test fixtures.
+
+Then run (after implementation):
+  ./scripts/pubsterctl sources verify --limit 2
+  ./scripts/pubsterctl ingest --profile bootstrap --limit-sources 2
+  ./scripts/pubsterctl validate --candidate
+  ./scripts/pubsterctl export --candidate
+  ./scripts/pubsterctl evaluate --suite launch
+  ./scripts/pubsterctl accept --candidate
+  ./scripts/pubsterctl status --json
+
+Do not auto-approve a license merely to pass the bootstrap. Pick an actually approved
+small source, or retain link-only metadata until rights are resolved. Write a useful
+README documenting actual counts and gaps, not fabricated completeness percentages.
+
+PHASE 3 — BUILD THE WEB INTERFACE AND AUTHENTICATION
+Build all section 10 pages and section 12 endpoints. Use fixture data ONLY in tests;
+production must clearly report empty/not-published states until a real snapshot exists.
+
+Implement the Worker gate before attaching any corpus binding or exposing exports.
+Implement login, session store, rate controls, source sanitization, CSRF, protected
+viewer/download, base-path mapping, and error handling. Add build-time assertions
+that no private data entered out/, public/, or client environment variables.
+
+Create scripts/set-password.py:
+- Read original supplied secret through an approved non-logging mechanism or getpass.
+- Do not trim/change case/normalize the user's password silently.
+- Generate random salt; derive the section 11 scrypt verifier locally.
+- Invoke pinned Wrangler secret put PUBSTER_PASSWORD_VERIFIER with verifier JSON on
+  stdin via a subprocess argument array. Capture/redact output; never echo verifier.
+- Delete plaintext references promptly; never write a plaintext temporary file.
+- Support a separate local-development secret file outside Git with 0600 permissions.
+- Support rotation and credential-version invalidation.
+
+When the original secret is already accessible to Varkon's authorized private task
+context, use it without asking the user to repeat it. When it is unavailable, record
+the blocker and keep working; the document itself is intentionally not a secret vault.
+
+PHASE 4 — PROVISION CLOUDFLARE RESOURCES NON-DESTRUCTIVELY
+Use the existing OpenClaw Cloudflare connector or authenticated pinned Wrangler.
+Inspect existing names before creating anything. Check current account capacity,
+billing boundaries, and service permissions. Never auto-upgrade an account.
+
+Representative Wrangler command shapes, run in apps/edge using its pinned version:
+  pnpm exec wrangler whoami
+  pnpm exec wrangler r2 bucket list
+  pnpm exec wrangler d1 list
+  pnpm exec wrangler r2 bucket create pubster-corpus       # ONLY if absent
+  pnpm exec wrangler d1 create pubster-index              # ONLY if absent
+  pnpm exec wrangler d1 migrations apply pubster-index --remote
+  pnpm exec wrangler secret put PUBSTER_PASSWORD_VERIFIER # secure stdin, not argv
+  pnpm exec wrangler secret put IP_RATE_LIMIT_KEY         # random secret, secure stdin
+
+Write actual resource IDs into the appropriate non-secret configuration. Provision
+staging separately or use an empty guarded deployment; never connect unauthenticated
+preview assets to the production corpus. Keep preview URLs disabled unless their
+auth boundary is explicitly tested.
+
+PHASE 5 — BUILD AND DEPLOY CODE
+  pnpm --filter @pubster/web build
+  pnpm --filter @pubster/edge test
+  pnpm check
+  ./scripts/pubsterctl security scan --build --repository
+  # from apps/edge:
+  pnpm exec wrangler deploy --dry-run
+  pnpm exec wrangler deploy
+
+Run real Workers-runtime tests, not only next dev. A local Node success does not
+prove edge-runtime crypto/binding/routing compatibility. Verify correct and wrong
+passwords, cookies, secret absence, session revocation, and private R2 before data
+publication. Capture the actual assigned URL and deployment identifier.
+
+Prefer a product-path route only after the standalone guarded deployment passes.
+Verify existing fisidi.com route ownership and precedence. Add only the exact
+/pubster and /pubster/* routes; never overwrite an existing Worker or whole-zone
+configuration. If an existing catch-all app owns the path and safe delegation is
+not established, keep the verified workers.dev URL instead of breaking the site.
+Retest base-path redirects and auth on every exposed origin. Once a custom path is
+used, either disable workers.dev or protect/test it equivalently.
+
+PHASE 6 — PUBLISH A REAL DATASET
+  ./scripts/pubsterctl publish --latest-accepted
+  ./scripts/pubsterctl verify-remote --latest-accepted
+
+Download one real JSONL artifact through an authenticated session, compute its
+SHA-256, and compare it with the manifest. Verify one Markdown reader page, one
+source citation, one search result, one source filter, and one skill-pack download.
+Verify all of those fail without authentication and after logout.
+
+PHASE 7 — CONNECT SITE INFERENCE
+Discover one already approved provider, permissions, actual model ID, usage boundary,
+and data-handling constraints. Configure its secret/binding without exposing it to
+Next/client bundles. Keep tool calls disabled. Run a source-grounded question through
+/api/ask; validate citation IDs and a known unsupported-question case.
+
+Record inference state separately from search state. An installed adapter with no
+working credentials is not enabled inference. If blocked, leave evidence retrieval
+and downloads usable and report the exact missing capability.
+
+PHASE 8 — CREATE/REUSE PRIVATE GITHUB REPOSITORY
+Use the current authorized owner. Create only if absent. Example command shape:
+  gh repo create "$OWNER/pubster" --private --source . --remote origin
+
+Check remotes before this command. Initialize Git only when needed. Configure commit
+identity from existing user settings; do not fabricate the user's identity. Build
+and validate a deliberately scoped first commit, then push with an explicit branch.
+Verify PRIVATE visibility through the API after creation.
+
+Implement and run:
+  ./scripts/pubsterctl sync-github --once
+  ./scripts/pubsterctl verify-github
+
+A prior token may have read-only or repository-specific scopes. Report a write-scope
+block instead of using another account, widening permissions, or creating a public
+repository. Local export remains a valid fallback deliverable.
+
+PHASE 9 — INSTALL QUIET MAINTENANCE AND IMPROVEMENT
+Implement run-hourly.sh as a small wrapper that invokes the actual pinned Python
+entry point; don't run pnpm install or next build each hour. Install one scheduler
+using section 15, with delivery off and known resource limits.
+
+  ./scripts/pubsterctl scheduler install --hourly --quiet
+  ./scripts/pubsterctl scheduler inspect --json
+  ./scripts/pubsterctl run --once --no-notify
+  ./scripts/pubsterctl research verify-gates
+  ./scripts/pubsterctl research run-one --dry-run
+
+Test no-change behavior, overlapping invocations, resource deferral, offline retry,
+source failure, Git failure, cloud failure, restart recovery, and pause/resume.
+A successful manual run plus scheduler registration must be labeled exactly that;
+only claim a scheduled run after observing one.
+
+PHASE 10 — HANDOVER
+Produce section 21's evidence report and send it through the originating private
+OpenClaw conversation. Return the actual live URL and private GitHub URL only when
+verified. Leave the requested scheduler enabled only after tests pass. Do not make
+ongoing chat promises that are unsupported by an installed and observed scheduler.
+
+===============================================================================
+19. REQUIRED CLI, ERRORS, AND OPERATIONS
+===============================================================================
+
+pubsterctl must implement:
+  doctor --redacted                 Discover capabilities without revealing secrets.
+  init                             Idempotent directory/schema initialization.
+  sources import FILE              Validate/import candidate registry.
+  sources verify --limit N         Metadata/rights evidence collection; bounded.
+  ingest --profile NAME            Process eligible queued source changes.
+  validate --candidate              Validate schemas, citations, rights, secrets.
+  export --candidate                Deterministic candidate artifacts.
+  evaluate --suite NAME             Trusted evaluation runner.
+  accept --candidate                Promote only a passing local candidate.
+  publish --latest-accepted          Stage/validate/activate cloud projection.
+  verify-remote                     Authenticated consistency/smoke checks.
+  sync-github --once                Safe scoped synchronization.
+  verify-github                     Remote visibility/commit/artifact verification.
+  run --once --no-notify            One complete bounded maintenance pass.
+  status --json                     Redacted local/cloud/Git/research state.
+  pause | resume | stop             Explicit reversible operational controls.
+  scheduler install|inspect|remove  Manage only this project's one scheduler.
+  research run-one|verify-gates      Bounded candidate experiment.
+  rollback --corpus ID              Activate a retained verified cloud corpus.
+  backup | restore --input PATH     Validated backup and non-destructive recovery.
+  security scan                    Secret/build/export boundary checks.
+  auth rotate                      Secure password rotation/session revocation.
+
+Exit behavior:
+0 = successful operation or explicitly recorded normal defer/no-change condition.
+10 = retryable dependency/network issue; durable work remains queued.
+20 = configuration/auth/capability block; no unsafe fallback.
+30 = schema/test/rights/evaluation failure; candidate not promoted.
+40 = suspected security/data-integrity issue; fail closed and deduplicate alert.
+
+Every command supports --json for machine-readable output and a bounded human
+summary. No command prints secrets. Unexpected errors retain sanitized diagnostics
+in private logs and a request/run ID in the public-facing response.
+
+Structured log fields:
+ timestamp, run_id, stage, source_id, corpus_id, status, error_code,
+ duration_ms, bytes_read, bytes_written, cpu_seconds, peak_rss_mb, retry_count.
+
+Do not include password, cookies, tokens, raw questions, model prompts, response
+bodies, unredacted home paths, or upstream credentials. Rotate logs by size/time;
+initial cap 5 files of 10 MiB per component, with 14-day retention where feasible.
+
+Health interpretation:
+- HEALTHY: latest accepted corpus served; sync and scheduler within expected age.
+- STALE: service works but last source/sync update is overdue.
+- PARTIAL: local/cloud/Git/inference capabilities differ; expose precise state.
+- PAUSED: deliberate operator pause, not a failure.
+- QUARANTINED: candidate rejected; prior good corpus remains served.
+
+Recovery must be documented and tested. A complete host restore reconstructs source
+registry, approved manifests, canonical/exported knowledge, schema version, and
+scheduler configuration; secrets are restored separately through the secret manager.
+Never assume a Git clone contains runtime secrets or the whole local database.
+
+===============================================================================
+20. SECURITY, FUNCTIONAL, AND RECOVERY ACCEPTANCE TESTS
+===============================================================================
+
+Treat these as release gates, not a checklist to mark complete without evidence.
+Record each test's result, timestamp, environment, command/test ID, and output digest.
+
+A. AUTHENTICATION AND PRIVACY
+A01 Wrong password fails generically; the supplied password succeeds over HTTPS.
+A02 Password/verifier/API tokens are absent from Git, build output, logs, and exports.
+A03 Missing, forged, expired, revoked, or old-version sessions fail server-side.
+A04 Logout invalidates subsequent API/download requests, including a reused token.
+A05 GET, HEAD, Range, raw JSONL/MD, manifest, aliases, encoded paths, navigation payloads,
+    preview URLs, and workers.dev do not bypass the gate.
+A06 R2 public URL/custom public bucket domain is unavailable; direct object access fails.
+A07 Cross-origin login/POST and missing CSRF are rejected; no wildcard credential CORS.
+A08 KDF limits and concurrency are measured in deployed Workers; rate limiting runs first.
+A09 Markdown/HTML/link injection cannot execute scripts or load arbitrary active content.
+A10 Missing auth bindings/secrets fail closed; no "development bypass" reaches production.
+A11 Download filenames/IDs cannot read arbitrary objects or local files.
+A12 Client bundles contain no corpus or private server data; all revealed public assets
+    are explicitly intended to be public code/branding.
+
+B. KNOWLEDGE AND EXPORTS
+B01 All 100 supplied candidates exist with original identifiers/domain mappings.
+B02 At least two independently verified, rights-approved initial sources produce real
+    records. Aim for >=50 useful chunks, but never pad/fabricate to hit a count.
+B03 Every exported accepted record passes schema, provenance, and rights checks.
+B04 Swift code fences, tables, DocC directives/links, and line references survive fixtures.
+B05 No-change re-ingestion produces identical corpus_id and artifact bytes.
+B06 Changed/deleted/versioned content yields the correct revisions/tombstones.
+B07 JSONL/Markdown viewer and protected download agree with manifest checksums.
+B08 Skills are scoped and citation-backed; unsupported/generated claims are labeled.
+B09 Unknown versions/licenses stay unknown; no fabricated toolchain/platform proof.
+B10 Exported SQLite excludes sessions, tasks, secrets, prompts, and private paths.
+B11 Partial/corrupt downloads, archive traversal, huge decompression, and malicious
+    instructions are rejected or quarantined without executing anything.
+
+C. WEBSITE, SEARCH, AND INFERENCE
+C01 Mobile/desktop layout, keyboard navigation, focus, contrast, dark mode, and code
+    overflow tested; no large corpus fetched on first page load.
+C02 Exact-symbol queries, version/platform/source filters, and citations behave correctly.
+C03 Search reports lexical/semantic/hybrid mode accurately.
+C04 One real Ask request succeeds through the deployed site and returns valid evidence
+    citations; one unsupported question returns a bounded limitation response.
+C05 Provider unavailable/quota exhausted/timeouts do not fake answers or trigger paid
+    fallback. Reservations settle safely; concurrent requests cannot overspend quota.
+C06 Corpus version remains consistent across pagination, Ask citations, and downloads.
+C07 Target p95 search <=500 ms on the declared warm test environment and initial data;
+    record measured numbers, geography, sample size, and cold/warm state. Do not call
+    an unmeasured target a result or promise no latency globally.
+
+D. PUBLICATION, GIT, AND SCHEDULING
+D01 Mid-upload and mid-D1-staging crashes leave the prior active corpus usable.
+D02 Atomic activation only occurs after required objects/rows validate.
+D03 Restart reconciles outbox state idempotently; no duplicate publication/commits.
+D04 Git repository is private, credentials absent, remote SHA verified after push.
+D05 No-change hourly tick creates no empty commit, app rebuild, redeploy, or model call.
+D06 Human worktree edits/divergence remain intact; no forced Git operation occurs.
+D07 Bulk release uploads honor rights/size/budget; pending objects are reported honestly.
+D08 Exactly one scheduler exists; a manual run succeeds; scheduling state is inspected.
+D09 Overlap lock, host sleep/offline recovery, pause/resume, and resource deferral work.
+D10 Routine runs produce no chat notifications or desktop interruptions.
+D11 Research cannot alter protected policy/evaluator/auth paths or promote failed tests.
+D12 Backup restore and cloud rollback succeed on a disposable test target.
+D13 Git/cloud/model failures are independent; useful local work continues safely.
+
+Minimum handover classification:
+FULLY_DEPLOYED: gated live site + real data + viewing/search/download + successful
+site inference + private Git sync + registered/tested quiet scheduler. Clearly note
+whether an actual scheduled occurrence has been observed. Semantic retrieval has its
+own enabled/unavailable flag and may not be claimed if untested.
+
+DEPLOYED_PARTIAL: site/corpus works but a required integration, including inference
+or hourly sync, is blocked; list it explicitly.
+
+LOCAL_GITHUB_READY: local corpus/exports and private repo work; cloud is blocked.
+
+LOCAL_ONLY_READY: local corpus/exports work; cloud and/or Git credentials unavailable.
+
+Never use "100% complete" to hide a blocked capability. Report actual counts and
+verified behaviors, not an optimistic completion percentage.
+
+===============================================================================
+21. COMPLETION REPORT AND FALLBACK BEHAVIOR
+===============================================================================
+
+Return one concise private handover containing:
+- Deployment classification and actual verified site URL, or explicit cloud blocker.
+- Actual private GitHub repository URL and last verified pushed commit.
+- Local project/state paths on the execution host, without exposing credentials.
+- Active corpus_id, approved source count, candidate count, chunk/document/skill counts.
+- Download verification: artifact name, byte size, and SHA-256 match result.
+- Authentication smoke-test result; never repeat the password.
+- Search mode, inference provider/model status, and successful inference test or blocker.
+- Scheduler type/ID, cadence, next expected run, manual test result, and whether a
+  scheduled occurrence has actually been observed.
+- Active resource/spending limits, pause/resume commands, and rollback reference.
+- Remaining gaps: licenses, unverified sources, unsupported platforms, missing services.
+
+Save the redacted full report in reports/HANDOVER.md and the machine-readable
+status in private state. Commit only non-sensitive, meaningful report updates.
+
+Fallback order:
+1. Full private Worker + local corpus + private GitHub.
+2. Local corpus + private GitHub + local interface; cloud remains blocked.
+3. Local corpus/exports only, with explicit Git/Cloudflare blockers.
+
+Cloud deployment difficulties must not consume an unbounded repair loop. After
+three bounded failed attempts with distinct, documented fixes, stop cloud retries
+for that run and finish the local/GitHub path. Never remove authentication to make
+a deployment test "pass." Retry integrations on a bounded later tick only when the
+failure is transient or capability/configuration has changed.
+
+The recurring system is installed by Varkon on the real host. This specification
+does not itself schedule ChatGPT, run OpenClaw, create a repository, or deploy a URL.
+
+===============================================================================
+22. SOURCE ATLAS — ALL 100 USER-SUPPLIED CANDIDATE RESOURCES
+===============================================================================
+
+Origin: the uploaded "Swift Mastery Atlas — Top 100 GitHub Repositories & Resources",
+2026 Edition, supplied with this request. Entries below preserve the submitted
+numbering, titles, focus, and ten-domain grouping. Tracking query parameters are
+removed from URLs. These are candidate records, not claims of independent full
+verification or endorsements of maintenance/licensing/production readiness.
+
+Import rule for every row:
+source_id=atlas-NNN; status=candidate; authority=unverified;
+rights.status=unknown; acquisition.mode=metadata_only; last_verified_at=null.
+Verify current identity, revision, license, platform/toolchain support, and archive
+status before indexing content. Changes must retain submitted_url and audit history.
+
+Format: ID | domain | submitted title | canonicalized submitted URL | submitted focus
+
+atlas-001 | language-compiler | swiftlang/swift | https://github.com/swiftlang/swift | Compiler, standard library, SIL, runtime
+atlas-002 | language-compiler | swiftlang/swift-book | https://github.com/swiftlang/swift-book | Complete language specification and education
+atlas-003 | language-compiler | swiftlang/swift-evolution | https://github.com/swiftlang/swift-evolution | Language proposals and design decisions
+atlas-004 | language-compiler | swiftlang/swift-syntax | https://github.com/swiftlang/swift-syntax | Syntax trees, parsers, macros
+atlas-005 | language-compiler | swiftlang/swift-driver | https://github.com/swiftlang/swift-driver | Compiler invocation and build orchestration
+atlas-006 | language-compiler | swiftlang/swift-package-manager | https://github.com/swiftlang/swift-package-manager | Package resolution, builds, dependencies
+atlas-007 | language-compiler | swiftlang/swift-foundation | https://github.com/swiftlang/swift-foundation | Foundation internals and cross-platform APIs
+atlas-008 | language-compiler | swiftlang/swift-format | https://github.com/swiftlang/swift-format | Formatting and source transformations
+atlas-009 | language-compiler | swiftlang/sourcekit-lsp | https://github.com/swiftlang/sourcekit-lsp | IDE integration and language servers
+atlas-010 | language-compiler | swiftlang/swift-docc | https://github.com/swiftlang/swift-docc | Documentation compilation and navigation
+atlas-011 | learning-tooling | Hacking with Swift | https://www.hackingwithswift.com/ | Project-based Swift learning
+atlas-012 | learning-tooling | 100 Days of SwiftUI | https://www.hackingwithswift.com/100/swiftui | Structured practical SwiftUI curriculum
+atlas-013 | learning-tooling | Swift.org Documentation | https://www.swift.org/documentation/ | Official language documentation
+atlas-014 | learning-tooling | Apple Swift Tutorials | https://developer.apple.com/tutorials/swift | Apple-guided Swift development
+atlas-015 | learning-tooling | apple/swift-algorithms | https://github.com/apple/swift-algorithms | Collection algorithms
+atlas-016 | learning-tooling | apple/swift-collections | https://github.com/apple/swift-collections | Deques, ordered collections, data structures
+atlas-017 | learning-tooling | apple/swift-numerics | https://github.com/apple/swift-numerics | Numerical computation
+atlas-018 | learning-tooling | apple/swift-argument-parser | https://github.com/apple/swift-argument-parser | Command-line applications
+atlas-019 | learning-tooling | SwiftGen/SwiftGen | https://github.com/SwiftGen/SwiftGen | Type-safe resource generation
+atlas-020 | learning-tooling | yonaskolb/XcodeGen | https://github.com/yonaskolb/XcodeGen | Reproducible Xcode project generation
+atlas-021 | interfaces | Apple SwiftUI | https://developer.apple.com/documentation/swiftui | Declarative native UI
+atlas-022 | interfaces | apple/sample-food-truck | https://github.com/apple/sample-food-truck | Multi-platform SwiftUI architecture
+atlas-023 | interfaces | OpenSwiftUIProject/OpenSwiftUI | https://github.com/OpenSwiftUIProject/OpenSwiftUI | Declarative UI implementation internals
+atlas-024 | interfaces | pointfreeco/swift-navigation | https://github.com/pointfreeco/swift-navigation | Type-safe navigation
+atlas-025 | interfaces | siteline/swiftui-introspect | https://github.com/siteline/swiftui-introspect | SwiftUI and underlying UIKit/AppKit
+atlas-026 | interfaces | exyte/PopupView | https://github.com/exyte/PopupView | Popups and overlay presentation
+atlas-027 | interfaces | airbnb/lottie-ios | https://github.com/airbnb/lottie-ios | Vector animations
+atlas-028 | interfaces | onevcat/Kingfisher | https://github.com/onevcat/Kingfisher | Image loading and caching
+atlas-029 | interfaces | kean/Nuke | https://github.com/kean/Nuke | Optimized image pipelines
+atlas-030 | interfaces | SwiftUIX/SwiftUIX | https://github.com/SwiftUIX/SwiftUIX | Extended SwiftUI components
+atlas-031 | architecture-testing | pointfreeco/swift-composable-architecture | https://github.com/pointfreeco/swift-composable-architecture | Deterministic state management
+atlas-032 | architecture-testing | swiftlang/swift-testing | https://github.com/swiftlang/swift-testing | Modern unit and integration tests
+atlas-033 | architecture-testing | pointfreeco/swift-dependencies | https://github.com/pointfreeco/swift-dependencies | Dependency injection
+atlas-034 | architecture-testing | pointfreeco/swift-snapshot-testing | https://github.com/pointfreeco/swift-snapshot-testing | Visual and structural regression testing
+atlas-035 | architecture-testing | realm/SwiftLint | https://github.com/realm/SwiftLint | Static analysis and style enforcement
+atlas-036 | architecture-testing | Quick/Quick | https://github.com/Quick/Quick | Behavior-driven testing
+atlas-037 | architecture-testing | Quick/Nimble | https://github.com/Quick/Nimble | Expressive assertions
+atlas-038 | architecture-testing | ReactiveX/RxSwift | https://github.com/ReactiveX/RxSwift | Reactive programming
+atlas-039 | architecture-testing | apple/swift-log | https://github.com/apple/swift-log | Structured logging
+atlas-040 | architecture-testing | apple/swift-metrics | https://github.com/apple/swift-metrics | Metrics instrumentation
+atlas-041 | concurrency-networking | apple/swift-nio | https://github.com/apple/swift-nio | Event loops, nonblocking I/O
+atlas-042 | concurrency-networking | apple/swift-async-algorithms | https://github.com/apple/swift-async-algorithms | AsyncSequence and streaming algorithms
+atlas-043 | concurrency-networking | apple/swift-atomics | https://github.com/apple/swift-atomics | Atomic operations and synchronization
+atlas-044 | concurrency-networking | vapor/vapor | https://github.com/vapor/vapor | Server-side Swift
+atlas-045 | concurrency-networking | hummingbird-project/hummingbird | https://github.com/hummingbird-project/hummingbird | Lightweight HTTP servers
+atlas-046 | concurrency-networking | swift-server/async-http-client | https://github.com/swift-server/async-http-client | Asynchronous HTTP clients
+atlas-047 | concurrency-networking | apple/swift-http-types | https://github.com/apple/swift-http-types | HTTP request/response primitives
+atlas-048 | concurrency-networking | Alamofire/Alamofire | https://github.com/Alamofire/Alamofire | Client networking
+atlas-049 | concurrency-networking | grpc/grpc-swift | https://github.com/grpc/grpc-swift | RPC and Protocol Buffers
+atlas-050 | concurrency-networking | apple/swift-distributed-actors | https://github.com/apple/swift-distributed-actors | Distributed actor systems
+atlas-051 | data-persistence | groue/GRDB.swift | https://github.com/groue/GRDB.swift | SQLite persistence
+atlas-052 | data-persistence | pointfreeco/sqlite-data | https://github.com/pointfreeco/sqlite-data | Reactive SQLite data access
+atlas-053 | data-persistence | vapor/fluent | https://github.com/vapor/fluent | ORM and database modeling
+atlas-054 | data-persistence | vapor/postgres-nio | https://github.com/vapor/postgres-nio | Asynchronous PostgreSQL
+atlas-055 | data-persistence | vapor/redis | https://github.com/vapor/redis | Redis integration
+atlas-056 | data-persistence | realm/realm-swift | https://github.com/realm/realm-swift | Object database architecture
+atlas-057 | data-persistence | apple/swift-protobuf | https://github.com/apple/swift-protobuf | Binary serialization
+atlas-058 | data-persistence | Flight-School/AnyCodable | https://github.com/Flight-School/AnyCodable | Flexible Codable representations
+atlas-059 | data-persistence | swiftlang/swift-markdown | https://github.com/swiftlang/swift-markdown | Structured Markdown parsing
+atlas-060 | data-persistence | apple/swift-openapi-generator | https://github.com/apple/swift-openapi-generator | Generated typed API clients and servers
+atlas-061 | graphics-performance | Apple Metal | https://developer.apple.com/metal/ | GPU programming
+atlas-062 | graphics-performance | Metal Shading Language | https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf | Shader programming
+atlas-063 | graphics-performance | Metal Sample Code | https://developer.apple.com/metal/sample-code/ | Rendering and compute examples
+atlas-064 | graphics-performance | Apple MetalKit | https://developer.apple.com/documentation/metalkit | Rendering integration
+atlas-065 | graphics-performance | Apple Core Animation | https://developer.apple.com/documentation/quartzcore | Compositing and animation
+atlas-066 | graphics-performance | BradLarson/GPUImage3 | https://github.com/BradLarson/GPUImage3 | Metal image-processing pipelines
+atlas-067 | graphics-performance | Harley-xk/MaLiang | https://github.com/Harley-xk/MaLiang | Metal-based drawing
+atlas-068 | graphics-performance | exyte/Macaw | https://github.com/exyte/Macaw | Vector rendering
+atlas-069 | graphics-performance | migueldeicaza/SwiftGodot | https://github.com/migueldeicaza/SwiftGodot | Game engine interoperability
+atlas-070 | graphics-performance | Apple Instruments | https://developer.apple.com/xcode/features/ | Profiling and performance analysis
+atlas-071 | audio-multimedia | AudioKit/AudioKit | https://github.com/AudioKit/AudioKit | Audio synthesis, processing, analysis
+atlas-072 | audio-multimedia | AudioKit/SoundpipeAudioKit | https://github.com/AudioKit/SoundpipeAudioKit | Audio DSP building blocks
+atlas-073 | audio-multimedia | AudioKit/AudioKitEX | https://github.com/AudioKit/AudioKitEX | Lower-level audio engine integration
+atlas-074 | audio-multimedia | Apple AVFoundation | https://developer.apple.com/documentation/avfoundation | Playback, recording, streaming
+atlas-075 | audio-multimedia | Apple Core Audio | https://developer.apple.com/documentation/coreaudio | Low-level audio infrastructure
+atlas-076 | audio-multimedia | Apple Accelerate | https://developer.apple.com/documentation/accelerate | Vectorized DSP and FFT
+atlas-077 | audio-multimedia | AudioKit/DunneAudioKit | https://github.com/AudioKit/DunneAudioKit | Synthesizer components
+atlas-078 | audio-multimedia | dmrschmidt/DSWaveformImage | https://github.com/dmrschmidt/DSWaveformImage | Waveform generation
+atlas-079 | audio-multimedia | HaishinKit/HaishinKit.swift | https://github.com/HaishinKit/HaishinKit.swift | Live audio/video streaming
+atlas-080 | audio-multimedia | AudioKit/Cookbook | https://github.com/AudioKit/Cookbook | Practical audio examples
+atlas-081 | ai-ml | ml-explore/mlx | https://github.com/ml-explore/mlx | Apple Silicon machine learning
+atlas-082 | ai-ml | ml-explore/mlx-swift | https://github.com/ml-explore/mlx-swift | Native Swift MLX integration
+atlas-083 | ai-ml | ml-explore/mlx-swift-examples | https://github.com/ml-explore/mlx-swift-examples | Swift ML examples
+atlas-084 | ai-ml | apple/coremltools | https://github.com/apple/coremltools | Model conversion and optimization
+atlas-085 | ai-ml | Apple Core ML | https://developer.apple.com/documentation/coreml | On-device model execution
+atlas-086 | ai-ml | Apple Vision | https://developer.apple.com/documentation/vision | Computer vision
+atlas-087 | ai-ml | Apple Natural Language | https://developer.apple.com/documentation/naturallanguage | Text analysis and language processing
+atlas-088 | ai-ml | huggingface/swift-transformers | https://github.com/huggingface/swift-transformers | Transformers and model integration
+atlas-089 | ai-ml | argmaxinc/WhisperKit | https://github.com/argmaxinc/WhisperKit | On-device speech recognition
+atlas-090 | ai-ml | FluidInference/FluidAudio | https://github.com/FluidInference/FluidAudio | Speech AI, VAD, diarization
+atlas-091 | security-systems | apple/swift-crypto | https://github.com/apple/swift-crypto | Cryptographic primitives
+atlas-092 | security-systems | apple/swift-certificates | https://github.com/apple/swift-certificates | X.509 certificate handling
+atlas-093 | security-systems | apple/swift-asn1 | https://github.com/apple/swift-asn1 | ASN.1 parsing and encoding
+atlas-094 | security-systems | apple/swift-system | https://github.com/apple/swift-system | Low-level operating system APIs
+atlas-095 | security-systems | apple/swift-nio-ssl | https://github.com/apple/swift-nio-ssl | TLS networking
+atlas-096 | security-systems | apple/container | https://github.com/apple/container | Container tooling in Swift
+atlas-097 | security-systems | apple/containerization | https://github.com/apple/containerization | Linux container execution on macOS
+atlas-098 | security-systems | soto-project/soto | https://github.com/soto-project/soto | Cloud infrastructure integration
+atlas-099 | security-systems | swiftlang/swift-java | https://github.com/swiftlang/swift-java | Java interoperability
+atlas-100 | security-systems | swiftlang/swift-cmake-examples | https://github.com/swiftlang/swift-cmake-examples | Native builds and CMake integration
+
+===============================================================================
+23. SUPPLEMENTAL SOURCES AND COVERAGE GAPS
+===============================================================================
+
+These do not replace or renumber the user's 100 entries. They are separately
+identified additions from the original request, its additional-resources section,
+or targeted implementation research. All require normal rights/content verification.
+
+supp-001 | DocC documentation entry point
+https://www.swift.org/documentation/docc/
+Origin: user's explicit starting URL. Use as discovery/reference; repository source
+is preferable for permitted reproducible content acquisition.
+
+supp-002 | uhub/awesome-swift
+https://github.com/uhub/awesome-swift
+Origin: original request. Discovery-only catalog; no recursive automatic ingestion.
+
+supp-003 | twostraws/HackingWithSwift
+https://github.com/twostraws/HackingWithSwift
+Origin: original request. Repository licensing and website/course rights are separate.
+
+supp-004 | swiftlang/swift-docc-render
+https://github.com/swiftlang/swift-docc-render
+Origin: verified related tooling. Reference for DocC archive/render structures, not
+an instruction to replace Pubster's Next.js frontend. [R02]
+
+supp-005 | swiftlang/swift-docc-plugin
+https://github.com/swiftlang/swift-docc-plugin
+Origin: verified related tooling. Documentation-generation references; don't execute
+upstream package plugins automatically during ingestion. [R17]
+
+supp-006 | apple-oss-distributions/objc4
+https://github.com/apple-oss-distributions/objc4
+Origin: targeted coverage addition. Objective-C runtime implementation study; review
+its own license and platform/build constraints before copying or building. [R18]
+
+supp-007 | Clang Objective-C Automatic Reference Counting
+https://clang.llvm.org/docs/AutomaticReferenceCounting.html
+Origin: targeted coverage addition. Primary ARC/ownership reference; record applicable
+Clang/toolchain version and documentation reuse terms. [R19]
+
+supp-008 | Swift C++ interoperability documentation
+https://www.swift.org/documentation/cxx-interop/
+Origin: targeted coverage addition. Mixed-language ownership/lifetime/API rules;
+version-specific evidence matters. [R20]
+
+supp-009 | swiftlang/swift-embedded-examples
+https://github.com/swiftlang/swift-embedded-examples
+Origin: targeted coverage addition. Embedded Swift examples; don't confuse their
+hardware/toolchain requirements with ordinary Apple application support. [R21]
+
+supp-010 | Swift official source-code index
+https://www.swift.org/documentation/source-code/
+Origin: original request and primary-source verification. Discover official project
+identities and related toolchain/build repositories without bulk cloning. [R22]
+
+supp-011 | Apple Developer Documentation
+https://developer.apple.com/documentation/
+Origin: atlas additional resources. Default link-only until terms are reviewed.
+
+supp-012 | WWDC videos
+https://developer.apple.com/videos/
+Origin: atlas additional resources. Default link-only; do not bulk download videos
+or republish transcripts based solely on public availability.
+
+supp-013 | Human Interface Guidelines
+https://developer.apple.com/design/human-interface-guidelines/
+Origin: atlas additional resources. Default link-only pending reuse review.
+
+Source-specific review notes:
+- Independently verify maintenance/platform support for realm-swift, historical
+  grpc-swift versions, older graphics/UI libraries, and experimental systems tools.
+  Do not infer deprecation or endorsement from this warning alone.
+- MLX/embedded/container-related entries may impose architecture/hardware constraints.
+  Record the actual requirements; don't assume the local host is Apple Silicon.
+- Open-source SwiftUI reimplementations are not interchangeable with Apple's SwiftUI
+  API contract or its platform support. Preserve that distinction in summaries.
+- A README saying "Swift 6" does not establish every code sample's language mode,
+  compiler version, or supported operating systems.
+- Ten resources per domain is the supplied organization, not a promise of equivalent
+  depth or authority across domains. Coverage measurements should reveal the gaps.
+
+===============================================================================
+24. IMPLEMENTATION REFERENCES AND VERIFICATION NOTES
+===============================================================================
+
+These references informed the technical design and were inspected during preparation
+on 2026-10-27. Recheck version-specific commands, limits, capabilities, and current
+terms on the execution host. Architecture, budgets, thresholds, and directory choices
+in this document are proposed engineering decisions, not vendor guarantees.
+
+[R01] Swift DocC documentation
+https://www.swift.org/documentation/docc/
+DocC's role is developer documentation compilation/markup, not a complete curriculum.
+The page was also retrieved through Firecrawl because the first web reader returned
+only a JavaScript module shell.
+
+[R02] Swift DocC compiler and renderer repositories
+https://github.com/swiftlang/swift-docc
+https://github.com/swiftlang/swift-docc-render
+Documentation compilation and the renderer's JSON-based documentation-archive model.
+
+[R03] Next.js static export
+https://nextjs.org/docs/app/guides/static-exports
+Supports output:'export' and HTML/CSS/JS hosting; review unsupported server features.
+
+[R04] Cloudflare Next.js framework guide
+https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/
+Current new-project framework guidance; not needed for the chosen static/API split.
+
+[R05] Cloudflare OpenNext adapter guide
+https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/
+Adapter option and current migration guidance; not a requirement for this design.
+
+[R06] Cloudflare Worker-first static-asset routing and subdirectory handling
+https://developers.cloudflare.com/workers/static-assets/routing/worker-script/
+https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/
+Worker-first gating and explicit base-path/asset behavior must be tested.
+
+[R07] Cloudflare D1 SQL support
+https://developers.cloudflare.com/d1/sql-api/sql-statements/
+Documents FTS5 support; confirm operational limits separately for the actual account.
+
+[R08] Cloudflare R2 public-bucket controls
+https://developers.cloudflare.com/r2/buckets/public-buckets/
+Keep the bucket private; do not enable public r2.dev/custom-domain bypasses.
+
+[R09] GitHub large-file guidance
+https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
+Supports the distinction between regular Git, large downloadable artifacts, and
+proper database backup procedures. Recheck limits before publishing bulk exports.
+
+[R10] GitHub repository licensing guidance
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
+Public visibility is not a substitute for an explicit license granting reuse rights.
+
+[R11] OWASP Password Storage Cheat Sheet
+https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+Password-KDF selection and memory/CPU tradeoffs; benchmark the selected scrypt profile.
+
+[R12] Cloudflare cryptography runtime documentation and upstream limit discussion
+https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/
+https://developers.cloudflare.com/workers/runtime-apis/web-crypto/
+https://github.com/cloudflare/workerd/issues/1346
+Verify current production behavior rather than assuming local Node/workerd parity.
+
+[R13] Cloudflare Workers rate limiting
+https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/
+Use fast request controls but separate strict global budget/accounting state.
+
+[R14] OpenClaw automation payloads and command-line reference
+https://docs.openclaw.ai/automation/cron-jobs/payloads
+https://docs.openclaw.ai/cli/cron
+Command payloads, delivery controls, execution modes, and operator permissions;
+installed-version help remains the final authority for available flags.
+
+[R15] Autoresearch upstream reference
+https://github.com/karpathy/autoresearch
+https://github.com/karpathy/autoresearch/blob/master/program.md
+Inspiration for bounded experiment/evaluate/retain-or-reject, NOT a dependency on
+running its training workload or a claim of automatic foundational-model mastery.
+
+[R16] shadcn/ui Next.js installation
+https://ui.shadcn.com/docs/installation/next
+Use a compatible current setup and pinned dependencies, not mixed-era scaffolding.
+
+[R17] Swift DocC plugin
+https://github.com/swiftlang/swift-docc-plugin
+Reference for approved optional documentation-generation workflows.
+
+[R18] Apple Objective-C runtime source
+https://github.com/apple-oss-distributions/objc4
+Coverage addition for implementation study; not a blanket redistribution approval.
+
+[R19] Clang Objective-C ARC specification
+https://clang.llvm.org/docs/AutomaticReferenceCounting.html
+Coverage addition for ownership and Objective-C interoperability reasoning.
+
+[R20] Swift C++ interoperability
+https://www.swift.org/documentation/cxx-interop/
+Coverage addition for mixed-language systems and lifetime/ownership contracts.
+
+[R21] Embedded Swift examples
+https://github.com/swiftlang/swift-embedded-examples
+Coverage addition for constrained/embedded targets with explicit hardware scope.
+
+[R22] Swift official source repository index
+https://www.swift.org/documentation/source-code/
+Primary identity/discovery reference for official Swift components.
+
+SOURCE ATLAS NOTE
+The 100 candidate rows were extracted directly from the user's uploaded atlas, not
+independently re-ranked or comprehensively verified. The supplemental runtime,
+interop, and implementation references are explicitly separated from that source.
+No claim is made that all 100 repositories were cloned, licenses reviewed, or tests
+run during preparation of this document.
+
+===============================================================================
+25. FINAL INSTRUCTION TO VARKON
+===============================================================================
+
+Varkon: execute this document as the Pubster implementation task using the existing
+authorized OpenClaw host, GitHub integration, and Cloudflare connection.
+
+Start with capability discovery and the local corpus. Build actual working code,
+not additional planning documents in place of implementation. Use the supplied
+private password through secure secret handling. Preserve the local database,
+source provenance, rights boundaries, and deterministic JSONL/Markdown exports.
+
+Build the Next.js/Tailwind/shadcn interface and protect every data route through the
+Worker. Publish validated snapshots, test online viewing/download/search, and connect
+working grounded inference when the existing authorized provider/budget permits it.
+Synchronize approved artifacts to the correct PRIVATE GitHub repository hourly,
+without unnecessary Actions runs, huge binary Git history, or credential leakage.
+
+Install one quiet bounded maintenance controller. Reuse autoresearch's evaluation
+method for controlled corpus/retrieval improvements, not an endless compute-heavy
+training process. Keep the user in control through explicit pause/status/rollback
+commands. Keep normal operation silent; report persistent blockers and real safety
+incidents through the originating private channel without repetitive notifications.
+
+Do not damage unrelated services, change billing, defeat security controls, inflate
+success reports, or invent a live URL. If cloud work is blocked, finish the local
+knowledge repository and GitHub workflow and identify the exact remaining blocker.
+
+At handover, send the verified site/repository links, actual corpus/test results,
+scheduler evidence, resource limits, and remaining gaps. Continue only through the
+installed bounded scheduler, not through an unsupported promise of background work.
+
+END OF SPECIFICATION

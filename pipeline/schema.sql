@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS sources(source_id TEXT PRIMARY KEY, record_json TEXT NOT NULL CHECK(json_valid(record_json)));
+CREATE TABLE IF NOT EXISTS source_revisions(source_id TEXT PRIMARY KEY,commit_sha TEXT NOT NULL,checked_at INTEGER,paths_json TEXT);
+CREATE TABLE IF NOT EXISTS license_evidence(evidence_id TEXT PRIMARY KEY,source_id TEXT,license_sha256 TEXT,notices_json TEXT);
+CREATE TABLE IF NOT EXISTS chunks(rowid INTEGER PRIMARY KEY,chunk_id TEXT UNIQUE NOT NULL,document_id TEXT NOT NULL,revision_id TEXT NOT NULL,source_id TEXT NOT NULL REFERENCES sources(source_id),title TEXT NOT NULL,body_text TEXT NOT NULL,body_markdown TEXT NOT NULL,tags TEXT NOT NULL DEFAULT '',record_json TEXT NOT NULL CHECK(json_valid(record_json)),status TEXT NOT NULL,redistribute INTEGER NOT NULL CHECK(redistribute IN (0,1)),content_sha256 TEXT NOT NULL);
+CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(title,body_text,tags,content='chunks',content_rowid='rowid');
+CREATE TRIGGER IF NOT EXISTS chunks_ai AFTER INSERT ON chunks BEGIN INSERT INTO chunks_fts(rowid,title,body_text,tags) VALUES(new.rowid,new.title,new.body_text,new.tags); END;
+CREATE TRIGGER IF NOT EXISTS chunks_ad AFTER DELETE ON chunks BEGIN INSERT INTO chunks_fts(chunks_fts,rowid,title,body_text,tags) VALUES('delete',old.rowid,old.title,old.body_text,old.tags); END;
+CREATE TRIGGER IF NOT EXISTS chunks_au AFTER UPDATE ON chunks BEGIN INSERT INTO chunks_fts(chunks_fts,rowid,title,body_text,tags) VALUES('delete',old.rowid,old.title,old.body_text,old.tags); INSERT INTO chunks_fts(rowid,title,body_text,tags) VALUES(new.rowid,new.title,new.body_text,new.tags); END;
+CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,task_key TEXT UNIQUE NOT NULL,kind TEXT NOT NULL,payload_json TEXT NOT NULL CHECK(json_valid(payload_json)),state TEXT NOT NULL CHECK(state IN ('queued','leased','done','retry','quarantined','cancelled')),attempts INTEGER NOT NULL DEFAULT 0,available_at INTEGER NOT NULL,lease_owner TEXT,lease_expires_at INTEGER,last_error_code TEXT,updated_at INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS tasks_due ON tasks(state,available_at);
+CREATE TABLE IF NOT EXISTS corpus_snapshots(corpus_id TEXT PRIMARY KEY,manifest_json TEXT,state TEXT);
+CREATE TABLE IF NOT EXISTS publication_outbox(corpus_id TEXT PRIMARY KEY,state TEXT,last_error TEXT);
+CREATE TABLE IF NOT EXISTS tombstones(chunk_id TEXT PRIMARY KEY,superseded_commit TEXT);
+CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY,value TEXT);
+CREATE TABLE IF NOT EXISTS experiments(id TEXT PRIMARY KEY,created_at INTEGER,result_json TEXT);
+PRAGMA user_version=1;

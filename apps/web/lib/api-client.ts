@@ -1,0 +1,1 @@
+export async function api(path:string,options:RequestInit={}){const response=await fetch('/pubster'+path,{...options,credentials:'same-origin',cache:'no-store',headers:{'Content-Type':'application/json',...options.headers}});const body=await response.json();if(!response.ok)throw new Error(body.error?.message||'Request failed');return body;}

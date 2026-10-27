@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "timezone": "America/Toronto",
+  "site": {
+    "name": "Pubster",
+    "base_path": "/pubster",
+    "visibility": "private"
+  },
+  "storage": {
+    "engine": "sqlite",
+    "wal": true,
+    "fts5": true
+  },
+  "maintenance": {
+    "schedule": "0 * * * *",
+    "max_wall_seconds": 480,
+    "max_sources_per_tick": 8,
+    "max_documents_per_tick": 150,
+    "max_download_mb_per_tick": 50,
+    "max_network_requests_in_flight": 2,
+    "max_workers": 1,
+    "retry_attempts": 3
+  },
+  "resources": {
+    "pipeline_rss_soft_mb": 384,
+    "pipeline_rss_hard_mb": 768,
+    "average_cpu_target_one_core_percent": 20,
+    "max_cpu_seconds_per_tick": 90,
+    "min_free_disk_gb": 10,
+    "managed_data_soft_cap_gb": 10,
+    "managed_data_hard_cap_gb": 20,
+    "defer_on_battery": true,
+    "defer_on_memory_pressure": true,
+    "defer_on_thermal_pressure": true,
+    "idle_seconds_before_heavy_job": 300,
+    "prevent_system_sleep": false
+  },
+  "research": {
+    "enabled": true,
+    "max_experiments_per_day": 2,
+    "max_model_calls_per_day": 2,
+    "max_wall_seconds_per_experiment": 300,
+    "max_total_wall_seconds_per_day": 600,
+    "max_input_tokens_per_call": 8000,
+    "max_output_tokens_per_call": 2000,
+    "allow_model_training": false,
+    "allow_gpu": false,
+    "allow_production_policy_edits": false
+  },
+  "publication": {
+    "retained_cloud_snapshots": 3,
+    "git_max_blob_mb": 5,
+    "git_curated_total_mb": 256,
+    "release_transfer_budget_mb_per_day": 250,
+    "new_paid_services_allowed": false,
+    "new_paid_usage_budget_usd_per_day": 0
+  },
+  "inference": {
+    "mode": "auto_existing_authorized_provider",
+    "provider": null,
+    "model": null,
+    "requests_per_session_per_hour": 10,
+    "max_question_chars": 4000,
+    "max_context_tokens": 8000,
+    "max_output_tokens": 1200,
+    "timeout_seconds": 30,
+    "store_questions": false
+  },
+  "notifications": {
+    "routine": "none",
+    "critical": "originating_private_channel"
+  }
+}

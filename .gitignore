@@ -1,0 +1,17 @@
+.env*
+!.env.example
+.dev.vars*
+node_modules/
+.next/
+out/
+*.sqlite3*
+*.db*
+*.pem
+*.key
+.venv/
+__pycache__/
+.wrangler/
+dist/
+*.tsbuildinfo
+.DS_Store
+._*

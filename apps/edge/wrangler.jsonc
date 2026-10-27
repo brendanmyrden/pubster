@@ -1,0 +1,10 @@
+{
+  "name":"pubster",
+  "main":"src/index.ts",
+  "compatibility_date":"2026-10-27",
+  "compatibility_flags":["nodejs_compat"],
+  "workers_dev":true,
+  "preview_urls":false,
+  "assets":{"directory":"../web/out","binding":"ASSETS","run_worker_first":true,"html_handling":"none","not_found_handling":"none"},
+  "vars":{"AUTH_CREDENTIAL_VERSION":"1","ALLOWED_ORIGINS":""}
+}

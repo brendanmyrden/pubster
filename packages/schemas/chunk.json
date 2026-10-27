@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "chunk_id",
+    "document_id",
+    "revision_id",
+    "source_id",
+    "kind",
+    "title",
+    "heading_path",
+    "body_markdown",
+    "body_text",
+    "language",
+    "code_languages",
+    "domains",
+    "topics",
+    "symbols",
+    "platforms",
+    "availability",
+    "origin",
+    "rights",
+    "verification",
+    "derived",
+    "parent_chunk_ids",
+    "extractor"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "chunk_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "document_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {},
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "heading_path": {},
+    "body_markdown": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "body_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {},
+    "code_languages": {},
+    "domains": {},
+    "topics": {},
+    "symbols": {},
+    "platforms": {},
+    "availability": {},
+    "origin": {
+      "type": "object",
+      "required": [
+        "canonical_url",
+        "repository",
+        "commit",
+        "path",
+        "line_start",
+        "line_end",
+        "raw_sha256"
+      ],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "line_start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "line_end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "canonical_url": {
+          "type": "string",
+          "pattern": "^https://github.com/"
+        }
+      }
+    },
+    "rights": {},
+    "verification": {},
+    "derived": {
+      "type": "boolean"
+    },
+    "parent_chunk_ids": {},
+    "extractor": {}
+  }
+}

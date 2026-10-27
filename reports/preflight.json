@@ -1,0 +1,19 @@
+{
+  "status": "RESOURCE_DEFERRED",
+  "free_disk_bytes": 691535872,
+  "minimum_free_disk_bytes": 10737418240,
+  "os": "macOS-14.8.5-x86_64-i386-64bit-Mach-O",
+  "architecture": "x86_64",
+  "candidate_count": 100,
+  "supplemental_count": 13,
+  "approved_sources": 0,
+  "cloud_deployed": false,
+  "scheduler_installed": false,
+  "github_pushed": false,
+  "storage_status": "EXTERNAL_READY",
+  "project_storage_free_gib": 921.5,
+  "cloud_status": "DEFERRED_BY_USER",
+  "github_owner": "brendanmyrden",
+  "github_visibility": "PRIVATE",
+  "inference_status": "NOT_CONFIGURED"
+}
