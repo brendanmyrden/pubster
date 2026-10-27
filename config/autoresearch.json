@@ -1,1 +1,1 @@
-{"enabled": true, "max_proposals_daily": 1, "mode": "openclaw-oauth-numeric-proposals", "model": "openai/gpt-6-astra", "paid_api_fallback": false, "scope": "title_weight"}
+{"enabled": true, "max_proposals_daily": 4, "mode": "openclaw-oauth-numeric-proposals", "model": "openai/gpt-6-astra", "paid_api_fallback": false, "scope": "title_weight"}

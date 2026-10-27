@@ -166,7 +166,8 @@ def dispatch(a):
                 result=research(a.dry_run)
                 if not a.dry_run:c.writejson(c.STATE/'state/managed-files.json',managed_snapshot())
                 return result
-        return {'frozen_evaluator':bool(c.readjson(c.STATE/'evaluator/manifest.json')),'editable_fields':['title_weight'],'arbitrary_code_execution':False,'max_experiments_daily':1 if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled') else 2,'mode':'openclaw-oauth-proposals' if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled') else 'deterministic-grid','model_calls':0}
+        from .autoresearch import daily_limit
+        return {'frozen_evaluator':bool(c.readjson(c.STATE/'evaluator/manifest.json')),'editable_fields':['title_weight'],'arbitrary_code_execution':False,'max_experiments_daily':daily_limit() if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled') else 2,'mode':'openclaw-oauth-proposals' if c.readjson(c.ROOT/'config/autoresearch.json',{}).get('enabled') else 'deterministic-grid','model_calls':0}
     if a.command in ['sync-github','verify-github']:return sync()
     if a.command=='scheduler':
         alljobs=json.loads(command(['openclaw','automations','list','--all','--json']))

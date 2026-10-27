@@ -34,6 +34,25 @@ class AutoresearchTests(unittest.TestCase):
   with self.assertRaisesRegex(RuntimeError,'CONFIG_CHANGED'):ar.host_guard()
  def test_failed_attempt_consumes_daily_slot(self):
   self.assertTrue(ar.reserve_call());self.assertFalse(ar.reserve_call())
+ def test_configured_limit_preserves_used_slots_and_blocks_fifth(self):
+  self.assertTrue(ar.reserve_call())
+  c.writejson(c.ROOT/'config/autoresearch.json',{'enabled':True,'max_proposals_daily':4})
+  c.writejson(c.ROOT/'config/budget-policy.json',{'research_max_model_calls_daily':4})
+  for _ in range(3):self.assertTrue(ar.reserve_call())
+  self.assertFalse(ar.reserve_call())
+  self.assertEqual(c.readjson(ar.STATE/'calls.json')['calls'],4)
+ def test_lower_budget_limit_and_invalid_limits(self):
+  c.writejson(c.ROOT/'config/autoresearch.json',{'max_proposals_daily':4})
+  self.assertEqual(ar.daily_limit(),1)
+  c.writejson(c.ROOT/'config/budget-policy.json',{'research_max_model_calls_daily':0})
+  self.assertFalse(ar.reserve_call())
+  for value in [True,-1,1.5,'4']:
+   c.writejson(c.ROOT/'config/budget-policy.json',{'research_max_model_calls_daily':value})
+   with self.assertRaisesRegex(RuntimeError,'INVALID_RESEARCH_DAILY_LIMIT'):ar.reserve_call()
+ def test_previous_day_resets_count(self):
+  c.writejson(ar.STATE/'calls.json',{'date':'2000-01-01','calls':99})
+  self.assertTrue(ar.reserve_call())
+  self.assertEqual(c.readjson(ar.STATE/'calls.json')['calls'],1)
  def evaluate(self,weight,suite='regression'):
   value=.5 if weight==2 else self.trial
   return {'queries':20,'mrr':value,'scores':[value]*20}

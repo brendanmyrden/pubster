@@ -23,7 +23,7 @@ A diverged remote leaves work pending for review. Code changes are committed by 
 operator; hourly commits include only approved generated corpus/research paths.
 No GitHub Actions are installed. Export release attachments are separate from Git. Approved immutable bundles up to 25 MiB are uploaded only when the corpus changes, then downloaded and checksum-verified. A reserved daily 250 MiB transfer budget caps uploads plus verification downloads.
 
-Research: the enabled OpenClaw adapter requests one numeric title-weight hypothesis
+Research: the enabled OpenClaw adapter requests up to four numeric title-weight hypotheses
 per day (America/Toronto), only on resource-eligible ticks. It uses the existing
 OpenAI OAuth via `openclaw infer model run --local`; no tool-enabled agent, gateway
 chat session, copied tokens, paid API-key fallback, or OpenClaw config mutation.

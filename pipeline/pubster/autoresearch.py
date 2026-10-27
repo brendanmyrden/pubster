@@ -49,12 +49,20 @@ def parse_proposal(envelope, baseline, seen):
     if not isinstance(reason,str) or not 1<=len(reason)<=500:raise RuntimeError('PROPOSAL_HYPOTHESIS_INVALID')
     return proposal
 
+def daily_limit():
+    limits=[c.readjson(c.ROOT/'config/autoresearch.json',{}).get('max_proposals_daily',1),
+            c.readjson(c.ROOT/'config/budget-policy.json',{}).get('research_max_model_calls_daily',1)]
+    if any(type(value) is not int or value<0 for value in limits):
+        raise RuntimeError('INVALID_RESEARCH_DAILY_LIMIT')
+    return min(limits)
+
 def reserve_call():
     today=datetime.datetime.now(ZoneInfo('America/Toronto')).date().isoformat()
     ledger=c.readjson(STATE/'calls.json',{})
-    if ledger.get('date')==today and ledger.get('calls',0)>=1:return False
+    calls=ledger.get('calls',0) if ledger.get('date')==today else 0
+    if calls>=daily_limit():return False
     # Reserve before contacting OpenClaw: failures, timeouts and rate limits consume the slot.
-    c.writejson(STATE/'calls.json',{'date':today,'calls':1})
+    c.writejson(STATE/'calls.json',{'date':today,'calls':calls+1})
     return True
 
 def frozen_evaluator():
@@ -78,7 +86,7 @@ def run(dry=False):
         seen={x['candidate_weight'] for x in corpus_history if 'candidate_weight' in x}
         if all(w/4 in seen or w/4==baseline for w in range(1,65)):
             return {'state':'NO_ELIGIBLE_HYPOTHESIS','model_calls':0}
-        if dry:return {'state':'DRY_RUN','model':MODEL,'max_proposals_daily':1,'scope':'title_weight only','model_calls':0}
+        if dry:return {'state':'DRY_RUN','model':MODEL,'max_proposals_daily':daily_limit(),'scope':'title_weight only','model_calls':0}
         if not reserve_call():return {'state':'DAILY_LIMIT','model_calls':0}
         started=time.monotonic();result={'mode':'openclaw-autoresearch','corpus_id':cid,'baseline_weight':baseline,'model':MODEL,'model_calls':0,'state':'FAILED'}
         try:

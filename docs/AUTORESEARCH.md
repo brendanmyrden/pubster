@@ -12,7 +12,7 @@ own task-specific program, not permission to execute the upstream program verbat
 Approved-source ingestion → quality gate → deterministic export → model proposal →
 local frozen evaluation → retain/reject → existing GitHub sync/release → next tick.
 
-The hourly schedule remains unchanged. At most one model proposal/day is attempted;
+The hourly schedule remains unchanged. At most four model proposals/day are attempted, one per eligible tick;
 other hourly ticks still maintain data and Git sync. The adapter reuses the same
 resource checks, process-group watchdog and writer lock. It does not spawn another
 chat agent or edit any gateway/session/default-model/scheduler configuration.
@@ -33,7 +33,7 @@ chat agent or edit any gateway/session/default-model/scheduler configuration.
 - A hash guard on the existing OpenClaw config fails closed on drift. Normal OAuth
   maintenance and account usage remain OpenClaw's responsibility. Credentials and
   auth configuration are not frozen or copied by the guard.
-- This shares account usage limits and machine resources. A one-call/day limit is
+- This shares account usage limits and machine resources. A four-call/day limit is
   not a dollar-budget guarantee or a provider token cap; the CLI exposes no output
   token cap here. There is no authorization for new API-key spending.
 

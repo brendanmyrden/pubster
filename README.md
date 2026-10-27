@@ -14,7 +14,7 @@ Private Swift engineering library. **Local/GitHub release; no public site deploy
 - Quiet hourly deterministic maintenance; approved sources rechecked after 24 hours,
   not refetched every hour. No-change runs do not rebuild the site or make empty commits.
 - Bounded OpenClaw/OAuth-proposed retrieval experiments with a frozen 20-query
-  regression suite and separate development cases. One numeric proposal/day;
+  regression suite and separate development cases. Up to four numeric proposals/day;
   reject no improvement or any regression. No corpus text sent to the model.
 
 ## Run locally
