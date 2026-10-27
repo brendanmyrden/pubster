@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+export GH_CONFIG_DIR="${GH_CONFIG_DIR:-$HOME/.config/gh}"
+. "$ROOT/scripts/quality-env.sh"
+export PYTHONPATH="$ROOT/pipeline"
+exec "$ROOT/.quality/discovery-venv/bin/python" "$ROOT/services/discovery/server.py"

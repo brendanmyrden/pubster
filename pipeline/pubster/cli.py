@@ -9,6 +9,12 @@ def main():
             with core.lock():r=core.ingest(args.force)
         elif args.command in ['export','accept']:
             with core.lock():r=core.export()
+        elif args.command=='discover':
+            from . import discovery, operations
+            with core.lock():
+                operations.assert_managed_untouched()
+                r=discovery.tick(args.force)
+                core.writejson(core.STATE/'state/managed-files.json',operations.managed_snapshot())
         elif args.command=='status':r=core.status()
         elif args.command=='validate':
             db=core.connect();r={'valid':core.validate_records([json.loads(x[0]) for x in db.execute('SELECT record_json FROM chunks')],db)};db.close()
