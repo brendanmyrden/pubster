@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish one bounded immutable export bundle to the verified PRIVATE repository."""
+"""Publish one bounded immutable export bundle to the verified configured repository."""
 import gzip,hashlib,io,json,os,subprocess,tarfile,tempfile,datetime
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];STATE=Path('/Volumes/SYYR/Pubster-state')
@@ -7,8 +7,9 @@ def cmd(args,timeout=90):
  r=subprocess.run(args,cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout)
  if r.returncode:raise RuntimeError('RELEASE_COMMAND_FAILED')
  return r.stdout
-repo=json.loads((ROOT/'config/git-remote.json').read_text())['repo']
-assert json.loads(cmd(['gh','repo','view',repo,'--json','visibility']))['visibility']=='PRIVATE'
+remote=json.loads((ROOT/'config/git-remote.json').read_text());repo=remote['repo']
+assert remote.get('visibility','PRIVATE') in ('PRIVATE','PUBLIC')
+assert json.loads(cmd(['gh','repo','view',repo,'--json','visibility']))['visibility']==remote.get('visibility','PRIVATE')
 m=json.loads((ROOT/'corpus/manifests/current.json').read_text());cid=m['corpus_id'];directory=STATE/'exports'/cid;tag='corpus-'+cid[:16]
 record=STATE/'state/release-status.json'
 if record.exists() and json.loads(record.read_text()).get('corpus_id')==cid:print('{"release":"unchanged"}');raise SystemExit(0)
@@ -30,7 +31,7 @@ digest=hashlib.sha256(archive.read_bytes()).hexdigest();checksum=archive.with_su
 probe=subprocess.run(['gh','release','view',tag,'--repo',repo,'--json','tagName'],cwd=ROOT,capture_output=True)
 if probe.returncode:
  if b'release not found' not in probe.stderr.lower():raise RuntimeError('RELEASE_LOOKUP_FAILED')
- notes=STATE/'staging/release-notes.md';notes.write_text('Validated private corpus snapshot.\n\nCorpus: '+cid+'\n\n'+str(m['accepted_record_counts_by_kind']['reference'])+' source excerpts; original licenses and source provenance included. No credentials, live database, or model weights.\n')
+ notes=STATE/'staging/release-notes.md';notes.write_text('Validated corpus snapshot.\n\nCorpus: '+cid+'\n\n'+str(m['accepted_record_counts_by_kind']['reference'])+' source excerpts; original licenses and source provenance included. No credentials, live database, or model weights.\n')
  cmd(['gh','release','create',tag,'--repo',repo,'--target','main','--title','Pubster corpus '+cid[:12],'--notes-file',str(notes),str(archive),str(checksum)])
 with tempfile.TemporaryDirectory(dir=STATE/'tmp') as temp:
  cmd(['gh','release','download',tag,'--repo',repo,'--pattern',archive.name,'--dir',temp])

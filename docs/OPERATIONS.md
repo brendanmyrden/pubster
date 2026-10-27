@@ -16,7 +16,7 @@ runs automatically yet; 20 GiB managed data hard-cap deferral is enabled.
 it does not terminate an in-progress short transaction. The supervisor enforces the
 hard deadline. Do not kill all Python/Node processes.
 
-Git synchronization verifies the expected remote, PRIVATE visibility, main branch,
+Git synchronization verifies the expected remote, explicitly configured PUBLIC visibility, main branch,
 no staged user edits, no unexpected dirty paths, and generated file hashes. It never
 force pushes, resets, rebases, changes visibility, or overwrites unrelated files.
 A diverged remote leaves work pending for review. Code changes are committed by the

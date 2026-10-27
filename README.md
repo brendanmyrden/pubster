@@ -1,6 +1,8 @@
 # Pubster
 
-Private Swift engineering library. **Local/GitHub release; no public site deployed.**
+Swift engineering library. **Local/GitHub release; no public site deployed.**
+
+**Orchestrated by [@joshfisidi](https://github.com/joshfisidi)** — project direction and pipeline orchestration contributor.
 
 ## Working now
 

@@ -23,3 +23,13 @@ Never change OpenClaw config, default models, auth, services or scheduler for th
 adapter. Share no corpus text with the provider. Four proposals/day maximum (one per eligible hourly tick); numeric
 title-weight proposals only, no executable output. Frozen evaluation decides retention.
 Account quota and machine resources remain shared; zero usage impact is not promised.
+
+## GitHub publication and attribution (Josh, 2026-10-27)
+The brendanmyrden/pubster GitHub repository is authorized to be PUBLIC. This does
+not authorize deploying a hosted application or new spending. Preserve upstream
+licenses and contributor attribution. Credit project orchestration to
+[@joshfisidi](https://github.com/joshfisidi). Include these trailers in new commits
+(manual and automated); do not rewrite existing history:
+
+Orchestrated-by: @joshfisidi (https://github.com/joshfisidi)
+Co-authored-by: joshfisidi <76191290+joshfisidi@users.noreply.github.com>
