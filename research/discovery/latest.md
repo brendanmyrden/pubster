@@ -1,12 +1,10 @@
-# Adjacent repository candidates: swift-area-009
+# Adjacent repository candidates: swift-area-011
 
 Discovery only: license, security and compatibility require review.
 
-- [FlineDev/HandySwift](https://github.com/FlineDev/HandySwift): score 33; license MIT; last push 2026-02-17T13:47:51Z
-- [IntrepidPursuits/swift-wisdom](https://github.com/IntrepidPursuits/swift-wisdom): score 33; license MIT; last push 2020-08-13T09:56:22Z
-- [SwiftUIX/SwiftUIX](https://github.com/SwiftUIX/SwiftUIX): score 33; license MIT; last push 2026-09-18T05:37:34Z
-- [oisdk/SwiftSequence](https://github.com/oisdk/SwiftSequence): score 33; license MIT; last push 2016-10-22T22:18:02Z
-- [andelf/Defines-Swift](https://github.com/andelf/Defines-Swift): score 30; license UNKNOWN; last push 2016-04-24T04:21:29Z
-- [klange/taylor](https://github.com/klange/taylor): score 30; license UNKNOWN; last push 2015-12-14T04:21:01Z
-- [vmanot/Swallow](https://github.com/vmanot/Swallow): score 30; license NOASSERTION; last push 2026-08-20T17:29:03Z
-- [beatt83/jose-swift](https://github.com/beatt83/jose-swift): score 23; license Apache-2.0; last push 2026-08-27T09:43:03Z
+- [apple/swift-collections](https://github.com/apple/swift-collections): score 23; license Apache-2.0; last push 2026-10-27T01:22:43Z
+- [pointfreeco/swift-identified-collections](https://github.com/pointfreeco/swift-identified-collections): score 23; license MIT; last push 2026-06-08T21:36:47Z
+- [JohnSundell/SwiftTips](https://github.com/JohnSundell/SwiftTips): score 13; license MIT; last push 2023-11-22T03:10:52Z
+- [SwifterSwift/SwifterSwift](https://github.com/SwifterSwift/SwifterSwift): score 13; license MIT; last push 2026-10-20T16:34:40Z
+- [jrasmusson/swift-arcade](https://github.com/jrasmusson/swift-arcade): score 13; license MIT; last push 2023-07-30T15:27:26Z
+- [onmyway133/awesome-ios-animation](https://github.com/onmyway133/awesome-ios-animation): score 13; license MIT; last push 2023-11-29T09:32:10Z
