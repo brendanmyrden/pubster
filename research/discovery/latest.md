@@ -1,12 +1,12 @@
-# Adjacent repository candidates: swift-area-012
+# Adjacent repository candidates: swift-area-013
 
 Discovery only: license, security and compatibility require review.
 
-- [apple/swift-numerics](https://github.com/apple/swift-numerics): score 23; license Apache-2.0; last push 2026-10-11T21:06:00Z
-- [xwu/NumericAnnex](https://github.com/xwu/NumericAnnex): score 23; license MIT; last push 2018-04-01T03:48:29Z
-- [k-arindam/SwiftNP](https://github.com/k-arindam/SwiftNP): score 13; license MIT; last push 2025-06-25T17:14:57Z
-- [objecthub/swift-numberkit](https://github.com/objecthub/swift-numberkit): score 13; license Apache-2.0; last push 2026-10-06T15:49:20Z
-- [philipce/nifty](https://github.com/philipce/nifty): score 13; license Apache-2.0; last push 2018-08-13T04:27:03Z
-- [phlegmaticprogrammer/LANumerics](https://github.com/phlegmaticprogrammer/LANumerics): score 13; license MIT; last push 2021-04-29T09:19:19Z
-- [creaceed/CeedNumerics](https://github.com/creaceed/CeedNumerics): score 10; license NOASSERTION; last push 2026-02-12T16:30:03Z
-- [acemoglu/SwiftMetalNumerics](https://github.com/acemoglu/SwiftMetalNumerics): score 3; license MIT; last push 2026-04-19T17:18:50Z
+- [apple/swift-atomics](https://github.com/apple/swift-atomics): score 23; license Apache-2.0; last push 2026-09-25T17:40:58Z
+- [glessard/swift-atomics](https://github.com/glessard/swift-atomics): score 23; license BSD-3-Clause; last push 2020-12-22T01:01:20Z
+- [Adlai-Holler/Atomic](https://github.com/Adlai-Holler/Atomic): score 13; license MIT; last push 2019-05-21T03:12:47Z
+- [bangerang/swift-atoms](https://github.com/bangerang/swift-atoms): score 13; license MIT; last push 2023-05-07T08:34:42Z
+- [horizontalsystems/atomic-swap-kit-ios](https://github.com/horizontalsystems/atomic-swap-kit-ios): score 13; license MIT; last push 2026-03-23T21:25:07Z
+- [ra1028/swiftui-atom-properties](https://github.com/ra1028/swiftui-atom-properties): score 13; license MIT; last push 2026-06-26T08:13:37Z
+- [TrendingTechnology/AtomicSwift](https://github.com/TrendingTechnology/AtomicSwift): score 10; license UNKNOWN; last push 2019-10-03T17:50:09Z
+- [swiftuiux/Synchronous-access-atomic-swift](https://github.com/swiftuiux/Synchronous-access-atomic-swift): score 10; license UNKNOWN; last push 2024-11-21T09:07:35Z
