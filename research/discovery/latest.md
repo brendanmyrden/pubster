@@ -1,12 +1,12 @@
-# Adjacent repository candidates: swift-area-020
+# Adjacent repository candidates: swift-area-021
 
 Discovery only: license, security and compatibility require review.
 
-- [nghialv/GCD](https://github.com/nghialv/GCD): score 53; license MIT; last push 2015-05-24T04:17:17Z
-- [space-code/concurrency](https://github.com/space-code/concurrency): score 53; license MIT; last push 2026-10-27T22:09:26Z
-- [udacity/ios-nd-gcd](https://github.com/udacity/ios-nd-gcd): score 53; license MIT; last push 2022-07-23T14:56:05Z
-- [SwiftBeta/Threads-en-Swift](https://github.com/SwiftBeta/Threads-en-Swift): score 50; license UNKNOWN; last push 2020-11-13T15:34:34Z
-- [rossbeale/GCD](https://github.com/rossbeale/GCD): score 50; license UNKNOWN; last push 2014-08-08T03:38:04Z
-- [JohnEstropia/GCDKit](https://github.com/JohnEstropia/GCDKit): score 43; license MIT; last push 2017-04-01T09:59:34Z
-- [mjmsmith/gcdswift](https://github.com/mjmsmith/gcdswift): score 43; license MIT; last push 2021-07-23T16:26:33Z
-- [appcoda/GCDSamples](https://github.com/appcoda/GCDSamples): score 40; license UNKNOWN; last push 2021-05-24T07:48:50Z
+- [BlackMirrorz/ARKitDynamicReferenceImages](https://github.com/BlackMirrorz/ARKitDynamicReferenceImages): score 23; license MIT; last push 2019-04-28T13:10:54Z
+- [FabrizioBrancati/Queuer](https://github.com/FabrizioBrancati/Queuer): score 23; license MIT; last push 2026-07-15T11:53:18Z
+- [lucas34/SwiftQueue](https://github.com/lucas34/SwiftQueue): score 23; license MIT; last push 2026-07-09T01:06:36Z
+- [BestKora/Operation_OperatioQueue](https://github.com/BestKora/Operation_OperatioQueue): score 20; license UNKNOWN; last push 2018-08-15T13:26:30Z
+- [satyadevchauhan/FlickrSearch](https://github.com/satyadevchauhan/FlickrSearch): score 20; license UNKNOWN; last push 2018-10-01T11:08:25Z
+- [swiftuiux/Synchronous-access-atomic-swift](https://github.com/swiftuiux/Synchronous-access-atomic-swift): score 20; license UNKNOWN; last push 2024-11-21T09:07:35Z
+- [vaibhav9225/OperationQueueJava](https://github.com/vaibhav9225/OperationQueueJava): score 13; license Apache-2.0; last push 2018-05-14T20:33:36Z
+- [ZalyalovIldar/OperationQueueAndDispatchSwift](https://github.com/ZalyalovIldar/OperationQueueAndDispatchSwift): score 0; license UNKNOWN; last push 2017-11-15T22:46:35Z
