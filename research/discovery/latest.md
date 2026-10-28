@@ -1,46 +1,32 @@
-# Capability intelligence: swift-area-022
+# Capability intelligence: swift-area-023
 
-Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
+Mode: composable-infrastructure | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## askopin/key-value-storage
-https://github.com/askopin/key-value-storage
-Score: 22.0/100 | Source-supported | investigate
-Revision: cd6cb058bf95c9cad695223f8a9bbbc75a5c8c02
-Purpose (project claim):  A protocol-based key-value storage framework for iOS, macOS, and watchOS.  Features CRUD operations, efficient prefix search via radix tree,  and full thread-safety with Swift 6 strict concurrency
-Opportunity (speculative): Swift Threads and Thread Safety
-Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-- source: https://github.com/askopin/key-value-storage/blob/cd6cb058bf95c9cad695223f8a9bbbc75a5c8c02/Workspace.swift
-- manifest: https://github.com/askopin/key-value-storage/blob/cd6cb058bf95c9cad695223f8a9bbbc75a5c8c02/Package.swift
-- documentation: https://github.com/askopin/key-value-storage/blob/cd6cb058bf95c9cad695223f8a9bbbc75a5c8c02/README.md
-- license: https://github.com/askopin/key-value-storage/blob/cd6cb058bf95c9cad695223f8a9bbbc75a5c8c02/LICENSE
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## 100mango/SwiftNotificationCenter
-https://github.com/100mango/SwiftNotificationCenter
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A Protocol-Oriented NotificationCenter which is type safe, thread safe and with memory safety
-Opportunity (speculative): Swift Threads and Thread Safety
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+## Yanujz/mempool
+https://github.com/Yanujz/mempool
+Score: 18.5/100 | Source-supported | investigate
+Revision: 12edaa821eb09ba108f63e8bddc1670b4fd28771
+Purpose (project claim): Deterministic fixed-size memory pool library in C11 for embedded and safety-related systems. No malloc, opaque state, tests, sanitizers, static analysis.
+Opportunity (speculative): Swift Memory Management
+Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
+- source: https://github.com/Yanujz/mempool/blob/12edaa821eb09ba108f63e8bddc1670b4fd28771/examples/basic_usage.c
+- manifest: https://github.com/Yanujz/mempool/blob/12edaa821eb09ba108f63e8bddc1670b4fd28771/CMakeLists.txt
+- documentation: https://github.com/Yanujz/mempool/blob/12edaa821eb09ba108f63e8bddc1670b4fd28771/README.md
+- license: https://github.com/Yanujz/mempool/blob/12edaa821eb09ba108f63e8bddc1670b4fd28771/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## BleepingSwift/data-races-swift-6-cant-catch
-https://github.com/BleepingSwift/data-races-swift-6-cant-catch
+## Aaron-CNSD/GlassDeck
+https://github.com/Aaron-CNSD/GlassDeck
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Swift 6's data-race safety is real, but it has blind spots. Here are the places the compiler can't see, and how to stop treating a clean build as proof your code is thread safe.
-Opportunity (speculative): Swift Threads and Thread Safety
+Purpose (project claim): A Liquid Glass control deck for the macOS menu bar — 11 system switches, scenes, live CPU/memory, window management, cache cleanup, clipboard OCR and widgets. Native AppKit, 1.6 MB, no Electron, no telemetry.
+Opportunity (speculative): Swift Memory Management
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -49,12 +35,26 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## bruno-hcr/SwiftlyCache
-https://github.com/bruno-hcr/SwiftlyCache
+## benfirad/daakRAM
+https://github.com/benfirad/daakRAM
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): SwiftlyCache is a lightweight, generic wrapper for `NSCache` in Swift, designed to be reusable for any Swift types. It provides automatic memory management, thread safety, and the ability to convert the cache to and from a Swift dictionary.
-Opportunity (speculative): Swift Threads and Thread Safety
+Purpose (project claim): Native macOS memory pressure monitor and safe app management utility
+Opportunity (speculative): Swift Memory Management
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## dinkar1708/swiftui-learning-examples
+https://github.com/dinkar1708/swiftui-learning-examples
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): SwiftUI examples organized by difficulty: Easy → Medium → Advanced → Training. Features memory management, MVVM, modern iOS APIs, and production patterns.
+Opportunity (speculative): Swift Memory Management
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -63,64 +63,64 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## CoreTree/Swift-ConcurrencyAndSafety
-https://github.com/CoreTree/Swift-ConcurrencyAndSafety
+## Gunnarguy/OpenAssistant
+https://github.com/Gunnarguy/OpenAssistant
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): This is a repo designed to explore Swift's various designs for Concurrency, and different Process/Thread safety mechanisms
-Opportunity (speculative): Swift Threads and Thread Safety
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## dev1008iharsh/HarshVideoCall
-https://github.com/dev1008iharsh/HarshVideoCall
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Production-ready iOS RTC app using Swift, UIKit & Agora SDK with focus on thread safety, memory efficiency, and scalable architecture 🚀
-Opportunity (speculative): Swift Threads and Thread Safety
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## NiccoloBargioni/ZTronVideoPlayer
-https://github.com/NiccoloBargioni/ZTronVideoPlayer
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): xiahu/TinyPlayer port to Swift language with increased thread-safety and Sendable conformance
-Opportunity (speculative): Swift Threads and Thread Safety
+Purpose (project claim): Legacy SwiftUI client for the OpenAI Assistants API v2 with assistant and thread management, vector stores, local file preprocessing, and memory-safe run polling.
+Opportunity (speculative): Swift Memory Management
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## PNYWT/swift-race-condition-and-actor-isolation
-https://github.com/PNYWT/swift-race-condition-and-actor-isolation
+## kostyk348/dso-runtime
+https://github.com/kostyk348/dso-runtime
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): โปรเจกต์ตัวอย่างสำหรับอธิบาย Race Condition, Thread Safety และ Actor Isolation ใน Swift Concurrency
-Opportunity (speculative): Swift Threads and Thread Safety
+Purpose (project claim): Deterministic task graph execution framework — arena allocator, typed pools, SPSC queues, dependency levels, parallel worker pool, WCET contracts, Chrome trace export
+Opportunity (speculative): Swift Memory Management
+Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: Apache-2.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## MiraChuang24/swift-engineering-lab
+https://github.com/MiraChuang24/swift-engineering-lab
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Swift and iOS engineering experiments, notes, and tests covering language fundamentals, memory management, concurrency, and software design.
+Opportunity (speculative): Swift Memory Management
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## offergenieai/iOS-Interview-Questions
+https://github.com/offergenieai/iOS-Interview-Questions
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): iOS developer interview questions 2026. Swift, SwiftUI, UIKit, Core Data, memory management.
+Opportunity (speculative): Swift Memory Management
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":113629,"cache_hits":2,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":11,"seconds":6.15,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":482350,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":11,"seconds":5.92,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
 []
