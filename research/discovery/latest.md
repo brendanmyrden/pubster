@@ -1,32 +1,29 @@
-# Capability intelligence: swift-area-031
+# Capability intelligence: swift-area-032
 
-Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
+Mode: composable-infrastructure | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## DanielDxD/lllang
-https://github.com/DanielDxD/lllang
-Score: 19.5/100 | Source-supported | investigate
-Revision: 8d42507239bd004d7b8f13c97f4ea414bd801571
-Purpose (project claim): A statically typed, compiled, object-oriented programming language inspired by Swift and C# — improved where those languages leave room for better DX and performance.
-Opportunity (speculative): Swift Object-Oriented Programming
-Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
+## aberidze/Swift-Combine
+https://github.com/aberidze/Swift-Combine
+Score: 12.5/100 | Source-supported | investigate
+Revision: 79211f4ae7c42e65983cdfffe93adc29718e74a6
+Purpose (project claim): A hands-on repository documenting my exploration of Swift Combine, featuring practical examples, concepts, and implementations covering publishers, subscribers, operators, and reactive programming patterns.
+Opportunity (speculative): Swift Reactive Programming
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
+Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/DanielDxD/lllang/blob/8d42507239bd004d7b8f13c97f4ea414bd801571/runtime/ll_compat.h
-- manifest: https://github.com/DanielDxD/lllang/blob/8d42507239bd004d7b8f13c97f4ea414bd801571/Cargo.toml
-- documentation: https://github.com/DanielDxD/lllang/blob/8d42507239bd004d7b8f13c97f4ea414bd801571/README.md
-- license: https://github.com/DanielDxD/lllang/blob/8d42507239bd004d7b8f13c97f4ea414bd801571/LICENSE
+- source: https://github.com/aberidze/Swift-Combine/blob/79211f4ae7c42e65983cdfffe93adc29718e74a6/Swift-Combine/App/Swift_CombineApp.swift
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## CrisaVillar/SwiftPay
-https://github.com/CrisaVillar/SwiftPay
+## api-evangelist/helidon
+https://github.com/api-evangelist/helidon
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Project (IT Project Management, Information Systems  (including Database Fundamentals), and Object-Oriented Programming)
-Opportunity (speculative): Swift Object-Oriented Programming
+Purpose (project claim): Helidon — independent third-party profile of a public API surface, by API Evangelist. Helidon is a collection of Java libraries from Oracle for writing microservices that run on a fast web core powered by Netty, supporting MicroProfile and reactive programming models.
+Opportunity (speculative): Swift Reactive Programming
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -35,40 +32,12 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Gayatri0428/Java-Programs
-https://github.com/Gayatri0428/Java-Programs
+## boraseoksoon/Throttler
+https://github.com/boraseoksoon/Throttler
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A collection of Java programs uploaded daily to practice Core Java, Object-Oriented Programming, Data Structures, Algorithms, and problem-solving while maintaining coding consistency.  Option 2
-Opportunity (speculative): Swift Object-Oriented Programming
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## gm2025/Tennis
-https://github.com/gm2025/Tennis
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A tennis scoring application developed in Swift using object-oriented programming, the MVVM architecture, and unit testing.
-Opportunity (speculative): Swift Object-Oriented Programming
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## halilozel1903/iOSObjectOrientedProgramming
-https://github.com/halilozel1903/iOSObjectOrientedProgramming
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Developed with Swift language. Examples of Object Oriented Programming are available.
-Opportunity (speculative): Swift Object-Oriented Programming
+Purpose (project claim): One Line to throttle, debounce and delay: Say Goodbye to Reactive Programming such as RxSwift and Combine.
+Opportunity (speculative): Swift Reactive Programming
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -77,26 +46,54 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Jyothi-prakash-2006/C-practice-programs-
-https://github.com/Jyothi-prakash-2006/C-practice-programs-
+## Buzzvil/RxSwift
+https://github.com/Buzzvil/RxSwift
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A collection of C++ practice programs covering programming fundamentals, problem-solving, data structures, algorithms, and object-oriented programming. This repository documents my daily C++ learning journey through practical coding exercises and solutions.
-Opportunity (speculative): Swift Object-Oriented Programming
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Purpose (project claim): Reactive Programming in Swift (Buzzvil fork)
+Opportunity (speculative): Swift Reactive Programming
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## dustinoconnor/Metal-Node
+https://github.com/dustinoconnor/Metal-Node
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Metal Composer is a macOS node-based visual programming app for realtime Metal shaders, audio-reactive visuals, 3D scenes, Gaussian splats, OSC/MIDI, Syphon, and creative coding.
+Opportunity (speculative): Swift Reactive Programming
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## snaimio/swift-oop-pet-adoption-system
-https://github.com/snaimio/swift-oop-pet-adoption-system
+## gmliao/swift-state-tree
+https://github.com/gmliao/swift-state-tree
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Object-Oriented Programming (OOP) design patterns in Swift with domain encapsulation, inheritance hierarchies, runtime polymorphism, and CLI verification.
-Opportunity (speculative): Swift Object-Oriented Programming
+Purpose (project claim): A reactive server state programming model with a Swift reference implementation.
+Opportunity (speculative): Swift Reactive Programming
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## ReactiveX/RxSwift
+https://github.com/ReactiveX/RxSwift
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Reactive Programming in Swift
+Opportunity (speculative): Swift Reactive Programming
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -105,22 +102,22 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## vkazakevich/software-engineering-labs-2
-https://github.com/vkazakevich/software-engineering-labs-2
+## resoul/AsyncRay
+https://github.com/resoul/AsyncRay
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Collection of object-oriented programming and software development projects built with Pascal, Symfony, Spring Boot, Echo (Go), React, Swift and Kotlin
-Opportunity (speculative): Swift Object-Oriented Programming
+Purpose (project claim): A lightweight, zero-dependency reactive programming library for Swift built natively on Swift Concurrency (AsyncStream, Task, Sendable).
+Opportunity (speculative): Swift Reactive Programming
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
+Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":283136,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":11,"seconds":6.68,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":169732,"cache_hits":3,"candidate_count":8,"duplicates":1,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":10,"seconds":6.65,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[{"at":1793226617,"reason":"RESPONSE_TOO_LARGE","technique":"dependencies"}]
+[]
