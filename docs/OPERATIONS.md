@@ -71,3 +71,9 @@ Normal ingestion checks at most two due sources per tick. The explicit manual
 admission batch used a 20-source ceiling under the existing 480-second/768-MiB
 watchdog. Export version 0.2.0 preserves per-source/per-chunk license labels and
 mixed-license summary counts; it no longer assumes all content is Apache-2.0.
+
+## Capability intelligence (2026-10-28)
+
+The same hourly `discovery.tick()` now delegates to the modular capability engine.
+All 251 targets, priority/breadth rotation, existing locks, rights approvals, model
+quota and Git allowlists remain unchanged. See [INTELLIGENCE.md](INTELLIGENCE.md).

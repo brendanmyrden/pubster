@@ -32,6 +32,12 @@ def summary(r,objective):
     matched=sorted(terms & set(re.findall(r'[a-z0-9]+',text.lower())))
     license=(r.get('license') or {}).get('spdx_id','UNKNOWN')
     score=len(matched)*10 + (3 if license not in ['UNKNOWN','NOASSERTION'] else 0) - (30 if r.get('archived') else 0)
+    cfg=c.readjson(c.ROOT/'config/intelligence.json',{})
+    if cfg.get('enabled'):
+        from .intelligence.ranking import candidate
+        result=candidate(r,{},cfg,[],objective,'metadata-only')
+        result['matched_terms']=matched
+        return result
     return dict(repository=r['full_name'],url=r['html_url'],description=r.get('description'),language=r.get('language'),license=license,archived=r.get('archived'),pushed_at=r.get('pushed_at'),topics=r.get('topics',[]),stars=r.get('stargazers_count'),score=score,matched_terms=matched,ranking='lexical-topic evidence, not semantic embeddings',rights='UNREVIEWED',security='NOT_AUDITED',compatibility='UNVERIFIED')
 
 def implementations(client,name,term):
@@ -49,7 +55,7 @@ def inspect(client,r):
     manifests={'Package.swift','Package.resolved','package.json','pyproject.toml','requirements.txt','Cargo.toml','go.mod'}
     return dict(revision=commit,dependency_manifests=[dict(path=e['path'],url='https://github.com/'+name+'/blob/'+commit+'/'+urllib.parse.quote(e['path']),sha=e['sha']) for e in entries if e['name'] in manifests],dependency_resolution='MANIFEST_REFERENCES_ONLY')
 
-def discover(seed,objective,focused=False):
+def legacy_discover(seed,objective,focused=False):
     seed=repo_id(seed)
     if not 1<=len(objective)<=160: raise ValueError('Objective must be 1..160 characters and public')
     client=Client(); root=client.public(seed)
@@ -80,6 +86,13 @@ def discover(seed,objective,focused=False):
     except Exception as e: ecosystem={'state':'unavailable','url':eco,'reason':type(e).__name__,'http_status':getattr(e,'code',None)}
     return dict(schema_version=1,observed_at=int(time.time()),seed=seed,objective=objective,candidates=ranked,errors=errors,github_requests=client.calls,ecosyste_ms=ecosystem,limitations=['No transitive dependency resolution or security audit','No learned semantic embeddings or shared-star graph','Candidates are not approved corpus sources'],companions={'starboard':'https://starboard.codevetter.com/','simrepo':'https://github.com/Mubelotix/SimRepo','sourcegraph':'https://sourcegraph.com/search','grep_app':'https://grep.app/','oss_insight':'https://ossinsight.io/'})
 
+def discover(seed,objective,focused=False):
+    cfg=c.readjson(c.ROOT/'config/intelligence.json',{})
+    if not cfg.get('enabled'):return legacy_discover(seed,objective,focused)
+    from .intelligence.engine import run
+    return run(seed,objective,focused)
+
+
 def tick(force=False):
     cfg=c.readjson(c.ROOT/'config/discovery.json')
     if not cfg or not cfg.get('enabled'): return {'state':'DISABLED'}
@@ -102,7 +115,7 @@ def tick(force=False):
                     prior=legacy
                     c.writejson(path,prior)
             matches=prior and prior.get('seed')==target['seed'] and prior.get('objective')==target['public_objective']
-            if force or not matches or time.time()-prior['observed_at']>=max(86400,cfg.get('refresh_seconds',86400)):
+            if force or not matches or (prior.get('state')=='PARTIAL' and time.time()-prior['observed_at']>=3600) or time.time()-prior['observed_at']>=max(86400,cfg.get('refresh_seconds',86400)):
                 due.append((prior['observed_at'] if matches else 0,target,path))
         if not due: return {'state':'CACHED','targets':len(targets)}
         # One oldest/missing target per tick preserves the original network budget.
@@ -114,7 +127,7 @@ def tick(force=False):
             if target.get('lane')=='breadth':
                 result=discover(target['seed'],target['public_objective'],focused=True)
             else: result=discover(target['seed'],target['public_objective'])
-            result['state']='COMPLETE'
+            result.setdefault('state','COMPLETE')
         except Exception as exc:
             # A bad seed or unavailable provider must not starve all later topics.
             result={'state':'FAILED','seed':target['seed'],'objective':target['public_objective'],
@@ -122,6 +135,9 @@ def tick(force=False):
                     'ecosyste_ms':{'state':'not_attempted'},'error':type(exc).__name__}
         result['lane']=target.get('lane','priority')
         result['target_id']=target.get('id','default')
+        previous=c.readjson(path)
+        if previous and previous.get('state')=='COMPLETE' and result['state']!='COMPLETE':
+            c.writejson(CACHE/(path.stem+'.last-success.json'),previous)
         c.writejson(CACHE/path.name,result)
         c.writejson(path,result)
         c.writejson(REPORT,result)
@@ -133,9 +149,14 @@ def tick(force=False):
                 'observed_at':saved.get('observed_at') if saved else None,
                 'candidates':len(saved.get('candidates',[])) if saved else 0})
         c.writejson(REPORT.parent/'coverage.json',{'targets':coverage,'note':'Discovery attempts, not corpus coverage or source approval'})
-        lines=['# Adjacent repository candidates: '+result['target_id'],'','Discovery only: license, security and compatibility require review.','']
-        for x in result['candidates']:
-            lines += [f"- [{x['repository']}]({x['url']}): score {x['score']}; license {x['license']}; last push {x['pushed_at']}"]
-        c.write(path.with_suffix('.md'),'\n'.join(lines)+'\n')
-        c.write(REPORT.with_suffix('.md'),'\n'.join(lines)+'\n')
+        if result.get('schema_version')==2:
+            from .intelligence.engine import report
+            rendered=report(result)
+        else:
+            lines=['# Adjacent repository candidates: '+result['target_id'],'','Discovery only: license, security and compatibility require review.','']
+            for x in result['candidates']:
+                lines += [f"- [{x['repository']}]({x['url']}): score {x['score']}; license {x['license']}; last push {x['pushed_at']}"]
+            rendered='\n'.join(lines)+'\n'
+        c.write(path.with_suffix('.md'),rendered)
+        c.write(REPORT.with_suffix('.md'),rendered)
         return {'state':result['state'],'target':result['target_id'],'candidates':len(result['candidates']),'github_requests':result['github_requests'],'ecosyste_ms':result['ecosyste_ms']['state']}

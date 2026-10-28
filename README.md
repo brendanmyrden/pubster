@@ -56,3 +56,10 @@ See [OpenClaw-authenticated autoresearch adaptation](docs/AUTORESEARCH.md).
 
 See [local data-quality tools and operations](docs/DATA-QUALITY.md).
 Run `./scripts/pubster-quality` for the current corpus audit.
+
+## Capability intelligence
+
+The 251-topic discovery pipeline now uses seven capability-first discovery modes,
+commit-pinned source evidence, separate repository/implementation scores, and a
+resumable local ledger. Discoveries remain outside the approved corpus until review.
+See [intelligence operations and honest limits](docs/INTELLIGENCE.md).

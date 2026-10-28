@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "schema_version": 1,
+  "scoring_version": "capability-v1.1",
+  "weights": {"power":20,"usefulness":20,"novelty":15,"composability":15,"evidence":10,"underexposure":10,"sovereignty":10},
+  "max_requests":18,"max_seconds":75,"max_response_bytes":2000000,
+  "max_total_bytes":12000000,"request_interval_seconds":0.25,
+  "max_candidates":8,"deep_candidates":1,"max_graph_hops":3,
+  "max_frontier":500,"cache_seconds":86400,"max_search_pages":3,
+  "modes":["hidden-gems","capability-expansion","performance-extremes","unusual-engineering","composable-infrastructure","forgotten-engineering","adjacency"],
+  "high_value_threshold":60,
+  "intent_concepts": {
+    "concurrency":{"match":["concurrency","actors","executor","synchronization","atomics","operationqueue","thread"],"queries":["lock free scheduler","work stealing executor","bounded task queue"],"symbols":["compare_exchange","enqueue","memory_order"]},
+    "compiler":{"match":["compiler","sil","llvm","runtime","macros"],"queries":["compiler optimization intermediate representation","runtime code generation"],"symbols":["IRBuilder","PassManager","lowering"]},
+    "compute":{"match":["silicon","metal","accelerate","gpu","inference","learning"],"queries":["quantized inference kernel","zero copy GPU compute"],"symbols":["simd","dispatchThreadgroups","quantize"]},
+    "systems":{"match":["embedded","bare","microcontrollers","allocators","memory"],"queries":["deterministic allocator embedded","bare metal hardware abstraction"],"symbols":["allocate","volatile","mmap"]},
+    "binary":{"match":["reverse","binary","instrumentation","objc","objective"],"queries":["binary instrumentation Mach-O","runtime interception disassembler"],"symbols":["mach_header","objc_msgSend","disassemble"]},
+    "data":{"match":["collections","parser","compression","database","vector","algorithms"],"queries":["cache efficient data structure","SIMD parser compression"],"symbols":["parse","compress","lower_bound"]},
+    "network":{"match":["network","distributed","rpc","ipc","protocol"],"queries":["low latency shared memory IPC","zero copy protocol transport"],"symbols":["sendmsg","epoll","ring_buffer"]},
+    "graphics":{"match":["ui","rendering","animation","graphics","accessibility"],"queries":["retained rendering scene graph","incremental layout accessibility"],"symbols":["layout","render","draw"]},
+    "security":{"match":["security","crypto","sandbox","identity"],"queries":["constant time cryptography","capability based sandbox"],"symbols":["constant_time","sandbox","verify"]},
+    "audio":{"match":["audio","dsp","synthesis","streaming"],"queries":["real time audio DSP","lock free audio synthesis"],"symbols":["processBlock","fft","oscillator"]}
+  }
+}

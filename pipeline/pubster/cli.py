@@ -2,6 +2,9 @@ import sys,json,argparse
 from . import core
 
 def main():
+    if len(sys.argv)>1 and sys.argv[1]=='intelligence':
+        from .intelligence.operator import main as intelligence_main
+        intelligence_main(sys.argv[2:]);return 0
     p=argparse.ArgumentParser();p.add_argument('command');p.add_argument('action',nargs='?');p.add_argument('--force',action='store_true');p.add_argument('--json',action='store_true');p.add_argument('--once',action='store_true');p.add_argument('--no-notify',action='store_true');p.add_argument('--candidate',action='store_true');p.add_argument('--dry-run',action='store_true');p.add_argument('--suite');p.add_argument('--profile');p.add_argument('--limit',type=int,default=2);p.add_argument('--redacted',action='store_true');args=p.parse_args()
     try:
         if args.command=='init':core.init();r={'initialized':True}
