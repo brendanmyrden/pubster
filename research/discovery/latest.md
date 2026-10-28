@@ -1,72 +1,60 @@
-# Capability intelligence: objective-c
+# Capability intelligence: swift-area-025
 
-Mode: hidden-gems | scoring: capability-v1.1 | state: COMPLETE
+Mode: capability-expansion | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## bloominstituteoftechnology/ios-afternoon-project-astronomy-objc
-https://github.com/bloominstituteoftechnology/ios-afternoon-project-astronomy-objc
-Score: 6.5/100 | Source-supported | investigate
-Revision: 1ccd38a94771790216adfaf2a613741acf938406
-Purpose (project claim): Astronomy Project using Objective-C and Swift
-Opportunity (speculative): Objective-C
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+## nikolay-dementiev/OwnershipDemo_Mastering_with_extended_lifetime_and_parameter_ownership_modifiers
+https://github.com/nikolay-dementiev/OwnershipDemo_Mastering_with_extended_lifetime_and_parameter_ownership_modifiers
+Score: 17.0/100 | Source-supported | investigate
+Revision: 6bb61fb4b7d0df30450ab63ed63cf9d4f9ff36a4
+Purpose (project claim): This repository serves as a demonstration of the **`borrowing`** and **`consuming`** parameter ownership modifiers in Swift, as described in the article: [Mastering `withExtendedLifetime` and Parameter Ownership Modifiers (`borrowing` and `consuming`) in Swift
+Opportunity (speculative): Swift Ownership and Borrowing
+Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
+Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/bloominstituteoftechnology/ios-afternoon-project-astronomy-objc/blob/1ccd38a94771790216adfaf2a613741acf938406/LambdaSDK/LSIErrors.h
-- documentation: https://github.com/bloominstituteoftechnology/ios-afternoon-project-astronomy-objc/blob/1ccd38a94771790216adfaf2a613741acf938406/README.md
+- source: https://github.com/nikolay-dementiev/OwnershipDemo_Mastering_with_extended_lifetime_and_parameter_ownership_modifiers/blob/6bb61fb4b7d0df30450ab63ed63cf9d4f9ff36a4/Sources/main.swift
+- manifest: https://github.com/nikolay-dementiev/OwnershipDemo_Mastering_with_extended_lifetime_and_parameter_ownership_modifiers/blob/6bb61fb4b7d0df30450ab63ed63cf9d4f9ff36a4/Package.swift
+- documentation: https://github.com/nikolay-dementiev/OwnershipDemo_Mastering_with_extended_lifetime_and_parameter_ownership_modifiers/blob/6bb61fb4b7d0df30450ab63ed63cf9d4f9ff36a4/README.md
+- license: https://github.com/nikolay-dementiev/OwnershipDemo_Mastering_with_extended_lifetime_and_parameter_ownership_modifiers/blob/6bb61fb4b7d0df30450ab63ed63cf9d4f9ff36a4/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## bloominstituteoftechnology/ios-guided-project-data-modeling-in-objective-c-starter
-https://github.com/bloominstituteoftechnology/ios-guided-project-data-modeling-in-objective-c-starter
+## aakwat/mut-ts
+https://github.com/aakwat/mut-ts
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Starter project for iOS Guided Project for Data Modeling in Objective-C
-Opportunity (speculative): Objective-C
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Purpose (project claim): A TypeScript library for creating and managing mutable objects, inspired by Rust's ownership and borrowing principles.
+Opportunity (speculative): Swift Ownership and Borrowing
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
+Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## bloominstituteoftechnology/ios-guided-project-networking-in-objective-c-starter
-https://github.com/bloominstituteoftechnology/ios-guided-project-networking-in-objective-c-starter
+## Alpy16/Rust-Librarian
+https://github.com/Alpy16/Rust-Librarian
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Starter Project for iOS Module Project: Networking in Objective-C
-Opportunity (speculative): Objective-C
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Purpose (project claim): A lightweight, memory-safe library management system built to explore Rust's core principles of ownership, borrowing, and memory management.
+Opportunity (speculative): Swift Ownership and Borrowing
+Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## bloominstituteoftechnology/ios-guided-project-swift-objc-interoperability-starter
-https://github.com/bloominstituteoftechnology/ios-guided-project-swift-objc-interoperability-starter
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Starter project for Swift and Objective-C Interoperability
-Opportunity (speculative): Objective-C
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
+Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## fly2never/sonar-objective-c
-https://github.com/fly2never/sonar-objective-c
+## andikasinatrya/smart-library-system
+https://github.com/andikasinatrya/smart-library-system
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Sonar Plugin for Objective C
-Opportunity (speculative): Objective-C
+Purpose (project claim): ✨ Features Register and track books  Borrowing and returning system  Role-based access for librarians and users  Emits events for key actions (book added, borrowed, returned)  Ownership controls for contract admin
+Opportunity (speculative): Swift Ownership and Borrowing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -75,12 +63,26 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## interstateone/objective-c-style-guide
-https://github.com/interstateone/objective-c-style-guide
+## Olamphzy/Pong_Game
+https://github.com/Olamphzy/Pong_Game
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Our Objective-C coding style guide.  Fall in line!
-Opportunity (speculative): Objective-C
+Purpose (project claim): Pong Game: Games and Graphics is built using Piston. Implementing on piston library, ownership and borrowing, reference, closure, method, struct and function
+Opportunity (speculative): Swift Ownership and Borrowing
+Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## princecodes247/borrowjs
+https://github.com/princecodes247/borrowjs
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): A lightweight library that introduces Rust-inspired ownership and borrowing semantics.
+Opportunity (speculative): Swift Ownership and Borrowing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -89,13 +91,13 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## iOSCourseMaterial/ObjectiveCPlaygrounds
-https://github.com/iOSCourseMaterial/ObjectiveCPlaygrounds
+## ShashankCargoRun/Library-Management-System-in-Rust
+https://github.com/ShashankCargoRun/Library-Management-System-in-Rust
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Learning a bit about Objective-C now instead of Swift
-Opportunity (speculative): Objective-C
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Purpose (project claim): A simple library management system built with Rust, demonstrating ownership, borrowing, Option, Result, and error handling.
+Opportunity (speculative): Swift Ownership and Borrowing
+Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
@@ -103,22 +105,22 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## KnightJoker/Hero-ObjectiveC
-https://github.com/KnightJoker/Hero-ObjectiveC
+## sunfishcode/io-lifetimes
+https://github.com/sunfishcode/io-lifetimes
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Purpose needs source review
-Opportunity (speculative): Objective-C
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Purpose (project claim): A low-level I/O ownership and borrowing library
+Opportunity (speculative): Swift Ownership and Borrowing
+Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: NOASSERTION; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":214969,"cache_hits":2,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":14,"seconds":7.44,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":73667,"cache_hits":7,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":9,"seconds":5.2,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
 []
