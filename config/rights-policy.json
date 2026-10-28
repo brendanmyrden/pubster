@@ -15,7 +15,14 @@
     "moreSwift/swift-cross-ui",
     "nodes-app/swift-markdown-engine",
     "pointfreeco/swift-composable-architecture",
-    "siteline/swiftui-introspect"
+    "siteline/swiftui-introspect",
+    "apple/swift-atomics",
+    "pointfreeco/swift-concurrency-extras",
+    "pointfreeco/swift-identified-collections",
+    "groue/Semaphore",
+    "SwiftyLab/AsyncObjects",
+    "swhitty/FlyingFox",
+    "vapor/sqlite-kit"
   ],
   "accepted_license": "Apache-2.0",
   "required_license_paths": [
@@ -130,6 +137,62 @@
       "commit": "7f32b29da875745abb046274faa0f6c0a60353ca",
       "readme_path": "README.md",
       "readme_sha256": "4d4e1b029f8f7e7d6472b4db944398719906ac9ce0338c45d6ba36558a38661c"
+    },
+    "apple/swift-atomics": {
+      "spdx": "Apache-2.0",
+      "license_path": "LICENSE.txt",
+      "license_sha256": "770af8291f708538d8ff885a0bbc4e045cd700531741c4f99528d435c14d7f55",
+      "commit": "bc30c67cf0c4479633621ad7950d71494a07390f",
+      "readme_path": "README.md",
+      "readme_sha256": "3ff9f2559bc096450976316373d2f7843888f75c01811b045eb0ebcfa5bd7a7a"
+    },
+    "pointfreeco/swift-concurrency-extras": {
+      "spdx": "MIT",
+      "license_path": "LICENSE",
+      "license_sha256": "72565151804cdc168937ccc70e4c30c5afff92ff314bb9d504780a3ad1c1f868",
+      "commit": "8a4260f7373493435bd21194585c95b72bfdd401",
+      "readme_path": "README.md",
+      "readme_sha256": "f93c09967d5b66f9d547beacbc835c51b5e081859373fc1ea09a7dde65c1f6d8"
+    },
+    "pointfreeco/swift-identified-collections": {
+      "spdx": "MIT",
+      "license_path": "LICENSE",
+      "license_sha256": "e26e14493356d7abf33f426942a1c451832a8a4a309297d44c5b8a03af1d9ea1",
+      "commit": "3abaf5156efa9437192f8608fa94e6e4e7abf36a",
+      "readme_path": "README.md",
+      "readme_sha256": "b8431741e022cf8c48cce40198647c967101d87bdf5308cdd5d68143ade8e405"
+    },
+    "groue/Semaphore": {
+      "spdx": "MIT",
+      "license_path": "LICENSE",
+      "license_sha256": "6cea6f643a775c59865e5c26e490096da3eca48a189af88a9a7372623f640981",
+      "commit": "2543679282aa6f6c8ecf2138acd613ed20790bc2",
+      "readme_path": "README.md",
+      "readme_sha256": "c5eab5f26f4a4329b7bec8d7adb3f2e6c09e303ec94e1dddec0f9e791fc74fc6"
+    },
+    "SwiftyLab/AsyncObjects": {
+      "spdx": "MIT",
+      "license_path": "LICENSE",
+      "license_sha256": "aaa35d9b1628b843790ada38f770b9c9bc736cad7b13f49e967801ce1d45fa72",
+      "commit": "8fa6219a5b9b76325d4eff7afcf4c60b50f3af8d",
+      "readme_path": "README.md",
+      "readme_sha256": "11748450ccdb2d352ad307a401cc692fa02c4f76469931d81e74f1b4d917f2fd"
+    },
+    "swhitty/FlyingFox": {
+      "spdx": "MIT",
+      "license_path": "LICENSE",
+      "license_sha256": "d108595341bd18bb218ee3bad7eb5bdeee07c7c55e89e4488392449f84f2eef0",
+      "commit": "62456515d94486d3b1475fec4f21d4a253ae8cfd",
+      "readme_path": "README.md",
+      "readme_sha256": "57cb05269065d2cdcc2fe684b02b5bd25de9eba4a5373239232dfcae1798deb1"
+    },
+    "vapor/sqlite-kit": {
+      "spdx": "MIT",
+      "license_path": "LICENSE",
+      "license_sha256": "8ab16796b98e503a9a126dec7960b46257a976ff8cf0bed0656aa3826e2a9648",
+      "commit": "492c46e82eb135ef9c67f3f4764a5026c7cce00e",
+      "readme_path": "README.md",
+      "readme_sha256": "1d42d17a902302f8ee3a153122e3b7e1a8863f9f0de16d5615ae508d33ca1e33"
     }
   },
   "accepted_licenses": [

@@ -77,3 +77,20 @@ mixed-license summary counts; it no longer assumes all content is Apache-2.0.
 The same hourly `discovery.tick()` now delegates to the modular capability engine.
 All 251 targets, priority/breadth rotation, existing locks, rights approvals, model
 quota and Git allowlists remain unchanged. See [INTELLIGENCE.md](INTELLIGENCE.md).
+
+## Reviewed discovery expansion (2026-10-28)
+
+Eight additional unique repositories were reviewed; seven exact README snapshots
+were approved. HandySwift was deferred because its README is predominantly an
+app showcase and external documentation links. Decisions, pinned hashes and
+compatibility caveats are in `research/candidate-admission-review-2026-10-28.json`.
+The original 100-entry atlas remains unchanged; existing identities are reused
+and six new identities are appended to the supplemental registry.
+
+This one-time batch uses a 24-source check ceiling under the existing watchdog
+limits (480 seconds, 768 MiB RSS, 90 sampled CPU seconds). The normal two-source
+hourly ingestion ceiling and discovery/model quotas are unchanged. Only the
+reviewed README bytes are admitted; linked content is not fetched. Upstream
+performance and current-toolchain compatibility claims remain unverified.
+See `reports/corpus-admission-2026-10-28.json` for accepted counts, validation,
+checksums and the unchanged frozen retrieval benchmark results.

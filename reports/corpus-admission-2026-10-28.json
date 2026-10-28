@@ -1,0 +1,100 @@
+{
+  "backup": {
+    "backup_sha256": "eb922669ffb822864a069e4a7b82f89a7c8a4f9b681e43831418da2a965c5e69",
+    "integrity": "ok"
+  },
+  "checksums_verified": 562,
+  "corpus_id": "2db1528c3efc901bb329687a5280e99ba00e89972f985a493bd3df1f5df2ced8",
+  "counts": {
+    "documents": 59,
+    "reference": 533,
+    "skills": 0
+  },
+  "deferred_candidates": 1,
+  "evaluation": {
+    "mrr": 0.95,
+    "queries": 20,
+    "recall_at_10": 1.0,
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "suite_sha256": "93fcfba2a520efb226a555620edebef3b9be1e2a2a270f4be9dc119a3b21772a"
+  },
+  "ingestion": {
+    "changed_sources": 7,
+    "download_bytes": 396790,
+    "requests": 52,
+    "sources": {
+      "atlas-015": "fresh",
+      "atlas-016": "fresh",
+      "atlas-017": "fresh",
+      "atlas-025": "unchanged",
+      "atlas-031": "new_revision_requires_review",
+      "atlas-043": 11,
+      "discovery-001": "fresh",
+      "discovery-002": "fresh",
+      "discovery-003": "fresh",
+      "discovery-004": "fresh",
+      "discovery-005": "fresh",
+      "discovery-006": "fresh",
+      "discovery-007": "fresh",
+      "discovery-008": "new_revision_requires_review",
+      "discovery-009": "unchanged",
+      "discovery-010": "unchanged",
+      "discovery-011": 13,
+      "discovery-012": 10,
+      "discovery-013": 2,
+      "discovery-014": 12,
+      "discovery-015": 23,
+      "discovery-016": 3
+    }
+  },
+  "manual_source_ceiling": 24,
+  "model_calls": 0,
+  "new_excerpts": 74,
+  "new_sources": 7,
+  "prior_mrr": 0.95,
+  "reviewed_repositories": 8,
+  "rights": {
+    "Apache-2.0": 304,
+    "MIT": 229
+  },
+  "sources": 22,
+  "started_at": 1793218630,
+  "tests_passed": 54,
+  "validated_records": 533,
+  "previous_records_preserved": 459,
+  "checksum_entries_verified": 563,
+  "quality": {
+    "state": "accepted",
+    "records": 533,
+    "schema_valid": 533,
+    "source_mutations": 0
+  },
+  "quality_review_flags": {
+    "exact_duplicate_groups": 2,
+    "near_duplicate_pairs": 3,
+    "structural_anomalies": 199,
+    "action": "Preserve distinct original evidence; review-only flags"
+  },
+  "accepted_document_bytes": 69659
+}

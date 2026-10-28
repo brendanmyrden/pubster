@@ -6,8 +6,8 @@ Swift engineering library. **Local/GitHub release; no public site deployed.**
 
 ## Working now
 
-- 100 original atlas candidates + 23 separately recorded supplements.
-- 15 rights-approved, commit-pinned sources; 459 extracted documentation chunks.
+- 100 original atlas candidates + 29 separately recorded supplements.
+- 22 rights-approved, commit-pinned sources; 533 extracted documentation chunks.
 - Canonical SQLite WAL/FTS5, line-span provenance, preserved licenses/notices.
 - Deterministic JSONL/gzip/Markdown exports, SHA-256 manifests, local backup.
 - Real Next.js static-export UI with Tailwind and shadcn/ui Button; no corpus in bundles.
