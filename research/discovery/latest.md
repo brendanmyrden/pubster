@@ -1,60 +1,14 @@
-# Capability intelligence: swift-area-052
+# Capability intelligence: swift-area-053
 
-Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
+Mode: composable-infrastructure | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## armcknight/Pippin
-https://github.com/armcknight/Pippin
+## dfed/SafeDI
+https://github.com/dfed/SafeDI
 Score: 18.5/100 | Source-supported | investigate
-Revision: dd68a6676cf674d7629196dd9ce1f6bd59a63e7e
-Purpose (project claim): Utilities to scaffold iOS apps and simplify working with Cocoa/UIKit/XCTest API in Swift.
-Opportunity (speculative): Swift XCTest
-Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-- source: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/Sources/PippinCore/Bundle%2BPippinCore.swift
-- manifest: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/Package.swift
-- documentation: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/README.md
-- license: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/LICENSE
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Avelino10/essential-feed
-https://github.com/Avelino10/essential-feed
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A modular iOS feed application showcasing Clean Architecture, TDD, API integration, local caching and comprehensive test coverage.
-Opportunity (speculative): Swift XCTest
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## enjelhutasoit/sehat-ios
-https://github.com/enjelhutasoit/sehat-ios
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Offline-first telehealth reference app for iOS (fake data only). SwiftUI, SwiftData, async/await, modular SPM, MVVM-C + Clean Architecture, XCTest/snapshot/XCUITest, GitHub Actions CI. Built as an engineering portfolio project with documented ADRs.
-Opportunity (speculative): Swift XCTest
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## materik/snapshottestcase-ios
-https://github.com/materik/snapshottestcase-ios
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Takes a snapshot of any view in your app, stores the reference and tests that the view looks the same.
-Opportunity (speculative): Swift XCTest
+Revision: 17da2a65bfad9606995fcb7a149029ac0ee3972e
+Purpose (project claim): Compile-time-safe dependency injection for Swift without the boilerplate
+Opportunity (speculative): Swift Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -62,13 +16,17 @@ Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
+- source: https://github.com/dfed/SafeDI/blob/17da2a65bfad9606995fcb7a149029ac0ee3972e/Plugins/PluginScanner.swift
+- manifest: https://github.com/dfed/SafeDI/blob/17da2a65bfad9606995fcb7a149029ac0ee3972e/Package.resolved
+- documentation: https://github.com/dfed/SafeDI/blob/17da2a65bfad9606995fcb7a149029ac0ee3972e/README.md
+- license: https://github.com/dfed/SafeDI/blob/17da2a65bfad9606995fcb7a149029ac0ee3972e/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## MrLawrenceAwe/Codex-Dashboard
-https://github.com/MrLawrenceAwe/Codex-Dashboard
+## AngeloP46/lumen
+https://github.com/AngeloP46/lumen
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Native macOS workflow dashboard built with Swift and JavaScript, with chat monitoring, persistence recovery and XCTest/WebKit tests.
-Opportunity (speculative): Swift XCTest
+Purpose (project claim): Lumen: a RAW photo editor for iPhone (Sony, iPhone ProRAW and other cameras) on Apple's Core Image RAW engine, with on-device AI masks, Heal, Lens Blur and AI Denoise. Built and tested on GitHub Actions; sideload with SideStore.
+Opportunity (speculative): Swift Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -77,50 +35,92 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## sonali-developer/app-window-shopper
-https://github.com/sonali-developer/app-window-shopper
+## bitranox/fake_winreg
+https://github.com/bitranox/fake_winreg
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): • A professional looking full fledged app ready to be published on Appstore. The app basically calculates the number of hours required by its user to work in order to purchase the desired item with certain amount of cost.   • Designed using Xcode 9 and Swift 4 to work for both iPhone & iPad.  • Followed Object Oriented and MVC design pattern.  • Frameworks used includes Foundation, UIKit & XCTest.  • Demonstrated the implementation of following in addition to core app development task: 1.  Custom TextFields 2. Input Accessory View & IBDesignable 3. Unit Testing the data 4. Calculation Algorithm 5. Custom drawing with drawRect method etc.
-Opportunity (speculative): Swift XCTest
+Purpose (project claim): fake winreg, in order to test registry related functions on linux and windows
+Opportunity (speculative): Swift Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Tayyab304/SecureReveal
-https://github.com/Tayyab304/SecureReveal
+## bitranox/lib_detect_testenv
+https://github.com/bitranox/lib_detect_testenv
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): SwiftUI security demo using Keychain access control, MVVM, Swift Concurrency, and XCTest.
-Opportunity (speculative): Swift XCTest
+Purpose (project claim): detects test environment like pytest, doctest or pyrunner on pycharm
+Opportunity (speculative): Swift Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
+Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## VasuChovatiya/Filmy
-https://github.com/VasuChovatiya/Filmy
+## breferrari/xcrew
+https://github.com/breferrari/xcrew
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): SwiftUI movie browser on the TMDB API: infinite scroll, debounced search, trailers, SwiftData favorites, tests and CI
-Opportunity (speculative): Swift XCTest
+Purpose (project claim): Your Xcode crew inside Claude Code: three MCP servers working as one, with live build progress and test reports Claude can act on.
+Opportunity (speculative): Swift Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## ChenYilong/CYLTabBarController
+https://github.com/ChenYilong/CYLTabBarController
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): [EN]It is an iOS UI module library for adding animation to iOS tabbar items and icons with Lottie, Liquid Glass and adding a bigger center UITabBar Item.  [CN]【中国特色 TabBar】一行代码实现 Lottie 动画TabBar，支持中间带+号的TabBar样式，自带红点角标，支持动态刷新。【iOS27 & Dark Mode & iPhone 18 & iPhone Duo tested】
+Opportunity (speculative): Swift Testing
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## Joseph-Cursio/SwiftMutator
+https://github.com/Joseph-Cursio/SwiftMutator
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Automated mutation testing for Swift, based on Muter
+Opportunity (speculative): Swift Testing
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## laur-lang-forever/laur
+https://github.com/laur-lang-forever/laur
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): An AI-friendly UI language for iOS that compiles to SwiftUI, with A/B testing and analytics built into the language.
+Opportunity (speculative): Swift Testing
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: Apache-2.0; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":536588,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":13,"seconds":9.24,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":389110,"cache_hits":2,"candidate_count":8,"duplicates":3,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":15,"seconds":10.17,"unchanged_inspections_reused":0,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
 []
