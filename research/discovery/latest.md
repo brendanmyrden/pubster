@@ -1,14 +1,85 @@
-# Capability intelligence: swift-area-046
+# Capability intelligence: swift-area-047
 
-Mode: composable-infrastructure | scoring: capability-v1.1 | state: COMPLETE
+Mode: forgotten-engineering | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## Alexsvensson99/PkgLift
-https://github.com/Alexsvensson99/PkgLift
-Score: 18.5/100 | Source-supported | investigate
-Revision: 4fcf0d9fd3fbe5c84cb8e0a22d73117bc004ae32
-Purpose (project claim): Safely migrate native Xcode projects from CocoaPods to Swift Package Manager
-Opportunity (speculative): Swift Package Manager (SwiftPM)
+## albitor-ltd/albitor-plugin-carbon
+https://github.com/albitor-ltd/albitor-plugin-carbon
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): IBM Carbon design-system plugin for Albitor: build, audit, and preview.
+Opportunity (speculative): Swift Build System
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Archived: maintenance risk, not rejection
+License: Apache-2.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## albitor-ltd/albitor-plugin-mui
+https://github.com/albitor-ltd/albitor-plugin-mui
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Material UI (MUI) design-system plugin for Albitor: build, audit, and preview.
+Opportunity (speculative): Swift Build System
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Archived: maintenance risk, not rejection
+License: NOASSERTION; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## albitor-ltd/albitor-plugin-shadcn
+https://github.com/albitor-ltd/albitor-plugin-shadcn
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): shadcn/ui + Radix + Tailwind design-system plugin for Albitor: build, audit, and preview.
+Opportunity (speculative): Swift Build System
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Archived: maintenance risk, not rejection
+License: NOASSERTION; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## asaeppel4231/ya_build_wrapper
+https://github.com/asaeppel4231/ya_build_wrapper
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): A CMake and CI build system wrapper written in Python
+Opportunity (speculative): Swift Build System
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Archived: maintenance risk, not rejection
+License: NOASSERTION; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## kxbuild/kxbuild
+https://github.com/kxbuild/kxbuild
+Score: 0.0/100 | Claimed | investigate
+Revision: 2b997566174623657d5d957d53afd159b37690fd
+Purpose (project claim): Command-line iOS build system for Windows, Linux and macOS. Drop-in xcodebuild alternative with xcrun and codesign: builds .xcodeproj, .xcworkspace and Swift packages unchanged, signs with your .p12 and provisioning profile, outputs App Store-ready .ipa. JSON output for CI/CD. Swift, Objective-C, CocoaPods, Flutter, React Native, Expo, Unity.
+Opportunity (speculative): Swift Build System
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+- documentation: https://github.com/kxbuild/kxbuild/blob/2b997566174623657d5d957d53afd159b37690fd/README.md
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## Orange-OpenSource/ouds-ios
+https://github.com/Orange-OpenSource/ouds-ios
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): A Swift Package of SwiftUI components library for Orange developers with Orange Unified Design System. Build Sharper. Ship faster. Perform better.
+Opportunity (speculative): Swift Build System
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -16,17 +87,13 @@ Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/Alexsvensson99/PkgLift/blob/4fcf0d9fd3fbe5c84cb8e0a22d73117bc004ae32/Scripts/build-recovery-inputs.py
-- manifest: https://github.com/Alexsvensson99/PkgLift/blob/4fcf0d9fd3fbe5c84cb8e0a22d73117bc004ae32/Package.resolved
-- documentation: https://github.com/Alexsvensson99/PkgLift/blob/4fcf0d9fd3fbe5c84cb8e0a22d73117bc004ae32/README.md
-- license: https://github.com/Alexsvensson99/PkgLift/blob/4fcf0d9fd3fbe5c84cb8e0a22d73117bc004ae32/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## apple/swift-container-plugin
-https://github.com/apple/swift-container-plugin
+## swiftlang/swift-build
+https://github.com/swiftlang/swift-build
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Build and publish container images using Swift Package Manager
-Opportunity (speculative): Swift Package Manager (SwiftPM)
+Purpose (project claim): A high-level build system based on llbuild, used by Xcode, Swift Playground, and the Swift Package Manager
+Opportunity (speculative): Swift Build System
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -35,83 +102,13 @@ Maintenance: Unreviewed
 License: Apache-2.0; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## d-date/google-mlkit-swiftpm
-https://github.com/d-date/google-mlkit-swiftpm
+## swiftlang/swift-llbuild
+https://github.com/swiftlang/swift-llbuild
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Google MLKit for iOS in Swift Package Manager
-Opportunity (speculative): Swift Package Manager (SwiftPM)
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: Apache-2.0; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Elmahdaoui59/AuroraAi-kmp
-https://github.com/Elmahdaoui59/AuroraAi-kmp
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A modern Kotlin Multiplatform (KMP) project demonstrating Firebase Authentication integration using Kotlin 2.4+, AGP 9, and Swift Package Manager (SwiftPM) for iOS. Read the full step-by-step guide on AG Mobile Labs! 👇
-Opportunity (speculative): Swift Package Manager (SwiftPM)
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## noppefoxwolf/Licenses
-https://github.com/noppefoxwolf/Licenses
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Swift Package Manager build tool plugin that generates a license catalog for package dependencies.
-Opportunity (speculative): Swift Package Manager (SwiftPM)
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## priteshrnandgaonkar/Atlas
-https://github.com/priteshrnandgaonkar/Atlas
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Testing out swift package manager by importing Atlas as a library
-Opportunity (speculative): Swift Package Manager (SwiftPM)
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## rarestype/swift-package-manager-ss-prebuilts
-https://github.com/rarestype/swift-package-manager-ss-prebuilts
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Builds SwiftPM from rarestype/swift-package-manager, plus signed swift-syntax prebuilts for each Swift release
-Opportunity (speculative): Swift Package Manager (SwiftPM)
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## swift-compositions/swift-package-manager
-https://github.com/swift-compositions/swift-package-manager
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Foundation-free SwiftPM manifest evaluation through the installed Swift toolchain.
-Opportunity (speculative): Swift Package Manager (SwiftPM)
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Purpose (project claim): A low-level build system, used by Xcode and the Swift Package Manager
+Opportunity (speculative): Swift Build System
+Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
@@ -120,7 +117,7 @@ License: Apache-2.0; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":324118,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":10,"seconds":8.93,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":164586,"cache_hits":4,"candidate_count":8,"duplicates":1,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":6,"seconds":3.57,"unchanged_inspections_reused":0,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":0}}
 
 ## Failures
-[{"at":1793235621,"reason":"RESPONSE_TOO_LARGE","technique":"discussions"}]
+[]
