@@ -1,44 +1,14 @@
-# Capability intelligence: swift-area-055
+# Capability intelligence: swift-area-056
 
-Mode: adjacency | scoring: capability-v1.1 | state: COMPLETE
+Mode: hidden-gems | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## brandonbloom/Swiftpothesis
-https://github.com/brandonbloom/Swiftpothesis
-Score: 25.17/100 | Source-supported | investigate
-Revision: 64ec4e3f1ab9a10e116cd2aaf9119f328a1e4dac
-Purpose (project claim): Property-based testing for Swift
-Opportunity (speculative): Swift Property-Based Testing
-Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-- source: https://github.com/brandonbloom/Swiftpothesis/blob/64ec4e3f1ab9a10e116cd2aaf9119f328a1e4dac/Sources/Swiftpothesis/Arbitrary.swift
-- manifest: https://github.com/brandonbloom/Swiftpothesis/blob/64ec4e3f1ab9a10e116cd2aaf9119f328a1e4dac/Package.swift
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## brunogama/InvariantSwift
-https://github.com/brunogama/InvariantSwift
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Comprehensive property-based testing framework for Swift 6 with category theory principles
-Opportunity (speculative): Swift Property-Based Testing
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Archived: maintenance risk, not rejection
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Joseph-Cursio/pbt-workbook-grader
-https://github.com/Joseph-Cursio/pbt-workbook-grader
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Grading machinery for the Properties, Worked PBT lab: a language-neutral contract (WorkbookGraderCore) plus a swift-property-based binding. Runs a property against a defect corpus and reports detections, undetected defects, and property strength.
-Opportunity (speculative): Swift Property-Based Testing
+## bhartrhabgayan/swift-snapshot-testing
+https://github.com/bhartrhabgayan/swift-snapshot-testing
+Score: 7.5/100 | Claimed | investigate
+Revision: c3928ab8ef63354a360cda7068372f2740e7aa78
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -46,13 +16,30 @@ Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
+- manifest: https://github.com/bhartrhabgayan/swift-snapshot-testing/blob/c3928ab8ef63354a360cda7068372f2740e7aa78/Package.resolved
+- documentation: https://github.com/bhartrhabgayan/swift-snapshot-testing/blob/c3928ab8ef63354a360cda7068372f2740e7aa78/README.md
+- license: https://github.com/bhartrhabgayan/swift-snapshot-testing/blob/c3928ab8ef63354a360cda7068372f2740e7aa78/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Joseph-Cursio/pbt-workbook-sampler
-https://github.com/Joseph-Cursio/pbt-workbook-sampler
+## ashchupliak/SwiftSnapshot
+https://github.com/ashchupliak/SwiftSnapshot
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Free sampler for Properties, Worked — an auto-graded property-based testing lab for Swift. Write a property; the grader runs it against planted defects and tells you which bugs you'd still have shipped. Warm-up + Set 1, 5 of the lab's 58 exercises.
-Opportunity (speculative): Swift Property-Based Testing
+Purpose (project claim): 📸 iOS Visual Testing Framework with RTL support, Dynamic Type, and comprehensive device testing. Built with SnapshotTesting for Swift developers! 🍎💫
+Opportunity (speculative): Swift Snapshot Testing
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## byacbonsmall/swift-snapshot-testing
+https://github.com/byacbonsmall/swift-snapshot-testing
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -61,26 +48,26 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## nassersala/hegel-swift
-https://github.com/nassersala/hegel-swift
+## eventbrite/swift-snapshot-testing
+https://github.com/eventbrite/swift-snapshot-testing
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Property-based testing for Swift, powered by Hegel (Antithesis's PBT engine, from the Hypothesis developers)
-Opportunity (speculative): Swift Property-Based Testing
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
+Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: NOASSERTION; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Semantical/hegel-swift
-https://github.com/Semantical/hegel-swift
+## halitagujavue/swift-snapshot-testing
+https://github.com/halitagujavue/swift-snapshot-testing
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): An idiomatic Swift interface to Hegel, the property-based testing engine based on Hypothesis.
-Opportunity (speculative): Swift Property-Based Testing
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -89,26 +76,40 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## swift-developer-tools/swift-test-kit
-https://github.com/swift-developer-tools/swift-test-kit
+## quintonh910/swift-snapshot-testing
+https://github.com/quintonh910/swift-snapshot-testing
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Composable property-based, stateful, performance, temporal, and atomic testing, with structural diffs and advanced assertions for Swift Testing and XCTest.
-Opportunity (speculative): Swift Property-Based Testing
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: Apache-2.0; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## x-sheep/swift-property-based
-https://github.com/x-sheep/swift-property-based
+## tianxie922/swift-snapshot-testing
+https://github.com/tianxie922/swift-snapshot-testing
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Property-based testing for Swift 6
-Opportunity (speculative): Swift Property-Based Testing
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## wegflomimik/swift-snapshot-testing
+https://github.com/wegflomimik/swift-snapshot-testing
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 📸 Delightful Swift snapshot testing.
+Opportunity (speculative): Swift Snapshot Testing
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -118,7 +119,7 @@ License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":326301,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":2,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":18,"seconds":9.94,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":231811,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":9,"seconds":8.14,"unchanged_inspections_reused":0,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":0}}
 
 ## Failures
-[{"at":1793241019,"reason":"GITHUB_UNAVAILABLE_OR_RATE_LIMITED","technique":"issues"},{"reason":"DISCOVERY_BUDGET","technique":"inspection"}]
+[{"at":1793241613,"reason":"RESPONSE_TOO_LARGE","technique":"discussions"}]
