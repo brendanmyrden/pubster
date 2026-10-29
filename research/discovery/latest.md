@@ -1,43 +1,14 @@
-# Capability intelligence: swift-area-080
+# Capability intelligence: swift-area-081
 
-Mode: composable-infrastructure | scoring: capability-v1.1 | state: COMPLETE
+Mode: forgotten-engineering | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## AmarokIce/Apiqqut4D
-https://github.com/AmarokIce/Apiqqut4D
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Lightweight library for data storage. 纯净的轻量级本地数据结构代码套件.
-Opportunity (speculative): Swift Core Data
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: AGPL-3.0; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## andrea-steva/grillmate-showcase
-https://github.com/andrea-steva/grillmate-showcase
-Score: 0.0/100 | Claimed | investigate
-Revision: f8644eec8bb7ac6e4fc6800a20096e4b231a421f
-Purpose (project claim): GrillMate, a native iOS barbecue logbook built with SwiftUI, Swift 6, Core Data and CloudKit: features, screenshots, architecture and technical highlights. The app's source is private.
-Opportunity (speculative): Swift Core Data
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-- documentation: https://github.com/andrea-steva/grillmate-showcase/blob/f8644eec8bb7ac6e4fc6800a20096e4b231a421f/README.md
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## artemleonich/Recorder
-https://github.com/artemleonich/Recorder
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): SwiftUI voice notes for iOS with on-device WhisperKit transcription and Core Data storage.
-Opportunity (speculative): Swift Core Data
+## damlasahinn/ToDo
+https://github.com/damlasahinn/ToDo
+Score: 6.5/100 | Source-supported | investigate
+Revision: dfab24b0f4d63bda3057d3f8ca5144dbd5733e0f
+Purpose (project claim): A native macOS sprint and task management application built with SwiftUI and SwiftData
+Opportunity (speculative): SwiftData
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -45,13 +16,14 @@ Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
+- source: https://github.com/damlasahinn/ToDo/blob/dfab24b0f4d63bda3057d3f8ca5144dbd5733e0f/ToDo/App/AppCommands.swift
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## bhargavkukadiya/CoreDataManager
-https://github.com/bhargavkukadiya/CoreDataManager
+## LycoRiko/tosn-dos
+https://github.com/LycoRiko/tosn-dos
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Zero-dependency Core Data manager for iOS, macOS, tvOS, watchOS & visionOS. Typed CRUD, SQLite batch operations, async/await, Combine, persistent history for app extensions, crash-free store recovery, and in-memory stores for tests. Swift 6 strict-concurrency clean.
-Opportunity (speculative): Swift Core Data
+Purpose (project claim): A quiet to-do app for iPhone, iPad, Mac and Apple Watch. Swift + SwiftUI + SwiftData.
+Opportunity (speculative): SwiftData
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -60,40 +32,12 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## distronode-corporation/district-core-swift
-https://github.com/distronode-corporation/district-core-swift
+## M1zz/Gyeol
+https://github.com/M1zz/Gyeol
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Shared Swift core for the District iOS and macOS apps: models, auth, networking, data, calls and live telemetry. Apache-2.0.
-Opportunity (speculative): Swift Core Data
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: Apache-2.0; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## EnzoFerroni/MimiDreams
-https://github.com/EnzoFerroni/MimiDreams
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Dream journal for iOS with a calendar, category insights and an animated pixel companion. SwiftUI and Core Data.
-Opportunity (speculative): Swift Core Data
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## JonasFNMelo/EsporteUniversitario
-https://github.com/JonasFNMelo/EsporteUniversitario
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): UniEsportes: university athletic associations and championships in one iOS app. On the App Store. SwiftUI + Core Data.
-Opportunity (speculative): Swift Core Data
+Purpose (project claim): 사건 사이의 거리가 실제로 흐른 시간만큼 벌어지는 세로 타임라인 앱 — SwiftUI + SwiftData
+Opportunity (speculative): SwiftData
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -102,22 +46,78 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## offergenieai/iOS-Interview-Questions
-https://github.com/offergenieai/iOS-Interview-Questions
+## M1zz/LectureQ
+https://github.com/M1zz/LectureQ
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): iOS developer interview questions 2026. Swift, SwiftUI, UIKit, Core Data, memory management.
-Opportunity (speculative): Swift Core Data
+Purpose (project claim): 강의를 들으며 질문을 빠르게 남기고, 시간 블록 메모·꼬리질문 위계·관계 그래프로 정리하는 macOS(SwiftUI/SwiftData) 앱
+Opportunity (speculative): SwiftData
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## M1zz/SkyDex
+https://github.com/M1zz/SkyDex
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 빈 48칸을 하루 하늘색으로 채워나가는 iOS 앱. SwiftUI + SwiftData, 외부 의존성 없음.
+Opportunity (speculative): SwiftData
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## saif-26281028/SwiftData-SkillKit
+https://github.com/saif-26281028/SwiftData-SkillKit
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Master SwiftData Code in Xcode 2026 – AI-Powered Models, Queries, Migrations & iCloud Sync
+Opportunity (speculative): SwiftData
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## sutahaya-ios/sutahaya
+https://github.com/sutahaya-ios/sutahaya
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 英単語・TOEIC・SPIを友達との早押し対戦で学ぶiOSアプリ「スタはや」。SwiftUI / SwiftData / Firebase Realtime Database
+Opportunity (speculative): SwiftData
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## victorboba/somexai-kitchen-temp-log
+https://github.com/victorboba/somexai-kitchen-temp-log
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Shift temperature checks, two-stage cooling timers and an inspector PDF.
+Opportunity (speculative): SwiftData
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Archived: maintenance risk, not rejection
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":171861,"cache_hits":4,"candidate_count":8,"duplicates":1,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":7,"seconds":7.47,"unchanged_inspections_reused":0,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":0}}
+{"bytes":282829,"cache_hits":7,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":6,"seconds":5.02,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[{"at":1793268023,"reason":"RESPONSE_TOO_LARGE","technique":"dependencies"}]
+[]
