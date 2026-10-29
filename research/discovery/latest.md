@@ -1,32 +1,14 @@
-# Capability intelligence: swift-area-065
+# Capability intelligence: swift-area-066
 
-Mode: performance-extremes | scoring: capability-v1.1 | state: COMPLETE
+Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## chen2he/orange-cloud
-https://github.com/chen2he/orange-cloud
+## DebugSwift/XcodeBazelMCP
+https://github.com/DebugSwift/XcodeBazelMCP
 Score: 18.5/100 | Source-supported | investigate
-Revision: 37fa62bc776e355087dff362dfdfd1fc0a71a0f8
-Purpose (project claim): Open-source native Cloudflare client for iPhone, iPad & Apple Watch — sign in with OAuth, no API tokens to paste. Native Android app (Kotlin/Compose) in development.
-Opportunity (speculative): Swift watchOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: NOASSERTION; compatibility unreviewed. Security: not audited.
-
-- source: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/apps/ios/Orange%20Cloud/Orange%20Cloud%20File/FileProviderEnumerator.swift
-- manifest: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/package.json
-- documentation: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/README.md
-- license: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/LICENSE
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Heckscheibe/SimpleSimulatorManager
-https://github.com/Heckscheibe/SimpleSimulatorManager
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A menubar tool designed to streamline your development workflow when working with Apple's simulators
-Opportunity (speculative): Swift watchOS Development
+Revision: d740599b0b013a07e1b0fdd3985f410a25ec8cda
+Purpose (project claim): MCP server and CLI for Bazel-based Apple platform development — tools for iOS, macOS, tvOS, watchOS, visionOS builds, testing, debugging, and device workflows.
+Opportunity (speculative): Swift tvOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -34,13 +16,17 @@ Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
+- source: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/example_projects/BazelApp/app/source/ContentView.swift
+- manifest: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/package.json
+- documentation: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/README.md
+- license: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## heirloomlogic/AstronomyKit-history
 https://github.com/heirloomlogic/AstronomyKit-history
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
 Purpose (project claim): Archived AstronomyKit development history and historical issues/PRs. Active package: https://github.com/heirloomlogic/AstronomyKit
-Opportunity (speculative): Swift watchOS Development
+Opportunity (speculative): Swift tvOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -54,7 +40,7 @@ https://github.com/honghaoz/ChouTi
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
 Purpose (project claim): ChouTi is a repository of Swift packages that provides frameworks, utilities and extensions to enhance development on Apple platforms (macOS, iOS, tvOS, visionOS and watchOS).
-Opportunity (speculative): Swift watchOS Development
+Opportunity (speculative): Swift tvOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -63,32 +49,32 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## laramarcodes/claude-apple-dev-skills
-https://github.com/laramarcodes/claude-apple-dev-skills
+## jlipworth/Labstream
+https://github.com/jlipworth/Labstream
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Claude Code skills for native Apple development — iOS, macOS, visionOS, and watchOS apps in Swift/SwiftUI. Install with: npx skills add laramarcodes/claude-apple-dev-skills
-Opportunity (speculative): Swift watchOS Development
+Purpose (project claim): Native Apple-platform media client for Plex, Jellyfin, and Emby — visionOS (primary), iPhone/iPad, in-development streaming-only Apple TV, and a Mac preview — with server-aware streaming quality, custom Cinema playback, offline downloads, and tested PMSKit helpers. Personal sideload project.
+Opportunity (speculative): Swift tvOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: GPL-3.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## LuckeyLogic/SFSymbol
+https://github.com/LuckeyLogic/SFSymbol
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): SFSymbol: A Swift package that simplifies access to Apple's SF Symbols library, offering type-safe and dot-notation access to a wide range of icons for iOS, macOS, watchOS, and tvOS development. Enhance your app's user interface with ease.
+Opportunity (speculative): Swift tvOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## rexhinokovaci/nearby-lens-case-study
-https://github.com/rexhinokovaci/nearby-lens-case-study
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Case study: Nearby Lens detects camera-equipped smart glasses over Bluetooth LE on iOS, watchOS, Android and Wear OS. Mobile app development by Rexhino Kovaci, Tirana, Albania.
-Opportunity (speculative): Swift watchOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: CC-BY-4.0; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## rhyean88/apple-platform-build-tools-claude-code-plugin
@@ -96,7 +82,7 @@ https://github.com/rhyean88/apple-platform-build-tools-claude-code-plugin
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
 Purpose (project claim): 🚀 Build and test Swift packages and Xcode projects for Apple platforms easily with the Claude Code plugin, enhancing your development workflow.
-Opportunity (speculative): Swift watchOS Development
+Opportunity (speculative): Swift tvOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -110,7 +96,21 @@ https://github.com/rogerh1576/Open-Source
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
 Purpose (project claim): 🌍 Build collaborative software solutions with this open-source repository, fostering innovation and community-driven development for everyone.
-Opportunity (speculative): Swift watchOS Development
+Opportunity (speculative): Swift tvOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## RusithAtapattu/Swift-5-Essential-Training
+https://github.com/RusithAtapattu/Swift-5-Essential-Training
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Learn Swift 5 for iOS, macOS, watchOS, and tvOS development. This repo covers data types, conditional logic, methods, functions, classes, structs, and more, with hands-on examples from real games—helping you build the skills to create your own apps and games in Apple’s ecosystem.
+Opportunity (speculative): Swift tvOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -120,7 +120,7 @@ License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":713556,"cache_hits":2,"candidate_count":8,"duplicates":1,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":12,"seconds":5.95,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":65731,"cache_hits":2,"candidate_count":8,"duplicates":5,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":5,"seconds":5.85,"unchanged_inspections_reused":1,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[]
+[{"at":1793247616,"reason":"RESPONSE_TOO_LARGE","technique":"discussions"}]
