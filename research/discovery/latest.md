@@ -1,31 +1,32 @@
-# Capability intelligence: swift-area-064
+# Capability intelligence: swift-area-065
 
-Mode: capability-expansion | scoring: capability-v1.1 | state: COMPLETE
+Mode: performance-extremes | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## 1096bimu/Dark-Melon
-https://github.com/1096bimu/Dark-Melon
-Score: 8.0/100 | Source-supported | investigate
-Revision: 0101149cd7f17b11e4c789d10a716712eab9a395
-Purpose (project claim): Next Generation RAW Development
-Opportunity (speculative): Swift macOS Development
+## chen2he/orange-cloud
+https://github.com/chen2he/orange-cloud
+Score: 18.5/100 | Source-supported | investigate
+Revision: 37fa62bc776e355087dff362dfdfd1fc0a71a0f8
+Purpose (project claim): Open-source native Cloudflare client for iPhone, iPad & Apple Watch — sign in with OAuth, no API tokens to paste. Native Android app (Kotlin/Compose) in development.
+Opportunity (speculative): Swift watchOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: GPL-3.0; compatibility unreviewed. Security: not audited.
+License: NOASSERTION; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/1096bimu/Dark-Melon/blob/0101149cd7f17b11e4c789d10a716712eab9a395/Dark%20Melon/AdjustmentField.swift
-- documentation: https://github.com/1096bimu/Dark-Melon/blob/0101149cd7f17b11e4c789d10a716712eab9a395/README.md
-- license: https://github.com/1096bimu/Dark-Melon/blob/0101149cd7f17b11e4c789d10a716712eab9a395/LICENSE
+- source: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/apps/ios/Orange%20Cloud/Orange%20Cloud%20File/FileProviderEnumerator.swift
+- manifest: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/package.json
+- documentation: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/README.md
+- license: https://github.com/chen2he/orange-cloud/blob/37fa62bc776e355087dff362dfdfd1fc0a71a0f8/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## amjunliang/LayerLens
-https://github.com/amjunliang/LayerLens
+## Heckscheibe/SimpleSimulatorManager
+https://github.com/Heckscheibe/SimpleSimulatorManager
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): macOS companion app for iOS development: live view-hierarchy inspector with 2D/3D views, logs & network capture, git changes panel and integrated terminal — all in one place.
-Opportunity (speculative): Swift macOS Development
+Purpose (project claim): A menubar tool designed to streamline your development workflow when working with Apple's simulators
+Opportunity (speculative): Swift watchOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -34,92 +35,92 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## ARPA-SIMC/CRITERIA1D
-https://github.com/ARPA-SIMC/CRITERIA1D
+## heirloomlogic/AstronomyKit-history
+https://github.com/heirloomlogic/AstronomyKit-history
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): CRITERIA 1D is a one-dimensional agro-hydrological model. It includes soil water fluxes, crop development and crop water needs, a GIS interface (CRITERIA GEO) for geographical simulations and tools to manage crop and soil parameters. The software is written in C++ using Qt libraries, so cross-platform building is possible (Windows, Linux, MacOS)
-Opportunity (speculative): Swift macOS Development
-Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
+Purpose (project claim): Archived AstronomyKit development history and historical issues/PRs. Active package: https://github.com/heirloomlogic/AstronomyKit
+Opportunity (speculative): Swift watchOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Archived: maintenance risk, not rejection
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## honghaoz/ChouTi
+https://github.com/honghaoz/ChouTi
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): ChouTi is a repository of Swift packages that provides frameworks, utilities and extensions to enhance development on Apple platforms (macOS, iOS, tvOS, visionOS and watchOS).
+Opportunity (speculative): Swift watchOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: GPL-3.0; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## EstebanPdNS/Libron-X
-https://github.com/EstebanPdNS/Libron-X
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Native macOS Bible study workspace, compatible with supported Libronix, classic Logos, e-Sword and EPUB resources. v0.5 beta · Active development.
-Opportunity (speculative): Swift macOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## mrmans0n/alas
-https://github.com/mrmans0n/alas
+## laramarcodes/claude-apple-dev-skills
+https://github.com/laramarcodes/claude-apple-dev-skills
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Agentic Development Environment (ADE) for macOS. Build in parallel with your agents!
-Opportunity (speculative): Swift macOS Development
+Purpose (project claim): Claude Code skills for native Apple development — iOS, macOS, visionOS, and watchOS apps in Swift/SwiftUI. Install with: npx skills add laramarcodes/claude-apple-dev-skills
+Opportunity (speculative): Swift watchOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## notnaki/vane
-https://github.com/notnaki/vane
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Open-source native macOS browser with sidebar tabs, Spaces, Split View, and Little Vane. Built with Swift and WebKit; early development for macOS 26+.
-Opportunity (speculative): Swift macOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## termio-sh/termio
-https://github.com/termio-sh/termio
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A terminal-first agentic development environment for agentic coding. Build for CLI/TUI agent. Runtime for Coding Agent,  Tmux alternative
-Opportunity (speculative): Swift macOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Verlintas/VerlinPark
-https://github.com/Verlintas/VerlinPark
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Native macOS agentic development environment for agent teams.
-Opportunity (speculative): Swift macOS Development
-Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: GPL-3.0; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## rexhinokovaci/nearby-lens-case-study
+https://github.com/rexhinokovaci/nearby-lens-case-study
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Case study: Nearby Lens detects camera-equipped smart glasses over Bluetooth LE on iOS, watchOS, Android and Wear OS. Mobile app development by Rexhino Kovaci, Tirana, Albania.
+Opportunity (speculative): Swift watchOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: CC-BY-4.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## rhyean88/apple-platform-build-tools-claude-code-plugin
+https://github.com/rhyean88/apple-platform-build-tools-claude-code-plugin
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 🚀 Build and test Swift packages and Xcode projects for Apple platforms easily with the Claude Code plugin, enhancing your development workflow.
+Opportunity (speculative): Swift watchOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## rogerh1576/Open-Source
+https://github.com/rogerh1576/Open-Source
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 🌍 Build collaborative software solutions with this open-source repository, fostering innovation and community-driven development for everyone.
+Opportunity (speculative): Swift watchOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":253303,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":9,"seconds":13.93,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":713556,"cache_hits":2,"candidate_count":8,"duplicates":1,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":12,"seconds":5.95,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[{"at":1793246425,"reason":"TimeoutError","technique":"papers"}]
+[]
