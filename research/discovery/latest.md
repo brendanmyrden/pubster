@@ -1,14 +1,32 @@
-# Capability intelligence: swift-area-056
+# Capability intelligence: swift-area-057
 
-Mode: hidden-gems | scoring: capability-v1.1 | state: COMPLETE
+Mode: capability-expansion | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## bhartrhabgayan/swift-snapshot-testing
-https://github.com/bhartrhabgayan/swift-snapshot-testing
-Score: 7.5/100 | Claimed | investigate
-Revision: c3928ab8ef63354a360cda7068372f2740e7aa78
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
+## AlexNachbaur/mockkit-swift
+https://github.com/AlexNachbaur/mockkit-swift
+Score: 18.5/100 | Source-supported | investigate
+Revision: 9e31990bc87bec21f1534c8622cc52109c900a1b
+Purpose (project claim): Native Swift mock servers for UI-test automation: GraphQL (MockQL) and REST/OpenAPI (MockREST) on one shared platform (MockCore)
+Opportunity (speculative): Swift UI Automation and XCUITest
+Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+- source: https://github.com/AlexNachbaur/mockkit-swift/blob/9e31990bc87bec21f1534c8622cc52109c900a1b/Sources/MockCore/MockKitVersion.swift
+- manifest: https://github.com/AlexNachbaur/mockkit-swift/blob/9e31990bc87bec21f1534c8622cc52109c900a1b/Package.swift
+- documentation: https://github.com/AlexNachbaur/mockkit-swift/blob/9e31990bc87bec21f1534c8622cc52109c900a1b/README.md
+- license: https://github.com/AlexNachbaur/mockkit-swift/blob/9e31990bc87bec21f1534c8622cc52109c900a1b/LICENSE
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## AlexNachbaur/mockql-swift
+https://github.com/AlexNachbaur/mockql-swift
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Stateful GraphQL mocking server in Swift for UI-test automation — expressive ResultBuilder DSL, YAML/JSON seeding, deterministic data generation, and graphql-transport-ws subscriptions
+Opportunity (speculative): Swift UI Automation and XCUITest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -16,16 +34,41 @@ Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
-- manifest: https://github.com/bhartrhabgayan/swift-snapshot-testing/blob/c3928ab8ef63354a360cda7068372f2740e7aa78/Package.resolved
-- documentation: https://github.com/bhartrhabgayan/swift-snapshot-testing/blob/c3928ab8ef63354a360cda7068372f2740e7aa78/README.md
-- license: https://github.com/bhartrhabgayan/swift-snapshot-testing/blob/c3928ab8ef63354a360cda7068372f2740e7aa78/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## ashchupliak/SwiftSnapshot
-https://github.com/ashchupliak/SwiftSnapshot
+## AlexNachbaur/mockrest-swift
+https://github.com/AlexNachbaur/mockrest-swift
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 iOS Visual Testing Framework with RTL support, Dynamic Type, and comprehensive device testing. Built with SnapshotTesting for Swift developers! 🍎💫
-Opportunity (speculative): Swift Snapshot Testing
+Purpose (project claim): Stateful REST mocking server in Swift for UI-test automation — OpenAPI 3.0/3.1 driven, auto-CRUD with real-world semantics, YAML/JSON seeding, deterministic data generation, and fault injection
+Opportunity (speculative): Swift UI Automation and XCUITest
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## Basavarajganager085/xcuitest-ios-automation
+https://github.com/Basavarajganager085/xcuitest-ios-automation
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): iOS UI automation framework built with Swift and XCUITest, following Page Object Model and reusable automation best practices.
+Opportunity (speculative): Swift UI Automation and XCUITest
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## iambryyy/FitTracker
+https://github.com/iambryyy/FitTracker
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): SwiftUI calorie and macro tracker for iPhone, with Swift Testing unit tests, XCUITest UI tests, and Python test automation. Derived from cjbriseno/FitTracker.
+Opportunity (speculative): Swift UI Automation and XCUITest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -34,12 +77,12 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## byacbonsmall/swift-snapshot-testing
-https://github.com/byacbonsmall/swift-snapshot-testing
+## iQbalADR/tandha
+https://github.com/iQbalADR/tandha
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
+Purpose (project claim): Tandha — Javanese for "sign & mark", centralized UI automation-identifier toolkit for iOS — one shared JSON contract for XCUITest & Appium, with type-safe codegen, export, and lint.
+Opportunity (speculative): Swift UI Automation and XCUITest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -48,78 +91,36 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## eventbrite/swift-snapshot-testing
-https://github.com/eventbrite/swift-snapshot-testing
+## sharika8/ios-xcuitest-automation
+https://github.com/sharika8/ios-xcuitest-automation
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## halitagujavue/swift-snapshot-testing
-https://github.com/halitagujavue/swift-snapshot-testing
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
+Purpose (project claim): Native iOS UI automation with XCTest/XCUITest in Swift — Page Object pattern, data-driven tests, accessibility testing, and GitHub Actions CI
+Opportunity (speculative): Swift UI Automation and XCUITest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## quintonh910/swift-snapshot-testing
-https://github.com/quintonh910/swift-snapshot-testing
+## YasYendluri21/xcuitest-framework
+https://github.com/YasYendluri21/xcuitest-framework
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
+Purpose (project claim): XCUITest UI automation framework in Swift — page objects, predicate-based synchronization, launch-argument state seeding, with a Python layer for xcresult parsing, sharding and CI reporting
+Opportunity (speculative): Swift UI Automation and XCUITest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## tianxie922/swift-snapshot-testing
-https://github.com/tianxie922/swift-snapshot-testing
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## wegflomimik/swift-snapshot-testing
-https://github.com/wegflomimik/swift-snapshot-testing
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📸 Delightful Swift snapshot testing.
-Opportunity (speculative): Swift Snapshot Testing
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":231811,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":9,"seconds":8.14,"unchanged_inspections_reused":0,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":0}}
+{"bytes":454191,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":10,"seconds":5.15,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[{"at":1793241613,"reason":"RESPONSE_TOO_LARGE","technique":"discussions"}]
+[]
