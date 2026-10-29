@@ -1,52 +1,38 @@
-# Capability intelligence: swift-area-066
+# Capability intelligence: swift-area-067
 
-Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
+Mode: composable-infrastructure | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## DebugSwift/XcodeBazelMCP
-https://github.com/DebugSwift/XcodeBazelMCP
-Score: 18.5/100 | Source-supported | investigate
-Revision: d740599b0b013a07e1b0fdd3985f410a25ec8cda
-Purpose (project claim): MCP server and CLI for Bazel-based Apple platform development — tools for iOS, macOS, tvOS, watchOS, visionOS builds, testing, debugging, and device workflows.
-Opportunity (speculative): Swift tvOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-- source: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/example_projects/BazelApp/app/source/ContentView.swift
-- manifest: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/package.json
-- documentation: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/README.md
-- license: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/LICENSE
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## heirloomlogic/AstronomyKit-history
-https://github.com/heirloomlogic/AstronomyKit-history
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Archived AstronomyKit development history and historical issues/PRs. Active package: https://github.com/heirloomlogic/AstronomyKit
-Opportunity (speculative): Swift tvOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Archived: maintenance risk, not rejection
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## honghaoz/ChouTi
 https://github.com/honghaoz/ChouTi
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
+Score: 18.5/100 | Source-supported | investigate
+Revision: c7fb4f88192956f01ddf6cb7de3afe7558b4a4e1
 Purpose (project claim): ChouTi is a repository of Swift packages that provides frameworks, utilities and extensions to enhance development on Apple platforms (macOS, iOS, tvOS, visionOS and watchOS).
-Opportunity (speculative): Swift tvOS Development
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Opportunity (speculative): Swift visionOS Development
+Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
+
+- source: https://github.com/honghaoz/ChouTi/blob/c7fb4f88192956f01ddf6cb7de3afe7558b4a4e1/playgrounds/ChouTiPlayground-iOS/ChouTiPlayground-iOS/AppDelegate.swift
+- manifest: https://github.com/honghaoz/ChouTi/blob/c7fb4f88192956f01ddf6cb7de3afe7558b4a4e1/Package.swift
+- documentation: https://github.com/honghaoz/ChouTi/blob/c7fb4f88192956f01ddf6cb7de3afe7558b4a4e1/README.md
+- license: https://github.com/honghaoz/ChouTi/blob/c7fb4f88192956f01ddf6cb7de3afe7558b4a4e1/LICENSE
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## ibrews/apple-platform-skills
+https://github.com/ibrews/apple-platform-skills
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Claude Code skills for Apple platform development — visionOS SharePlay, SpriteKit, and GameKit multiplayer
+Opportunity (speculative): Swift visionOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## jlipworth/Labstream
@@ -54,7 +40,7 @@ https://github.com/jlipworth/Labstream
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
 Purpose (project claim): Native Apple-platform media client for Plex, Jellyfin, and Emby — visionOS (primary), iPhone/iPad, in-development streaming-only Apple TV, and a Mac preview — with server-aware streaming quality, custom Cinema playback, offline downloads, and tested PMSKit helpers. Personal sideload project.
-Opportunity (speculative): Swift tvOS Development
+Opportunity (speculative): Swift visionOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -63,12 +49,26 @@ Maintenance: Unreviewed
 License: GPL-3.0; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## LuckeyLogic/SFSymbol
-https://github.com/LuckeyLogic/SFSymbol
+## laramarcodes/claude-apple-dev-skills
+https://github.com/laramarcodes/claude-apple-dev-skills
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): SFSymbol: A Swift package that simplifies access to Apple's SF Symbols library, offering type-safe and dot-notation access to a wide range of icons for iOS, macOS, watchOS, and tvOS development. Enhance your app's user interface with ease.
-Opportunity (speculative): Swift tvOS Development
+Purpose (project claim): Claude Code skills for native Apple development — iOS, macOS, visionOS, and watchOS apps in Swift/SwiftUI. Install with: npx skills add laramarcodes/claude-apple-dev-skills
+Opportunity (speculative): Swift visionOS Development
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## pawankmrai/apple-dev-skills
+https://github.com/pawankmrai/apple-dev-skills
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Daily Apple platform development skills — Swift, SwiftUI, iOS, macOS, Xcode, and the Apple ecosystem
+Opportunity (speculative): Swift visionOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -82,7 +82,7 @@ https://github.com/rhyean88/apple-platform-build-tools-claude-code-plugin
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
 Purpose (project claim): 🚀 Build and test Swift packages and Xcode projects for Apple platforms easily with the Claude Code plugin, enhancing your development workflow.
-Opportunity (speculative): Swift tvOS Development
+Opportunity (speculative): Swift visionOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -91,12 +91,12 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## rogerh1576/Open-Source
-https://github.com/rogerh1576/Open-Source
+## rupasingheujith-glitch/visionos-codex-kit
+https://github.com/rupasingheujith-glitch/visionos-codex-kit
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 🌍 Build collaborative software solutions with this open-source repository, fostering innovation and community-driven development for everyone.
-Opportunity (speculative): Swift tvOS Development
+Purpose (project claim): Provide tools and templates to build and bootstrap Apple Vision Pro apps with ready-to-use skills and development blueprints.
+Opportunity (speculative): Swift visionOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -105,22 +105,22 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## RusithAtapattu/Swift-5-Essential-Training
-https://github.com/RusithAtapattu/Swift-5-Essential-Training
+## siriusbontea/apple-swift-dev
+https://github.com/siriusbontea/apple-swift-dev
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Learn Swift 5 for iOS, macOS, watchOS, and tvOS development. This repo covers data types, conditional logic, methods, functions, classes, structs, and more, with hands-on examples from real games—helping you build the skills to create your own apps and games in Apple’s ecosystem.
-Opportunity (speculative): Swift tvOS Development
+Purpose (project claim): Apple platform development in Swift and SwiftUI: iOS, macOS, and visionOS apps using SwiftData, Core ML, Image Playground, Foundation Models, and spatial computing.
+Opportunity (speculative): Swift visionOS Development
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":65731,"cache_hits":2,"candidate_count":8,"duplicates":5,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":5,"seconds":5.85,"unchanged_inspections_reused":1,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":250613,"cache_hits":4,"candidate_count":8,"duplicates":4,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":9,"seconds":5.25,"unchanged_inspections_reused":0,"unique_relevant_discoveries":0,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[{"at":1793247616,"reason":"RESPONSE_TOO_LARGE","technique":"discussions"}]
+[]
