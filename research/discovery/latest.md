@@ -1,61 +1,33 @@
-# Capability intelligence: swift-area-051
+# Capability intelligence: swift-area-052
 
-Mode: performance-extremes | scoring: capability-v1.1 | state: COMPLETE
+Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## DebugSwift/XcodeBazelMCP
-https://github.com/DebugSwift/XcodeBazelMCP
+## armcknight/Pippin
+https://github.com/armcknight/Pippin
 Score: 18.5/100 | Source-supported | investigate
-Revision: d740599b0b013a07e1b0fdd3985f410a25ec8cda
-Purpose (project claim): MCP server and CLI for Bazel-based Apple platform development — tools for iOS, macOS, tvOS, watchOS, visionOS builds, testing, debugging, and device workflows.
-Opportunity (speculative): Swift LLDB Debugging
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Revision: dd68a6676cf674d7629196dd9ce1f6bd59a63e7e
+Purpose (project claim): Utilities to scaffold iOS apps and simplify working with Cocoa/UIKit/XCTest API in Swift.
+Opportunity (speculative): Swift XCTest
+Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/example_projects/BazelApp/app/source/ContentView.swift
-- manifest: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/package.json
-- documentation: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/README.md
-- license: https://github.com/DebugSwift/XcodeBazelMCP/blob/d740599b0b013a07e1b0fdd3985f410a25ec8cda/LICENSE
+- source: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/Sources/PippinCore/Bundle%2BPippinCore.swift
+- manifest: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/Package.swift
+- documentation: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/README.md
+- license: https://github.com/armcknight/Pippin/blob/dd68a6676cf674d7629196dd9ce1f6bd59a63e7e/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## CpMiko2005pl/winswift-studio
-https://github.com/CpMiko2005pl/winswift-studio
+## Avelino10/essential-feed
+https://github.com/Avelino10/essential-feed
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 📱 Build iPhone apps in Swift & SwiftUI on Windows 10/11 — Xcode-style IDE with an iPhone simulator, live previews, LLDB debugger. Strona: winswift.tacticalops.fun
-Opportunity (speculative): Swift LLDB Debugging
+Purpose (project claim): A modular iOS feed application showcasing Clean Architecture, TDD, API integration, local caching and comprehensive test coverage.
+Opportunity (speculative): Swift XCTest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: NOASSERTION; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## JAManfredi/ios_mcp
-https://github.com/JAManfredi/ios_mcp
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): MCP server for the full iOS development lifecycle — 55 tools for building, testing, debugging, UI automation, and more. Native Swift binary.
-Opportunity (speculative): Swift LLDB Debugging
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## kalub92/asmforge
-https://github.com/kalub92/asmforge
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): An agent harness for Claude Code: describe an app in a sentence and its pipeline — spec, architect, engineer, ABI reviewer, golden-file tests, lldb debugger — delivers a signed arm64 Mach-O binary with no programming-language layer: no C, no compiled Swift, no compiler-generated code. Every instruction of app logic comes from .s files, assembled and linked with the stock Apple toolchain.
-Opportunity (speculative): Swift LLDB Debugging
-Swift integration: Prototype a C ABI static library or isolated CLI; verify Apple target support and calling conventions.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
@@ -63,12 +35,26 @@ Maintenance: Unreviewed
 License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## kisalnelaka/LibreSwift
-https://github.com/kisalnelaka/LibreSwift
+## enjelhutasoit/sehat-ios
+https://github.com/enjelhutasoit/sehat-ios
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Native iOS Swift development on Linux & WSL. No macOS or Xcode required. Build, cross-compile, code-sign, deploy over USB, and interactively debug via LLDB directly inside VS Code. Powered by xtool, rcodesign, libimobiledevice, and SourceKit-LSP.
-Opportunity (speculative): Swift LLDB Debugging
+Purpose (project claim): Offline-first telehealth reference app for iOS (fake data only). SwiftUI, SwiftData, async/await, modular SPM, MVVM-C + Clean Architecture, XCTest/snapshot/XCUITest, GitHub Actions CI. Built as an engineering portfolio project with documented ADRs.
+Opportunity (speculative): Swift XCTest
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## materik/snapshottestcase-ios
+https://github.com/materik/snapshottestcase-ios
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Takes a snapshot of any view in your app, stores the reference and tests that the view looks the same.
+Opportunity (speculative): Swift XCTest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -77,50 +63,64 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## Lithe-IDEA/lithe-plugin-lldb
-https://github.com/Lithe-IDEA/lithe-plugin-lldb
+## MrLawrenceAwe/Codex-Dashboard
+https://github.com/MrLawrenceAwe/Codex-Dashboard
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Lithe 的 LLDB 调试插件（通过 lldb-dap 调试 C / C++ / Objective-C / Swift / Rust）/ LLDB debugger plugin for Lithe
-Opportunity (speculative): Swift LLDB Debugging
+Purpose (project claim): Native macOS workflow dashboard built with Swift and JavaScript, with chat monitoring, persistence recovery and XCTest/WebKit tests.
+Opportunity (speculative): Swift XCTest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
+Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: Apache-2.0; compatibility unreviewed. Security: not audited.
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## MarlonJD/apple-debug-mcp
-https://github.com/MarlonJD/apple-debug-mcp
+## sonali-developer/app-window-shopper
+https://github.com/sonali-developer/app-window-shopper
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Local, capability-aware MCP server for authorized AI-assisted macOS and iOS debugging, Simulator/device workflows, Apple binary analysis, profiling, and reproducible evidence.
-Opportunity (speculative): Swift LLDB Debugging
+Purpose (project claim): • A professional looking full fledged app ready to be published on Appstore. The app basically calculates the number of hours required by its user to work in order to purchase the desired item with certain amount of cost.   • Designed using Xcode 9 and Swift 4 to work for both iPhone & iPad.  • Followed Object Oriented and MVC design pattern.  • Frameworks used includes Foundation, UIKit & XCTest.  • Demonstrated the implementation of following in addition to core app development task: 1.  Custom TextFields 2. Input Accessory View & IBDesignable 3. Unit Testing the data 4. Calculation Algorithm 5. Custom drawing with drawRect method etc.
+Opportunity (speculative): Swift XCTest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: NOASSERTION; compatibility unreviewed. Security: not audited.
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## xsscx/xnuimagetools
-https://github.com/xsscx/xnuimagetools
+## Tayyab304/SecureReveal
+https://github.com/Tayyab304/SecureReveal
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): XNU Image Tools is a multi-platform image processing toolkit for fuzzing UTI file formats.
-Opportunity (speculative): Swift LLDB Debugging
+Purpose (project claim): SwiftUI security demo using Keychain access control, MVVM, Swift Concurrency, and XCTest.
+Opportunity (speculative): Swift XCTest
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
+Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
-License: GPL-3.0; compatibility unreviewed. Security: not audited.
+License: UNKNOWN; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## VasuChovatiya/Filmy
+https://github.com/VasuChovatiya/Filmy
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): SwiftUI movie browser on the TMDB API: infinite scroll, debounced search, trailers, SwiftData favorites, tests and CI
+Opportunity (speculative): Swift XCTest
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":155052,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":1,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":11,"seconds":6.48,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":536588,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":13,"seconds":9.24,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
-[{"at":1793238617,"reason":"RESPONSE_TOO_LARGE","technique":"dependencies"}]
+[]
