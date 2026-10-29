@@ -1,14 +1,74 @@
-# Capability intelligence: swift-area-049
+# Capability intelligence: swift-area-050
 
-Mode: hidden-gems | scoring: capability-v1.1 | state: COMPLETE
+Mode: capability-expansion | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## krzysztofzablocki/Playgrounds
-https://github.com/krzysztofzablocki/Playgrounds
-Score: 8.0/100 | Source-supported | investigate
-Revision: 0b1494a04fed2cc7033f2a4f2113eef8b7f50b0f
-Purpose (project claim): Better playgrounds that work both for Objective-C and Swift
-Opportunity (speculative): Swift Playgrounds
+## muhittincamdali/iOS-Performance-Optimization-Toolkit
+https://github.com/muhittincamdali/iOS-Performance-Optimization-Toolkit
+Score: 18.5/100 | Source-supported | investigate
+Revision: 2da3627b3d71c836801c54560e3593503ee63096
+Purpose (project claim): Swift package that measures hangs, hitches, memory, launch time and leaks on Apple platforms, with budgets for tests. No dependencies.
+Opportunity (speculative): Swift Instruments and Performance Profiling
+Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+- source: https://github.com/muhittincamdali/iOS-Performance-Optimization-Toolkit/blob/2da3627b3d71c836801c54560e3593503ee63096/Examples/PerformanceLab/PerformanceLab/FramesScreen.swift
+- manifest: https://github.com/muhittincamdali/iOS-Performance-Optimization-Toolkit/blob/2da3627b3d71c836801c54560e3593503ee63096/Package.swift
+- documentation: https://github.com/muhittincamdali/iOS-Performance-Optimization-Toolkit/blob/2da3627b3d71c836801c54560e3593503ee63096/README.de.md
+- license: https://github.com/muhittincamdali/iOS-Performance-Optimization-Toolkit/blob/2da3627b3d71c836801c54560e3593503ee63096/LICENSE
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## artemnovichkov/FoundationModelsProfilingExample
+https://github.com/artemnovichkov/FoundationModelsProfilingExample
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Learn how to profile and optimize Foundation Models performance using Xcode Instruments
+Opportunity (speculative): Swift Instruments and Performance Profiling
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## everettjf/appletrace
+https://github.com/everettjf/appletrace
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): 🍎Objective C Method Tracing Call Chart
+Opportunity (speculative): Swift Instruments and Performance Profiling
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## first20hours/google-10000-english
+https://github.com/first20hours/google-10000-english
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): This repo contains a list of the 10,000 most common English words in order of frequency, as determined by n-gram frequency analysis of the Google's Trillion Word Corpus.
+Opportunity (speculative): Swift Instruments and Performance Profiling
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: NOASSERTION; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## skvadrik/re2c
+https://github.com/skvadrik/re2c
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Lexer generator for C, C++, D, Go, Haskell, Java, JS, OCaml, Python, Rust, Swift, V and Zig.
+Opportunity (speculative): Swift Instruments and Performance Profiling
 Swift integration: Prototype a C ABI/module map or Objective-C bridge; check ownership and ABI constraints.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
@@ -16,110 +76,9 @@ Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
 License: NOASSERTION; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/krzysztofzablocki/Playgrounds/blob/0b1494a04fed2cc7033f2a4f2113eef8b7f50b0f/Example/KZPlayground/KZPAppDelegate.h
-- documentation: https://github.com/krzysztofzablocki/Playgrounds/blob/0b1494a04fed2cc7033f2a4f2113eef8b7f50b0f/README.md
-- license: https://github.com/krzysztofzablocki/Playgrounds/blob/0b1494a04fed2cc7033f2a4f2113eef8b7f50b0f/LICENSE
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## alonsoHernandezAlicia/SWIFT-Swift_language-basic_and_intermediate-Playgrounds
-https://github.com/alonsoHernandezAlicia/SWIFT-Swift_language-basic_and_intermediate-Playgrounds
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Basic and intermediate Swift sample battery
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## apache/flink-playgrounds
-https://github.com/apache/flink-playgrounds
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Apache Flink Playgrounds
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: Apache-2.0; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## CheckThisCodeCarefully/type-erasure-playgrounds
-https://github.com/CheckThisCodeCarefully/type-erasure-playgrounds
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Code to accompany Swift Symposium Talk - https://www.youtube.com/watch?v=d_FJHBl5ohU
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## OnslowCollege/11dit-2026-vta-line-2-swift-playground-11dit-vta-line-2-2026-SwiftPlayground
-https://github.com/OnslowCollege/11dit-2026-vta-line-2-swift-playground-11dit-vta-line-2-2026-SwiftPlayground
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 11dit-2026-vta-line-2-swift-playground-11dit-vta-line-2-2026-SwiftPlayground created by GitHub Classroom
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## OnslowCollege/12swe-2026-swift-playground-12swe-2026-SwiftPlayground
-https://github.com/OnslowCollege/12swe-2026-swift-playground-12swe-2026-SwiftPlayground
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 12swe-2026-swift-playground-12swe-2026-SwiftPlayground created by GitHub Classroom
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## samstevenm/swift-playground-builder
-https://github.com/samstevenm/swift-playground-builder
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Create Xcode Playgrounds for the Swift programming language with rich documentation generated from Markdown
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: INSUFFICIENT_COMPARABLES
-Maintenance: Archived: maintenance risk, not rejection
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## uraimo/Awesome-Swift-Playgrounds
-https://github.com/uraimo/Awesome-Swift-Playgrounds
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A List of Awesome Swift Playgrounds
-Opportunity (speculative): Swift Playgrounds
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: NOASSERTION; compatibility unreviewed. Security: not audited.
-
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":256031,"cache_hits":3,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":9,"seconds":5.55,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":1436623,"cache_hits":3,"candidate_count":5,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":13,"seconds":12.43,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
 []
