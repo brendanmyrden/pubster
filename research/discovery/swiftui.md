@@ -1,101 +1,73 @@
 # Capability intelligence: swiftui
 
-Mode: forgotten-engineering | scoring: capability-v1.1 | state: COMPLETE
+Mode: unusual-engineering | scoring: capability-v1.1 | state: COMPLETE
 Discovery is not corpus approval. Source-supported observations do not prove performance.
 
-## 9alvaro0/gitForge
-https://github.com/9alvaro0/gitForge
-Score: 19.93/100 | Source-supported | investigate
-Revision: 6d7af10099c3821392c67c02e01853a46c9aa27c
-Purpose (project claim): Modern, native macOS Git client built with SwiftUI
+## amontlabs/lastdrop
+https://github.com/amontlabs/lastdrop
+Score: 24.06/100 | Source-supported | investigate
+Revision: eae5a3d5292de546a62ebcf4cc0109ced326e1f1
+Purpose (project claim): Every last drop out of your AI plans. A macOS menu bar app for Claude, Codex, Antigravity, Z.ai and OpenRouter limits, that runs Claude Code subagents on whichever account has room.
 Opportunity (speculative): SwiftUI
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Swift integration: Evaluate a commit-pinned SwiftPM dependency; inspect platform/version constraints and transitive rights.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
 Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
-- source: https://github.com/9alvaro0/gitForge/blob/6d7af10099c3821392c67c02e01853a46c9aa27c/gitForge/App/AppDelegate.swift
-- manifest: https://github.com/9alvaro0/gitForge/blob/6d7af10099c3821392c67c02e01853a46c9aa27c/gitForge.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
-- documentation: https://github.com/9alvaro0/gitForge/blob/6d7af10099c3821392c67c02e01853a46c9aa27c/README.md
-- license: https://github.com/9alvaro0/gitForge/blob/6d7af10099c3821392c67c02e01853a46c9aa27c/LICENSE
+- source: https://github.com/amontlabs/lastdrop/blob/eae5a3d5292de546a62ebcf4cc0109ced326e1f1/Sources/LastDrop/Accounts/Accounts.swift
+- manifest: https://github.com/amontlabs/lastdrop/blob/eae5a3d5292de546a62ebcf4cc0109ced326e1f1/Package.swift
+- documentation: https://github.com/amontlabs/lastdrop/blob/eae5a3d5292de546a62ebcf4cc0109ced326e1f1/README.md
+- license: https://github.com/amontlabs/lastdrop/blob/eae5a3d5292de546a62ebcf4cc0109ced326e1f1/LICENSE
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## arthur-fontaine/somebrowser
-https://github.com/arthur-fontaine/somebrowser
+## code4teaching/VisuStruct-SwiftUI
+https://github.com/code4teaching/VisuStruct-SwiftUI
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): A native macOS browser built to be forked: SwiftUI shell, Chromium (CEF) or WebKit engine
-Opportunity (speculative): SwiftUI
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## bilgesucakir/wingmark-ios
-https://github.com/bilgesucakir/wingmark-ios
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Swift iOS app for birdwatchers to log every bird they spot and pin each sighting on a map.
-Opportunity (speculative): SwiftUI
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: UNKNOWN; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## cebartling/investment-simulator-2026
-https://github.com/cebartling/investment-simulator-2026
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Investments simulator built in Swift and SwiftUI
-Opportunity (speculative): SwiftUI
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Unreviewed
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## diamondplated/latent
-https://github.com/diamondplated/latent
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Moved to https://github.com/diamondplated/mac-apps/tree/main/Latent (archived)
-Opportunity (speculative): SwiftUI
-Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
-Overlap: new repository / capability novelty unverified
-Power: Unproven until mechanisms or benchmarks receive independent review.
-Underexposure: COHORT_ESTIMATE
-Maintenance: Archived: maintenance risk, not rejection
-License: MIT; compatibility unreviewed. Security: not audited.
-
-Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## diskspaceai/diskspace-ai
-https://github.com/diskspaceai/diskspace-ai
-Score: 0.0/100 | Claimed | investigate
-Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): Free up space on your Mac without fear. Disk cleaner that knows what recreates itself: folder catalog, MCP server docs and release notes.
+Purpose (project claim): Nassi–Shneiderman structogram editor for iPad, iPhone & Apple silicon Mac (SwiftUI). Broad UI localization; statement modes with input:/print: prefixes and Java, JavaScript & Python code generation. Same .visustruct/XML as github.com/code4teaching/VisuStruct.
 Opportunity (speculative): SwiftUI
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: INSUFFICIENT_COMPARABLES
 Maintenance: Unreviewed
-License: NOASSERTION; compatibility unreviewed. Security: not audited.
+License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## doron2402/agentim
-https://github.com/doron2402/agentim
+## Fabi-SPL/health-app
+https://github.com/Fabi-SPL/health-app
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): 🐙 Meet Agent Tim, the secret-agent octopus on your AI switchboard. Chat from Telegram, WhatsApp & Slack; he routes every message to the right model: private Hugging Face models in Docker on your always-on Mac, LTX video, or the cloud. Native macOS app in Swift.
+Purpose (project claim): Personal body-state engine. SwiftUI iOS client, a correlation server, and a DIY BLE bridge to a Whoop strap. Thin client, all algorithms server-side.
+Opportunity (speculative): SwiftUI
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: Apache-2.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## GhaziBukhari/Stocktool-for-nga
+https://github.com/GhaziBukhari/Stocktool-for-nga
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Manage and track local stock watchlists and positions with a desktop tool using Vue 3, Electron, Python, and SQLite for accurate market data.
+Opportunity (speculative): SwiftUI
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: INSUFFICIENT_COMPARABLES
+Maintenance: Unreviewed
+License: MIT; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## gregyuzik/AskKit
+https://github.com/gregyuzik/AskKit
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): Open-source AI chat interface for SwiftUI apps: a complete Ask screen that answers from your app's data, with Apple's Foundation Models on Private Cloud Compute or on the device.
 Opportunity (speculative): SwiftUI
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
@@ -105,22 +77,50 @@ Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
-## hiroyuki0504/Veqral
-https://github.com/hiroyuki0504/Veqral
+## lammersbjorn/taima
+https://github.com/lammersbjorn/taima
 Score: 0.0/100 | Claimed | investigate
 Revision: not yet resolved; awaiting enrichment
-Purpose (project claim): SwiftUI AI Agent Command Center prototype
+Purpose (project claim): A private home for the cannabis you collect. An offline iPhone app for the Dutch regulated experiment, sideloaded with SideStore or iloader.
 Opportunity (speculative): SwiftUI
 Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
 Overlap: new repository / capability novelty unverified
 Power: Unproven until mechanisms or benchmarks receive independent review.
 Underexposure: COHORT_ESTIMATE
-Maintenance: Archived: maintenance risk, not rejection
+Maintenance: Unreviewed
+License: GPL-3.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## LeeYH95/codex-status-light
+https://github.com/LeeYH95/codex-status-light
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): macOS desktop traffic light and quota panel for Codex, built with SwiftUI.
+Opportunity (speculative): SwiftUI
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
 License: MIT; compatibility unreviewed. Security: not audited.
 
 Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
+## mac4DSTEM/MacEMUI
+https://github.com/mac4DSTEM/MacEMUI
+Score: 0.0/100 | Claimed | investigate
+Revision: not yet resolved; awaiting enrichment
+Purpose (project claim): The SwiftUI window shell, controls and Metal image view shared by mac4DSTEM and macTEM (Swift, GPL-3.0).
+Opportunity (speculative): SwiftUI
+Swift integration: Consider an isolated CLI/service or transferable algorithm; Swift/Apple compatibility is unverified.
+Overlap: new repository / capability novelty unverified
+Power: Unproven until mechanisms or benchmarks receive independent review.
+Underexposure: COHORT_ESTIMATE
+Maintenance: Unreviewed
+License: GPL-3.0; compatibility unreviewed. Security: not audited.
+
+Next: review the pinned mechanism, compare an alternative, then prototype only with an explicit test plan.
 ## Scan observations
-{"bytes":530701,"cache_hits":2,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":11,"seconds":6.94,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
+{"bytes":190552,"cache_hits":5,"candidate_count":8,"duplicates":0,"errors":0,"high_value":0,"inspected":1,"relevance_scope":"Preliminary source availability and query eligibility, not human-verified utility","requests":11,"seconds":8.12,"unchanged_inspections_reused":0,"unique_relevant_discoveries":1,"verification_outcomes":{"executed":0,"source_supported":1}}
 
 ## Failures
 []
